@@ -1,0 +1,102 @@
+{
+    "name": "",
+    "version": "",
+    "description": "",
+    "repository": {
+        "type": "git",
+        "url": ""
+    },
+    "keywords": [],
+    "author": "",
+    "license": "",
+    "homepage": "",
+    "bugs": {
+        "url": ""
+    },
+    "type": "module",
+    "sideEffects": false,
+    "exports": {
+        "./*.js": "./dist/*.js",
+        "./package.json": "./package.json"
+    },
+    "files": [
+        "dist",
+        "src"
+    ],
+    "engines": {
+        "node": "14.* || 16.* || >= 18.*"
+    },
+    "scripts": {
+        "build": "npx rimraf ./dist && npx tsc --project ./tsconfig.build.json",
+        "lint": "npx eslint --ext .ts .",
+        "prettier:check": "npx prettier --check --ignore-path ./.gitignore .",
+        "prettier:write": "npx prettier --write --ignore-path ./.gitignore .",
+        "test": "npm run lint --silent && mocha"
+    },
+    "eslintConfig": {
+        "env": {
+            "browser": true,
+            "es2021": true,
+            "node": true
+        },
+        "extends": [
+            "eslint:recommended",
+            "plugin:@typescript-eslint/recommended",
+            "prettier"
+        ],
+        "parser": "@typescript-eslint/parser",
+        "parserOptions": {
+            "ecmaVersion": "latest",
+            "sourceType": "module"
+        },
+        "plugins": [
+            "@typescript-eslint"
+        ],
+        "rules": {
+            "@typescript-eslint/no-explicit-any": [
+                "off"
+            ],
+            "@typescript-eslint/no-namespace": [
+                "off"
+            ],
+            "quotes": [
+                "warn",
+                "double"
+            ],
+            "semi": [
+                "warn",
+                "always"
+            ]
+        }
+    },
+    "mocha": {
+        "node-option": [
+            "experimental-specifier-resolution=node",
+            "loader=ts-node/esm",
+            "no-warnings"
+        ],
+        "spec": [
+            "test/*_test.ts"
+        ]
+    },
+    "prettier": {
+        "trailingComma": "all",
+        "tabWidth": 4
+    },
+    "devDependencies": {
+        "@types/chai": "^4.3.1",
+        "@types/mocha": "^9.1.1",
+        "@typescript-eslint/eslint-plugin": "^5.30.5",
+        "@typescript-eslint/parser": "^5.30.5",
+        "chai": "^4.3.6",
+        "eslint": "^8.19.0",
+        "eslint-config-prettier": "^8.5.0",
+        "eslint-plugin-import": "^2.26.0",
+        "mocha": "^10.0.0",
+        "prettier": "2.7.1",
+        "prettier-plugin-organize-imports": "^3.1.1",
+        "rimraf": "^3.0.2",
+        "ts-node": "^10.8.2",
+        "typescript": "^4.8.3"
+    }
+}
