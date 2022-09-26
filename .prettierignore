@@ -1,4 +1,4 @@
+*.md
 .vscode
 dist
-node_modules
 site

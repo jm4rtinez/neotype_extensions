@@ -1,37 +1,86 @@
 {
-    "name": "",
-    "version": "",
-    "description": "",
+    "name": "@neotype/instances",
+    "version": "0.1.0",
+    "description": "Default implementations for Neotype equivalence relations, total orders, and semigroups for bulit-in JavaScript objects",
     "repository": {
         "type": "git",
-        "url": ""
+        "url": "git+https://github.com/jm4rtinez/neotype_instances.git"
     },
-    "keywords": [],
-    "author": "",
-    "license": "",
-    "homepage": "",
+    "keywords": [
+        "eq",
+        "instances",
+        "neotype",
+        "ord",
+        "prelude",
+        "semigroup"
+    ],
+    "author": "Josh Martinez",
+    "license": "Apache-2.0",
+    "homepage": "https://github.com/jm4rtinez/neotype_instances#readme",
     "bugs": {
-        "url": ""
-    },
-    "type": "module",
-    "sideEffects": false,
-    "exports": {
-        "./*.js": "./dist/*.js",
-        "./package.json": "./package.json"
+        "url": "https://github.com/jm4rtinez/neotype_instances/issues"
     },
     "files": [
         "dist",
         "src"
     ],
+    "type": "module",
     "engines": {
         "node": "14.* || 16.* || >= 18.*"
     },
+    "exports": {
+        "./array.js": "./dist/array.js",
+        "./bigint.js": "./dist/bigint.js",
+        "./bigint64_array.js": "./dist/bigint64_array.js",
+        "./biguint64_array.js": "./dist/biguint64_array.js",
+        "./boolean.js": "./dist/boolean.js",
+        "./date.js": "./dist/date.js",
+        "./float32_array.js": "./dist/float32_array.js",
+        "./float64_array.js": "./dist/float64_array.js",
+        "./function.js": "./dist/function.js",
+        "./int16_array.js": "./dist/int16_array.js",
+        "./int32_array.js": "./dist/int32_array.js",
+        "./int8_array.js": "./dist/int8_array.js",
+        "./map.js": "./dist/map.js",
+        "./number.js": "./dist/number.js",
+        "./promise.js": "./dist/promise.js",
+        "./set.js": "./dist/set.js",
+        "./string.js": "./dist/string.js",
+        "./symbol.js": "./dist/symbol.js",
+        "./uint16_array.js": "./dist/uint16_array.js",
+        "./uint32_array.js": "./dist/uint32_array.js",
+        "./uint8_array.js": "./dist/uint8_array.js",
+        "./uint8_clamped_array.tjs": "./dist/uint8_clamped_array.js",
+        "./package.json": "./package.json"
+    },
     "scripts": {
-        "build": "npx rimraf ./dist && npx tsc --project ./tsconfig.build.json",
+        "build": "npm run clean && npx tsc --project ./tsconfig.build.json",
+        "clean": "npx rimfaf ./dist",
         "lint": "npx eslint --ext .ts .",
-        "prettier:check": "npx prettier --check --ignore-path ./.gitignore .",
-        "prettier:write": "npx prettier --write --ignore-path ./.gitignore .",
+        "prettier:check": "npx prettier --check .",
+        "prettier:write": "npx prettier --write .",
         "test": "npm run lint --silent && mocha"
+    },
+    "peerDependencies": {
+        "@neotype/prelude": "^0.3"
+    },
+    "devDependencies": {
+        "@neotype/prelude": "^0.3",
+        "@types/chai": "^4.3.1",
+        "@types/mocha": "^9.1.1",
+        "@typescript-eslint/eslint-plugin": "^5.30.5",
+        "@typescript-eslint/parser": "^5.30.5",
+        "chai": "^4.3.6",
+        "eslint": "^8.19.0",
+        "eslint-config-prettier": "^8.5.0",
+        "eslint-plugin-import": "^2.26.0",
+        "fast-check": "^3.1.4",
+        "mocha": "^10.0.0",
+        "prettier": "2.7.1",
+        "prettier-plugin-organize-imports": "^3.1.1",
+        "rimraf": "^3.0.2",
+        "ts-node": "^10.8.2",
+        "typescript": "^4.8.3"
     },
     "eslintConfig": {
         "env": {
@@ -81,22 +130,17 @@
     },
     "prettier": {
         "trailingComma": "all",
-        "tabWidth": 4
-    },
-    "devDependencies": {
-        "@types/chai": "^4.3.1",
-        "@types/mocha": "^9.1.1",
-        "@typescript-eslint/eslint-plugin": "^5.30.5",
-        "@typescript-eslint/parser": "^5.30.5",
-        "chai": "^4.3.6",
-        "eslint": "^8.19.0",
-        "eslint-config-prettier": "^8.5.0",
-        "eslint-plugin-import": "^2.26.0",
-        "mocha": "^10.0.0",
-        "prettier": "2.7.1",
-        "prettier-plugin-organize-imports": "^3.1.1",
-        "rimraf": "^3.0.2",
-        "ts-node": "^10.8.2",
-        "typescript": "^4.8.3"
+        "tabWidth": 4,
+        "overrides": [
+            {
+                "files": [
+                    "*.yaml",
+                    "*.yml"
+                ],
+                "options": {
+                    "tabWidth": 2
+                }
+            }
+        ]
     }
 }
