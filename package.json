@@ -60,7 +60,7 @@
         "prettier:check": "npx prettier --check .",
         "prettier:write": "npx prettier --write .",
         "release": "npx release-it",
-        "test": "npm run lint --silent && mocha"
+        "test": "npm run lint && npm run prettier:check && npx mocha"
     },
     "peerDependencies": {
         "@neotype/prelude": "^0.3"
