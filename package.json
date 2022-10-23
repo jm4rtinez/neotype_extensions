@@ -26,7 +26,7 @@
     ],
     "type": "module",
     "engines": {
-        "node": "14.* || 16.* || >= 18.*"
+        "node": "16.* || >= 18.*"
     },
     "exports": {
         "./array.js": "./dist/array.js",
@@ -54,13 +54,16 @@
         "./package.json": "./package.json"
     },
     "scripts": {
-        "build": "npm run clean && npx tsc --project ./tsconfig.build.json",
-        "clean": "npx rimfaf ./dist",
+        "clean": "npx rimraf ./dist",
         "lint": "npx eslint --ext .ts .",
         "prettier:check": "npx prettier --check .",
         "prettier:write": "npx prettier --write .",
-        "release": "npx release-it",
-        "test": "npm run lint && npm run prettier:check && npx mocha"
+        "pretest": "npm run lint && npm run prettier:check",
+        "test": "npx mocha",
+        "prebuild": "npm run clean",
+        "build": "npx tsc --project ./tsconfig.build.json",
+        "prepublishOnly": "npm run build:dist",
+        "postpublish": "npm run clean"
     },
     "peerDependencies": {
         "@neotype/prelude": "^0.3"
@@ -145,28 +148,5 @@
                 }
             }
         ]
-    },
-    "release-it": {
-        "git": {
-            "requireBranch": "main",
-            "commitMessage": "Prepare to release v${version}",
-            "tagAnnotation": "Version ${version}"
-        },
-        "github": {
-            "release": true,
-            "releaseName": "Version ${version}"
-        },
-        "hooks": {
-            "before:init": [
-                "npm test",
-                "npm run build:dist"
-            ]
-        },
-        "plugins": {
-            "@release-it-plugins/lerna-changelog": {
-                "infile": "CHANGELOG.md",
-                "launchEditor": true
-            }
-        }
     }
 }
