@@ -29,8 +29,8 @@
  *
  * `boolean` implements `Eq` and `Ord`.
  *
- * - Two booleans are equal if they are strictly equal using `===`.
- * - When compared, `false` is always less than `true`.
+ * -   Two booleans are equal if they are strictly equal using `===`.
+ * -   When compared, `false` is always less than `true`.
  *
  * @module
  */

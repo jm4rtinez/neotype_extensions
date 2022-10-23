@@ -29,10 +29,10 @@
  *
  * `Uint16Array` implements `Eq` and `Ord`.
  *
- * - Two Uint16Arrays are equal when they are the same length and their elements
- *   are strictly equal using `===`.
- * - Uint16Arrays are ordered lexicographically, and their elements are ordered
- *   from least to greatest.
+ * -   Two Uint16Arrays are equal when they are the same length and their
+ *     elements are strictly equal using `===`.
+ * -   Uint16Arrays are ordered lexicographically, and their elements are
+ *     ordered from least to greatest.
  *
  * ## `Uint16Array` as a semigroup
  *

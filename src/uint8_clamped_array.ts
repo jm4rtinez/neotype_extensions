@@ -29,10 +29,10 @@
  *
  * `Uint8ClampedArray` implements `Eq` and `Ord`.
  *
- * - Two Uint8ClampedArrays are equal when they are the same length and their
- *   elements are strictly equal using `===`.
- * - Uint8ClampedArrays are ordered lexicographically, and their elements are
- *   ordered from least to greatest.
+ * -   Two Uint8ClampedArrays are equal when they are the same length and their
+ *     elements are strictly equal using `===`.
+ * -   Uint8ClampedArrays are ordered lexicographically, and their elements are
+ *     ordered from least to greatest.
  *
  * ## `Uint8ClampedArray` as a semigroup
  *

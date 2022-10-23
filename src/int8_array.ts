@@ -29,10 +29,10 @@
  *
  * `Int8Array` implements `Eq` and `Ord`.
  *
- * - Two Int8Arrays are equal when they are the same length and their elements
- *   are strictly equal using `===`.
- * - Int8Arrays are ordered lexicographically, and their elements are ordered
- *   from least to greatest.
+ * -   Two Int8Arrays are equal when they are the same length and their elements
+ *     are strictly equal using `===`.
+ * -   Int8Arrays are ordered lexicographically, and their elements are ordered
+ *     from least to greatest.
  *
  * ## `Int8Array` as a semigroup
  *

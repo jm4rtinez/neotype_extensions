@@ -29,21 +29,21 @@
  *
  * `Map` and `ReadonlyMap` implement `Eq`.
  *
- * - Two maps are equal if they are the same size and contain the same key-value
- *   pairs.
- * - Keys and values are compared using strict equality (`===`).
- * - Read-only and non-read-only maps can be compared to each other.
+ * -   Two maps are equal if they are the same size and contain the same
+ *     key-value pairs.
+ * -   Keys and values are compared using strict equality (`===`).
+ * -   Read-only and non-read-only maps can be compared to each other.
  *
  * ## `Map` and `ReadonlyMap` as semigroups
  *
  * `Map` and `ReadonlyMap` implement `Semigroup`.
  *
- * - Maps are combined by taking their union.
- * - Duplicate values are determined using strict equality (`===`).
- * - If a key is mapped to two different values, only the right-hand map's value
- *   is retained.
- * - Read-only and non-read-only maps can be combined with each other.
- * - If either map is read-only, the resulting map will also be read-only.
+ * -   Maps are combined by taking their union.
+ * -   Duplicate values are determined using strict equality (`===`).
+ * -   If a key is mapped to two different values, only the right-hand map's
+ *     value is retained.
+ * -   Read-only and non-read-only maps can be combined with each other.
+ * -   If either map is read-only, the resulting map will also be read-only.
  *
  * @module
  */

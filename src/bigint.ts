@@ -29,8 +29,8 @@
  *
  * `bigint` implements `Eq` and `Ord`.
  *
- * - Two bigints are equal if they are strictly equal using `===`.
- * - Bigints are ordered from least to greatest.
+ * -   Two bigints are equal if they are strictly equal using `===`.
+ * -   Bigints are ordered from least to greatest.
  *
  * @module
  */

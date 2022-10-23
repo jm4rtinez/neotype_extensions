@@ -29,8 +29,8 @@
  *
  * `number` implements `Eq` and `Ord`.
  *
- * - Two numbers are equal if they are strictly equal using `===`.
- * - Numbers are ordered from least to greatest.
+ * -   Two numbers are equal if they are strictly equal using `===`.
+ * -   Numbers are ordered from least to greatest.
  *
  * @module
  */

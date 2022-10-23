@@ -29,10 +29,10 @@
  *
  * `Float32Array` implements `Eq` and `Ord`.
  *
- * - Two Float32Arrays are equal when they are the same length and their
- *   elements are strictly equal using `===`.
- * - Float32Arrays are ordered lexicographically, and their elements are ordered
- *   from least to greatest.
+ * -   Two Float32Arrays are equal when they are the same length and their
+ *     elements are strictly equal using `===`.
+ * -   Float32Arrays are ordered lexicographically, and their elements are
+ *     ordered from least to greatest.
  *
  * ## `Float32Array` as a semigroup
  *

@@ -29,10 +29,10 @@
  *
  * `Int32Array` implements `Eq` and `Ord`.
  *
- * - Two Int32Arrays are equal when they are the same length and their elements
- *   are strictly equal using `===`.
- * - Int32Arrays are ordered lexicographically, and their elements are ordered
- *   from least to greatest.
+ * -   Two Int32Arrays are equal when they are the same length and their
+ *     elements are strictly equal using `===`.
+ * -   Int32Arrays are ordered lexicographically, and their elements are ordered
+ *     from least to greatest.
  *
  * ## `Int32Array` as a semigroup
  *

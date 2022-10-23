@@ -30,28 +30,28 @@
  * `Array` and `ReadonlyArray` implement `Eq` and `Ord` when their elements
  * implement `Eq` and `Ord`, respectively.
  *
- * - Two arrays are equal if they are the same length and their respective
- *   elements are equal.
- * - Arrays are ordered lexicographically.
- * - Read-only and non-read-only arrays can be compared to each other.
+ * -   Two arrays are equal if they are the same length and their respective
+ *     elements are equal.
+ * -   Arrays are ordered lexicographically.
+ * -   Read-only and non-read-only arrays can be compared to each other.
  *
  * ## `Array` and `ReadonlyArray` as semigroups
  *
  * `Array` and `ReadonlyArray` implement `Semigroup`.
  *
- * - Arrays are combined using concatenation.
- * - Read-only and non-read-only arrays can be combined with each other.
- * - If either array is read-only, the resulting array will also be read-only.
+ * -   Arrays are combined using concatenation.
+ * -   Read-only and non-read-only arrays can be combined with each other.
+ * -   If either array is read-only, the resulting array will also be read-only.
  *
  * ## Comparing tuple literals
  *
  * Tuple literals implement `Eq` and `Ord` when their elements implement `Eq`
  * and `Ord`, respectively.
  *
- * - Two tuple literals are equal if they are the same length and their
- *   respective elements are equal.
- * - Tuple literals are ordered lexicographically.
- * - Read-only and non-read-only tuples can be compared to each other.
+ * -   Two tuple literals are equal if they are the same length and their
+ *     respective elements are equal.
+ * -   Tuple literals are ordered lexicographically.
+ * -   Read-only and non-read-only tuples can be compared to each other.
  *
  * @module
  */

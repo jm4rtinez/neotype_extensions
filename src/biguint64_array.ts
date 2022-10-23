@@ -29,10 +29,10 @@
  *
  * `BigUint64Array` implements `Eq` and `Ord`.
  *
- * - Two BigUint64Arrays are equal when they are the same length and their
- *   elements are strictly equal using `===`.
- * - BigUint64Arrays are ordered lexicographically, and their elements are
- *   ordered from least to greatest.
+ * -   Two BigUint64Arrays are equal when they are the same length and their
+ *     elements are strictly equal using `===`.
+ * -   BigUint64Arrays are ordered lexicographically, and their elements are
+ *     ordered from least to greatest.
  *
  * ## `BigUint64Array` as a semigroup
  *

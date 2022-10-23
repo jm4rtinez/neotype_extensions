@@ -29,10 +29,10 @@
  *
  * `Float64Array` implements `Eq` and `Ord`.
  *
- * - Two Float64Arrays are equal when they are the same length and their
- *   elements are strictly equal using `===`.
- * - Float64Arrays are ordered lexicographically, and their elements are ordered
- *   from least to greatest.
+ * -   Two Float64Arrays are equal when they are the same length and their
+ *     elements are strictly equal using `===`.
+ * -   Float64Arrays are ordered lexicographically, and their elements are
+ *     ordered from least to greatest.
  *
  * ## `Float64Array` as a semigroup
  *

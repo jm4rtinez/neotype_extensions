@@ -29,10 +29,10 @@
  *
  * `Int16Array` implements `Eq` and `Ord`.
  *
- * - Two Int16Arrays are equal when they are the same length and their elements
- *   are strictly equal using `===`.
- * - Int16Arrays are ordered lexicographically, and their elements are ordered
- *   from least to greatest.
+ * -   Two Int16Arrays are equal when they are the same length and their
+ *     elements are strictly equal using `===`.
+ * -   Int16Arrays are ordered lexicographically, and their elements are ordered
+ *     from least to greatest.
  *
  * ## `Int16Array` as a semigroup
  *

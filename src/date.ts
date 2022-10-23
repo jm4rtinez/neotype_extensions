@@ -29,10 +29,10 @@
  *
  * `Date` implements `Eq` and `Ord`.
  *
- * - Two dates are equal if they represent the same value in milleseconds since
- *   the [ECMAScript epoch][1].
- * - Dates are ordered from least to greatest according to their representation
- *   in millseconds since the [ECMAScript epoch][1].
+ * -   Two dates are equal if they represent the same value in milleseconds
+ *     since the [ECMAScript epoch][1].
+ * -   Dates are ordered from least to greatest according to their
+ *     representation in millseconds since the [ECMAScript epoch][1].
  *
  * [1]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#the_ecmascript_epoch_and_timestamps
  *

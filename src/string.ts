@@ -29,8 +29,8 @@
  *
  * `string` implements `Eq` and `Ord`.
  *
- * - Two strings are equal if they are strictly equal using `===`.
- * - Strings are ordered lexicographically.
+ * -   Two strings are equal if they are strictly equal using `===`.
+ * -   Strings are ordered lexicographically.
  *
  * ## `string` as a semigroup
  *

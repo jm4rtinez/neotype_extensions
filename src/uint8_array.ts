@@ -29,10 +29,10 @@
  *
  * `Uint8Array` implements `Eq` and `Ord`.
  *
- * - Two Uint8Arrays are equal when they are the same length and their elements
- *   are strictly equal using `===`.
- * - Uint8Arrays are ordered lexicographically, and their elements are ordered
- *   from least to greatest.
+ * -   Two Uint8Arrays are equal when they are the same length and their
+ *     elements are strictly equal using `===`.
+ * -   Uint8Arrays are ordered lexicographically, and their elements are ordered
+ *     from least to greatest.
  *
  * ## `Uint8Array` as a semigroup
  *

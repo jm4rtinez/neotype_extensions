@@ -56,8 +56,8 @@
     "scripts": {
         "clean": "npx rimraf ./dist",
         "lint": "npx eslint --ext .ts .",
-        "prettier:check": "npx prettier --check .",
-        "prettier:write": "npx prettier --write .",
+        "prettier:check": "npx prettier --check --ignore-path ./.gitignore .",
+        "prettier:write": "npx prettier --write --ignore-path ./.gitignore .",
         "pretest": "npm run lint && npm run prettier:check",
         "test": "npx mocha",
         "prebuild": "npm run clean",
@@ -147,6 +147,7 @@
                     "tabWidth": 2
                 }
             }
-        ]
+        ],
+        "proseWrap": "always"
     }
 }

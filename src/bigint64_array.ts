@@ -29,10 +29,10 @@
  *
  * `BigInt64Array` implements `Eq` and `Ord`.
  *
- * - Two BigInt64Arrays are equal when they are the same length and their
- *   elements are strictly equal using `===`.
- * - BigInt64Arrays are ordered lexicographically, and their elements are
- *   ordered from least to greatest.
+ * -   Two BigInt64Arrays are equal when they are the same length and their
+ *     elements are strictly equal using `===`.
+ * -   BigInt64Arrays are ordered lexicographically, and their elements are
+ *     ordered from least to greatest.
  *
  * ## `BigInt64Array` as a semigroup
  *

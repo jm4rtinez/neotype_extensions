@@ -29,10 +29,10 @@
  *
  * `Uint32Array` implements `Eq` and `Ord`.
  *
- * - Two Uint32Arrays are equal when they are the same length and their elements
- *   are strictly equal using `===`.
- * - Uint32Arrays are ordered lexicographically, and their elements are ordered
- *   from least to greatest.
+ * -   Two Uint32Arrays are equal when they are the same length and their
+ *     elements are strictly equal using `===`.
+ * -   Uint32Arrays are ordered lexicographically, and their elements are
+ *     ordered from least to greatest.
  *
  * ## `Uint32Array` as a semigroup
  *
