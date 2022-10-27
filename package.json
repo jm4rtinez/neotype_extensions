@@ -62,14 +62,14 @@
         "test": "npx mocha",
         "prebuild": "npm run clean",
         "build": "npx tsc --project ./tsconfig.build.json",
-        "prepublishOnly": "npm run build:dist",
+        "prepublishOnly": "npm run build",
         "postpublish": "npm run clean"
     },
     "peerDependencies": {
-        "@neotype/prelude": "^0.3"
+        "@neotype/prelude": "^0.5"
     },
     "devDependencies": {
-        "@neotype/prelude": "^0.3",
+        "@neotype/prelude": "^0.5",
         "@types/chai": "^4.3.1",
         "@types/mocha": "^9.1.1",
         "@typescript-eslint/eslint-plugin": "^5.30.5",
