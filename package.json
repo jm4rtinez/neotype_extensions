@@ -1,6 +1,6 @@
 {
     "name": "@neotype/instances",
-    "version": "0.0.0",
+    "version": "0.1.0",
     "description": "Default implementations for Neotype equivalence relations, total orders, and semigroups for bulit-in JavaScript objects",
     "repository": {
         "type": "git",
