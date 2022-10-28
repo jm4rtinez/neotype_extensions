@@ -24,6 +24,9 @@
         "dist",
         "src"
     ],
+    "publishConfig": {
+        "access": "public"
+    },
     "type": "module",
     "engines": {
         "node": "16.* || >= 18.*"
