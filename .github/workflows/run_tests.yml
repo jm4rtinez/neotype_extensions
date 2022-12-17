@@ -1,4 +1,4 @@
-name: Run tests
+name: Run Tests
 
 on:
   pull_request:
@@ -8,25 +8,45 @@ on:
   workflow_dispatch:
 
 jobs:
-  test:
+  test_style:
+    name: Code Style
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: volta-cli/action@v4
+      - run: npm ci
+      - run: npm run lint && npm run prettier:check
+
+  test_node:
+    name: Node.js @${{ matrix.node-version }}
     runs-on: ubuntu-latest
     strategy:
       matrix:
         node-version:
           - 16
           - 18
-    name: Node.js v${{ matrix.node-version }}
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
+      - uses: actions/checkout@v3
+      - uses: volta-cli/action@v4
         with:
           node-version: ${{ matrix.node-version }}
+      - run: npm ci
+      - run: npx mocha --reporter dot
 
-      - name: Clean-install dependencies
-        run: npm ci
-
-      - name: Run tests
-        run: npm test
+  test_ts:
+    name: TypeScript @${{ matrix.ts-version }}
+    runs-on: ubuntu-latest
+    continue-on-error: false
+    strategy:
+      matrix:
+        ts-version:
+          - ~4.7
+          - ~4.8
+          - ~4.9
+          - next
+    steps:
+      - uses: actions/checkout@v3
+      - uses: volta-cli/action@v4
+      - run: npm ci
+      - run: npm i -D typescript@${{ matrix.ts-version }}
+      - run: npx mocha --reporter dot
