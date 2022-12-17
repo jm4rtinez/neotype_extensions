@@ -61,16 +61,7 @@ BigInt64Array.prototype[Eq.eq] = function (that: BigInt64Array): boolean {
 };
 
 BigInt64Array.prototype[Ord.cmp] = function (that: BigInt64Array): Ordering {
-    return icmpBy(this, that, (x, y) => {
-        const n = x - y;
-        if (n < 0) {
-            return Ordering.less;
-        }
-        if (n > 0) {
-            return Ordering.greater;
-        }
-        return Ordering.equal;
-    });
+    return icmpBy(this, that, (x, y) => Ordering.fromNumber(x - y));
 };
 
 BigInt64Array.prototype[Semigroup.cmb] = function (
