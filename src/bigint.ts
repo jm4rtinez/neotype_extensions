@@ -49,12 +49,6 @@ BigInt.prototype[Eq.eq] = function (that: bigint): boolean {
     return this === that;
 };
 
-BigInt.prototype[Ord.cmp] = function (that: bigint): Ordering {
-    if (this < that) {
-        return Ordering.less;
-    }
-    if (this > that) {
-        return Ordering.greater;
-    }
-    return Ordering.equal;
+BigInt.prototype[Ord.cmp] = function (this: bigint, that: bigint): Ordering {
+    return Ordering.fromNumber(this - that);
 };
