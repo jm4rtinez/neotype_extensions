@@ -38,9 +38,13 @@ describe("set.js", () => {
                     fc.array(fc.anything()).map((xs) => new Set(xs)),
                     fc.array(fc.anything()).map((xs) => new Set(xs)),
                     (xs, ys) => {
-                        expect(cmb(xs, ys)).to.deep.equal(
-                            new Set([...xs, ...ys]),
-                        );
+                        const result = cmb(xs, ys);
+                        const exp = new Set([...xs, ...ys]);
+
+                        expect(result.size).to.equal(exp.size);
+                        for (const x of result) {
+                            expect(exp.has(x)).to.be.true;
+                        }
                     },
                 ),
             );

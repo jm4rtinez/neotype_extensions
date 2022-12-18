@@ -38,7 +38,7 @@ describe("array.js", () => {
                     fc.array(fc.anything()),
                     fc.array(fc.anything()),
                     (xs, ys) => {
-                        expect(cmb(xs, ys)).to.equal([...xs, ...ys]);
+                        expect(cmb(xs, ys)).to.deep.equal([...xs, ...ys]);
                     },
                 ),
             );

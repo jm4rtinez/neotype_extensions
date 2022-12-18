@@ -51,11 +51,13 @@ import { Eq } from "@neotype/prelude/cmp.js";
 declare global {
     interface Set<T> {
         [Eq.eq](that: Set<T>): boolean;
+
         [Semigroup.cmb](that: Set<T>): Set<T>;
     }
 
     interface ReadonlySet<T> {
         [Eq.eq](that: ReadonlySet<T>): boolean;
+
         [Semigroup.cmb](that: ReadonlySet<T>): ReadonlySet<T>;
     }
 }
@@ -77,9 +79,9 @@ Set.prototype[Semigroup.cmb] = function <T>(
     that: Set<T>,
 ): Set<T> {
     return new Set(
-        function* (this: Set<T>) {
-            yield* this;
+        (function* (self: Set<T>) {
+            yield* self;
             yield* that;
-        }.call(this),
+        })(this),
     );
 };

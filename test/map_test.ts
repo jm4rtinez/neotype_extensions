@@ -47,7 +47,13 @@ describe("map.js", () => {
                         .map((entries) => new Map(entries)),
                     (xs, ys) => {
                         const result = cmb(xs, ys);
-                        expect(result).to.deep.equal(new Map([...xs, ...ys]));
+                        const exp = new Map([...xs, ...ys]);
+
+                        expect(result.size).to.equal(exp.size);
+                        for (const [kx, x] of result) {
+                            expect(exp.has(kx)).to.be.true;
+                            expect(exp.get(kx)).to.equal(x);
+                        }
                     },
                 ),
             );
