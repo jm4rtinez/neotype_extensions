@@ -1,187 +1,80 @@
 import { cmb } from "@neotype/prelude/cmb.js";
 import { eq } from "@neotype/prelude/cmp.js";
-import { assert } from "chai";
+import { expect } from "chai";
+import * as fc from "fast-check";
 import "../src/map.js";
 
-describe("Map", () => {
-    specify("[Eq.eq]", () => {
-        const t0 = eq(
-            new Map([
-                ["a", 1],
-                ["b", 2],
-            ]),
-            new Map([
-                ["a", 1],
-                ["b", 2],
-            ]),
-        );
-        assert.strictEqual(t0, true);
+describe("map.js", () => {
+    describe("Map", () => {
+        specify("#[Eq.eq]", () => {
+            fc.assert(
+                fc.property(
+                    fc
+                        .array(fc.tuple(fc.anything(), fc.anything()))
+                        .map((entries) => new Map(entries)),
+                    fc
+                        .array(fc.tuple(fc.anything(), fc.anything()))
+                        .map((entries) => new Map(entries)),
+                    (xs, ys) => {
+                        const result = eq(xs, ys);
 
-        const t1 = eq(
-            new Map([
-                ["a", 1],
-                ["b", 2],
-            ]),
-            new Map([
-                ["b", 2],
-                ["a", 1],
-            ]),
-        );
-        assert.strictEqual(t1, true);
+                        const exp = (() => {
+                            if (xs.size !== ys.size) {
+                                return false;
+                            }
+                            for (const [kx, x] of xs.entries()) {
+                                if (!(ys.has(kx) && ys.get(kx) === x)) {
+                                    return false;
+                                }
+                            }
+                            return true;
+                        })();
 
-        const t2 = eq(
-            new Map([
-                ["a", 1],
-                ["b", 2],
-            ]),
-            new Map([
-                ["b", 2],
-                ["a", 1],
-                ["c", 3],
-            ]),
-        );
-        assert.strictEqual(t2, false);
+                        expect(result).to.equal(exp);
+                    },
+                ),
+            );
+        });
 
-        const t3 = eq(
-            new Map([
-                ["a", 1],
-                ["b", 2],
-            ]),
-            new Map([
-                ["a", 1],
-                ["b", 3],
-            ]),
-        );
-        assert.strictEqual(t3, false);
+        specify("#[Semigroup.cmb]", () => {
+            fc.assert(
+                fc.property(
+                    fc
+                        .array(fc.tuple(fc.anything(), fc.anything()))
+                        .map((entries) => new Map(entries)),
+                    fc
+                        .array(fc.tuple(fc.anything(), fc.anything()))
+                        .map((entries) => new Map(entries)),
+                    (xs, ys) => {
+                        const result = cmb(xs, ys);
+                        const exp = new Map([...xs, ...ys]);
 
-        const t4 = eq(
-            new Map([
-                ["a", 1],
-                ["b", 2],
-            ]),
-            new Map([
-                ["a", 1],
-                ["c", 2],
-            ]),
-        );
-        assert.strictEqual(t4, false);
-
-        const t5 = eq(
-            new Map([
-                ["a", 1],
-                ["b", 2],
-            ]) as ReadonlyMap<string, number>,
-            new Map([
-                ["a", 1],
-                ["b", 2],
-            ]),
-        );
-        assert.strictEqual(t5, true);
-
-        const t6 = eq(
-            new Map([
-                ["a", 1],
-                ["b", 2],
-            ]),
-            new Map([
-                ["b", 2],
-                ["a", 1],
-            ]) as ReadonlyMap<string, number>,
-        );
-        assert.strictEqual(t6, true);
+                        expect(result.size).to.equal(exp.size);
+                        for (const [kx, x] of result) {
+                            expect(exp.has(kx)).to.be.true;
+                            expect(exp.get(kx)).to.equal(x);
+                        }
+                    },
+                ),
+            );
+        });
     });
 
-    specify("[Semigroup.cmb]", () => {
-        const t0 = cmb(
-            new Map([
-                ["a", 1],
-                ["b", 2],
-            ]),
-            new Map([
-                ["a", 1],
-                ["b", 2],
-            ]),
-        );
-        assert.deepEqual(
-            t0,
-            new Map([
-                ["a", 1],
-                ["b", 2],
-            ]),
-        );
+    describe("ReadonlyMap", () => {
+        specify("#[Eq.eq]", () => {
+            const xs: ReadonlyMap<unknown, unknown> = new Map();
+            const ys: Map<unknown, unknown> = new Map();
+            eq(xs, xs);
+            eq(xs, ys);
+            eq(ys, xs);
+        });
 
-        const t1 = cmb(
-            new Map([
-                ["a", 1],
-                ["b", 2],
-            ]),
-            new Map([
-                ["a", 1],
-                ["b", 3],
-            ]),
-        );
-        assert.deepEqual(
-            t1,
-            new Map([
-                ["a", 1],
-                ["b", 3],
-            ]),
-        );
-
-        const t2 = cmb(
-            new Map([
-                ["a", 1],
-                ["b", 2],
-            ]),
-            new Map([
-                ["a", 1],
-                ["b", 2],
-                ["c", 3],
-            ]),
-        );
-        assert.deepEqual(
-            t2,
-            new Map([
-                ["a", 1],
-                ["b", 2],
-                ["c", 3],
-            ]),
-        );
-
-        const t3 = cmb(
-            new Map([
-                ["a", 1],
-                ["b", 2],
-            ]) as ReadonlyMap<string, number>,
-            new Map([
-                ["a", 1],
-                ["b", 2],
-            ]),
-        );
-        assert.deepEqual(
-            t3,
-            new Map([
-                ["a", 1],
-                ["b", 2],
-            ]),
-        );
-
-        const t4 = cmb(
-            new Map([
-                ["a", 1],
-                ["b", 2],
-            ]),
-            new Map([
-                ["a", 1],
-                ["b", 2],
-            ]) as ReadonlyMap<string, number>,
-        );
-        assert.deepEqual(
-            t4,
-            new Map([
-                ["a", 1],
-                ["b", 2],
-            ]),
-        );
+        specify("#[Semigroup.cmb]", () => {
+            const xs: ReadonlyMap<unknown, unknown> = new Map();
+            const ys: Map<unknown, unknown> = new Map();
+            cmb(xs, xs);
+            cmb(xs, ys);
+            cmb(ys, xs);
+        });
     });
 });

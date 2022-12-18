@@ -1,40 +1,71 @@
 import { cmb } from "@neotype/prelude/cmb.js";
 import { eq } from "@neotype/prelude/cmp.js";
-import { assert } from "chai";
+import { expect } from "chai";
+import * as fc from "fast-check";
 import "../src/set.js";
 
-describe("Set", () => {
-    specify("[Eq.eq]", () => {
-        const t0 = eq(new Set([1, 2]), new Set([1, 2]));
-        assert.strictEqual(t0, true);
+describe("set.js", () => {
+    describe("Set", () => {
+        specify("#[Eq.eq]", () => {
+            fc.assert(
+                fc.property(
+                    fc.array(fc.anything()).map((xs) => new Set(xs)),
+                    fc.array(fc.anything()).map((xs) => new Set(xs)),
+                    (xs, ys) => {
+                        const result = eq(xs, ys);
 
-        const t1 = eq(new Set([1, 2]), new Set([2, 1]));
-        assert.strictEqual(t1, true);
+                        const exp = (() => {
+                            if (xs.size !== ys.size) {
+                                return false;
+                            }
+                            for (const x of xs) {
+                                if (!ys.has(x)) {
+                                    return false;
+                                }
+                            }
+                            return true;
+                        })();
 
-        const t2 = eq(new Set([1, 2]), new Set([1, 2, 3]));
-        assert.strictEqual(t2, false);
+                        expect(result).to.equal(exp);
+                    },
+                ),
+            );
+        });
 
-        const t3 = eq(new Set([1, 2]), new Set([1, 3]));
-        assert.strictEqual(t3, false);
+        specify("#[Semigroup.cmb]", () => {
+            fc.assert(
+                fc.property(
+                    fc.array(fc.anything()).map((xs) => new Set(xs)),
+                    fc.array(fc.anything()).map((xs) => new Set(xs)),
+                    (xs, ys) => {
+                        const result = cmb(xs, ys);
+                        const exp = new Set([...xs, ...ys]);
 
-        const t4 = eq(new Set([1, 2]) as ReadonlySet<number>, new Set([1, 2]));
-        assert.strictEqual(t4, true);
-
-        const t5 = eq(new Set([1, 2]), new Set([1, 2]) as ReadonlySet<number>);
-        assert.strictEqual(t5, true);
+                        expect(result.size).to.equal(exp.size);
+                        for (const x of result) {
+                            expect(exp.has(x)).to.be.true;
+                        }
+                    },
+                ),
+            );
+        });
     });
 
-    specify("[Semigroup.cmb]", () => {
-        const t0 = cmb(new Set([1, 2]), new Set([1, 2]));
-        assert.deepEqual(t0, new Set([1, 2]));
+    describe("ReadonlySet", () => {
+        specify("#[Eq.eq]", () => {
+            const xs: ReadonlySet<unknown> = new Set();
+            const ys: Set<unknown> = new Set();
+            eq(xs, xs);
+            eq(xs, ys);
+            eq(ys, xs);
+        });
 
-        const t1 = cmb(new Set([1, 2]), new Set([1, 2, 3]));
-        assert.deepEqual(t1, new Set([1, 2, 3]));
-
-        const t2 = cmb(new Set([1, 2]) as ReadonlySet<number>, new Set([1, 2]));
-        assert.deepEqual(t2, new Set([1, 2]));
-
-        const t3 = cmb(new Set([1, 2]), new Set([1, 2]) as ReadonlySet<number>);
-        assert.deepEqual(t3, new Set([1, 2]));
+        specify("#[Semigroup.cmb]", () => {
+            const xs: ReadonlySet<unknown> = new Set();
+            const ys: Set<unknown> = new Set();
+            cmb(xs, xs);
+            cmb(xs, ys);
+            cmb(ys, xs);
+        });
     });
 });
