@@ -8,7 +8,7 @@ import "../src/string.js";
 
 describe("array.js", () => {
     describe("Array", () => {
-        specify("[Eq.eq]", () => {
+        specify("#[Eq.eq]", () => {
             fc.assert(
                 fc.property(
                     fc.array(fc.float({ noNaN: true })),
@@ -20,7 +20,7 @@ describe("array.js", () => {
             );
         });
 
-        specify("[Ord.cmp]", () => {
+        specify("#[Ord.cmp]", () => {
             fc.assert(
                 fc.property(
                     fc.array(fc.float({ noNaN: true })),
@@ -32,7 +32,7 @@ describe("array.js", () => {
             );
         });
 
-        specify("[Semigroup.cmb]", () => {
+        specify("#[Semigroup.cmb]", () => {
             fc.assert(
                 fc.property(
                     fc.array(fc.anything()),
@@ -46,7 +46,7 @@ describe("array.js", () => {
     });
 
     describe("ReadonlyArray", () => {
-        specify("[Eq.eq]", () => {
+        specify("#[Eq.eq]", () => {
             const xs: readonly number[] = [];
             const ys: number[] = [];
             eq(xs, xs);
@@ -54,7 +54,7 @@ describe("array.js", () => {
             eq(ys, xs);
         });
 
-        specify("[Ord.cmp]", () => {
+        specify("#[Ord.cmp]", () => {
             const xs: readonly number[] = [];
             const ys: number[] = [];
             cmp(xs, xs);
@@ -62,7 +62,7 @@ describe("array.js", () => {
             cmp(ys, xs);
         });
 
-        specify("[Semigroup.cmb]", () => {
+        specify("#[Semigroup.cmb]", () => {
             const xs: readonly unknown[] = [];
             const ys: unknown[] = [];
             cmb(xs, xs);
@@ -72,7 +72,7 @@ describe("array.js", () => {
     });
 
     describe("tuple literal", () => {
-        specify("[Eq.eq]", () => {
+        specify("#[Eq.eq]", () => {
             fc.assert(
                 fc.property(
                     fc.float({ noNaN: true }),
@@ -88,7 +88,7 @@ describe("array.js", () => {
             );
         });
 
-        specify("[Ord.cmp]", () => {
+        specify("#[Ord.cmp]", () => {
             fc.assert(
                 fc.property(
                     fc.float({ noNaN: true }),
@@ -106,7 +106,7 @@ describe("array.js", () => {
     });
 
     describe("readonly tuple literal", () => {
-        specify("[Eq.eq]", () => {
+        specify("#[Eq.eq]", () => {
             const xs: readonly [number, string] = [0, ""];
             const ys: [number, string] = [0, ""];
             eq(xs, xs);
@@ -114,7 +114,7 @@ describe("array.js", () => {
             eq(ys, xs);
         });
 
-        specify("[Ord.cmp]", () => {
+        specify("#[Ord.cmp]", () => {
             const xs: readonly [number, string] = [0, ""];
             const ys: [number, string] = [0, ""];
             cmp(xs, xs);

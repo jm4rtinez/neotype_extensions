@@ -5,7 +5,7 @@ import "../src/bigint.js";
 
 describe("bigint.js", () => {
     describe("BigInt", () => {
-        specify("[Eq.eq]", () => {
+        specify("#[Eq.eq]", () => {
             fc.assert(
                 fc.property(fc.bigInt(), fc.bigInt(), (x, y) => {
                     expect(eq(x, y)).to.equal(x === y);
@@ -13,7 +13,7 @@ describe("bigint.js", () => {
             );
         });
 
-        specify("[Ord.cmp]", () => {
+        specify("#[Ord.cmp]", () => {
             fc.assert(
                 fc.property(fc.bigInt(), fc.bigInt(), (x, y) => {
                     expect(cmp(x, y)).to.equal(Ordering.fromNumber(x - y));
