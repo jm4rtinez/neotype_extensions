@@ -49,23 +49,26 @@
  */
 
 import { Semigroup } from "@neotype/prelude/cmb.js";
-import { Eq } from "@neotype/prelude/cmp.js";
+import { Eq, eq } from "@neotype/prelude/cmp.js";
 
 declare global {
     interface Map<K, V> {
-        [Eq.eq](that: Map<K, V>): boolean;
+        [Eq.eq]<V extends Eq<V>>(this: Map<K, V>, that: Map<K, V>): boolean;
 
         [Semigroup.cmb](that: Map<K, V>): Map<K, V>;
     }
 
     interface ReadonlyMap<K, V> {
-        [Eq.eq](that: ReadonlyMap<K, V>): boolean;
+        [Eq.eq]<V extends Eq<V>>(
+            this: ReadonlyMap<K, V>,
+            that: ReadonlyMap<K, V>,
+        ): boolean;
 
         [Semigroup.cmb](that: ReadonlyMap<K, V>): ReadonlyMap<K, V>;
     }
 }
 
-Map.prototype[Eq.eq] = function <K, V>(
+Map.prototype[Eq.eq] = function <K, V extends Eq<V>>(
     this: Map<K, V>,
     that: Map<K, V>,
 ): boolean {
@@ -73,7 +76,8 @@ Map.prototype[Eq.eq] = function <K, V>(
         return false;
     }
     for (const [kx, x] of this.entries()) {
-        if (!(that.has(kx) && that.get(kx) === x)) {
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        if (!(that.has(kx) && eq(that.get(kx)!, x))) {
             return false;
         }
     }
