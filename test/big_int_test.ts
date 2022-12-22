@@ -1,9 +1,9 @@
 import { cmp, eq, Ordering } from "@neotype/prelude/cmp.js";
 import { expect } from "chai";
 import * as fc from "fast-check";
-import "../src/bigint.js";
+import "../src/big_int.js";
 
-describe("bigint.js", () => {
+describe("big_int.js", () => {
     describe("BigInt", () => {
         specify("#[Eq.eq]", () => {
             fc.assert(

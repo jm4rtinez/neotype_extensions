@@ -33,9 +33,9 @@
     },
     "exports": {
         "./array.js": "./dist/array.js",
-        "./bigint.js": "./dist/bigint.js",
-        "./bigint64_array.js": "./dist/bigint64_array.js",
-        "./biguint64_array.js": "./dist/biguint64_array.js",
+        "./big_int.js": "./dist/big_int.js",
+        "./big_int64_array.js": "./dist/big_int64_array.js",
+        "./big_uint64_array.js": "./dist/big_uint64_array.js",
         "./boolean.js": "./dist/boolean.js",
         "./date.js": "./dist/date.js",
         "./float32_array.js": "./dist/float32_array.js",

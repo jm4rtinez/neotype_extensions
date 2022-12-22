@@ -2,9 +2,9 @@ import { cmb } from "@neotype/prelude/cmb.js";
 import { cmp, eq, icmpBy, ieqBy, Ordering } from "@neotype/prelude/cmp.js";
 import { expect } from "chai";
 import * as fc from "fast-check";
-import "../src/bigint64_array.js";
+import "../src/big_int64_array.js";
 
-describe("bigint64_array.js", () => {
+describe("big_int64_array.js", () => {
     describe("BigInt64Array", () => {
         specify("#[Eq.eq]", () => {
             fc.assert(

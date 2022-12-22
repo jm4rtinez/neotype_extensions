@@ -24,10 +24,10 @@
  * This module's augmentations can be applied by using the following import:
  *
  * ```ts
- * import "@neotype/instances/bigint.js";
+ * import "@neotype/instances/big_int.js";
  * ```
  *
- * ## Comparing `bigint`
+ * ## Comparing `BigInt`
  *
  * `BigInt` implements `Eq` and `Ord`.
  *
