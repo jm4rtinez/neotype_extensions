@@ -54,7 +54,7 @@ describe("map.js", () => {
                         expect(result.size).to.equal(exp.size);
                         for (const [kx, x] of result) {
                             expect(exp.has(kx)).to.be.true;
-                            expect(exp.get(kx)).to.equal(x);
+                            expect(exp.get(kx)).to.deep.equal(x);
                         }
                     },
                 ),
