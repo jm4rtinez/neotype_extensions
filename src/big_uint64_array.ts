@@ -15,7 +15,7 @@
  */
 
 /**
- * Augmentations for the `BigInt64Array` type.
+ * Augmentations for the `BigUint64Array` type.
  *
  * @remarks
  *
@@ -24,22 +24,22 @@
  * This module's augmentations can be applied by using the following import:
  *
  * ```ts
- * import "@neotype/instances/bigint64_array.js";
+ * import "@neotype/instances/big_uint64_array.js";
  * ```
  *
- * ## Comparing `BigInt64Array`
+ * ## Comparing `BigUint64Array`
  *
- * `BigInt64Array` implements `Eq` and `Ord`.
+ * `BigUint64Array` implements `Eq` and `Ord`.
  *
- * -   Two `BigInt64Array` values are equal when they are the same length and
+ * -   Two `BigUint64Array` values are equal when they are the same length and
  *     their respective elements are strictly equal.
- * -   `BigInt64Array` values are compared lexicographically from left to right,
- *     and their elements are ordered from least to greatest.
+ * -   `BigUint64Array` values are compared lexicographically from left to
+ *     right, and their elements are ordered from least to greatest.
  *
- * ## `BigInt64Array` as a semigroup
+ * ## `BigUint64Array` as a semigroup
  *
- * `BigInt64Array` implements `Semigroup`. When combined, `BigInt64Array` values
- * are concatenated from left to right.
+ * `BigUint64Array` implements `Semigroup`. When combined, `BigUint64Array`
+ * values are concatenated from left to right.
  *
  * @module
  */
@@ -48,27 +48,27 @@ import { Semigroup } from "@neotype/prelude/cmb.js";
 import { Eq, icmpBy, ieqBy, Ord, Ordering } from "@neotype/prelude/cmp.js";
 
 declare global {
-    interface BigInt64Array {
-        [Eq.eq](that: BigInt64Array): boolean;
+    interface BigUint64Array {
+        [Eq.eq](that: BigUint64Array): boolean;
 
-        [Ord.cmp](that: BigInt64Array): Ordering;
+        [Ord.cmp](that: BigUint64Array): Ordering;
 
-        [Semigroup.cmb](that: BigInt64Array): BigInt64Array;
+        [Semigroup.cmb](that: BigUint64Array): BigUint64Array;
     }
 }
 
-BigInt64Array.prototype[Eq.eq] = function (that: BigInt64Array): boolean {
+BigUint64Array.prototype[Eq.eq] = function (that: BigUint64Array): boolean {
     return ieqBy(this, that, (x, y) => x === y);
 };
 
-BigInt64Array.prototype[Ord.cmp] = function (that: BigInt64Array): Ordering {
+BigUint64Array.prototype[Ord.cmp] = function (that: BigUint64Array): Ordering {
     return icmpBy(this, that, (x, y) => Ordering.fromNumber(x - y));
 };
 
-BigInt64Array.prototype[Semigroup.cmb] = function (
-    that: BigInt64Array,
-): BigInt64Array {
-    const result = new BigInt64Array(this.length + that.length);
+BigUint64Array.prototype[Semigroup.cmb] = function (
+    that: BigUint64Array,
+): BigUint64Array {
+    const result = new BigUint64Array(this.length + that.length);
     result.set(this);
     result.set(that, this.length);
     return result;
