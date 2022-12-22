@@ -15,7 +15,9 @@
  */
 
 /**
- * Augmentations for the `bigint` type.
+ * Augmentations for the `BigInt` type.
+ *
+ * @remarks
  *
  * ## Importing this module
  *
@@ -27,10 +29,10 @@
  *
  * ## Comparing `bigint`
  *
- * `bigint` implements `Eq` and `Ord`.
+ * `BigInt` implements `Eq` and `Ord`.
  *
- * -   Two bigints are equal if they are strictly equal using `===`.
- * -   Bigints are ordered from least to greatest.
+ * -   Two `BigInt` values are equal if they are strictly equal.
+ * -   `BigInt` values are ordered from least to greatest.
  *
  * @module
  */

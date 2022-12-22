@@ -17,6 +17,8 @@
 /**
  * Augmentations for the `Function` type.
  *
+ * @remarks
+ *
  * ## Importing this module
  *
  * This module's augmentations can be applied by using the following import:
@@ -27,10 +29,13 @@
  *
  * ## `Function` as a semigroup
  *
- * `Function` implements `Semigroup` when its return type implements
- * `Semigroup`. Two functions of the same signature can be combined to return a
- * new function that combines the results of applying the left function and the
- * right function.
+ * `Function` has the following behavior as a semigroup:
+ *
+ * -   A function `<T extends unknown[], A>(...args: T) => A` implements
+ *     `Semigroup` when `A` implements `Semigroup`.
+ * -   Combining two functions returns a new function that, when applied,
+ *     applies the original functions from left to right and combines their
+ *     results.
  *
  * @module
  */

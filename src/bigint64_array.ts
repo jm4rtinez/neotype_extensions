@@ -17,6 +17,8 @@
 /**
  * Augmentations for the `BigInt64Array` type.
  *
+ * @remarks
+ *
  * ## Importing this module
  *
  * This module's augmentations can be applied by using the following import:
@@ -29,16 +31,15 @@
  *
  * `BigInt64Array` implements `Eq` and `Ord`.
  *
- * -   Two BigInt64Arrays are equal when they are the same length and their
- *     elements are strictly equal using `===`.
- * -   BigInt64Arrays are ordered lexicographically, and their elements are
- *     ordered from least to greatest.
+ * -   Two `BigInt64Array` values are equal when they are the same length and
+ *     their respective elements are strictly equal.
+ * -   `BigInt64Array` values are compared lexicographically from left to right,
+ *     and their elements are ordered from least to greatest.
  *
  * ## `BigInt64Array` as a semigroup
  *
- * `BigInt64Array` implements `Semigroup`. BigInt64Arrays are combined using
- * concatenation. The combination will allocate memory equivalent to the sum of
- * the combined arrays' sizes.
+ * `BigInt64Array` implements `Semigroup`. When combined, `BigInt64Array` values
+ * are concatenated from left to right.
  *
  * @module
  */

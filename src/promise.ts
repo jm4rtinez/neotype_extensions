@@ -17,6 +17,8 @@
 /**
  * Augmentations for the `Promise` type.
  *
+ * @remarks
+ *
  * ## Importing this module
  *
  * This module's augmentations can be applied by using the following import:
@@ -27,9 +29,11 @@
  *
  * ## `Promise` as a semigroup
  *
- * `Promise` implements `Semigroup` when its generic type implements
- * `Semigroup`. Promises are combined concurrently to return a new Promise that
- * combines their values.
+ * `Promise` has the following behavior as a semigroup:
+ *
+ * -   A `Promise<T>` implements `Semigroup` when `T` implements `Semigroup`.
+ * -   When combined, `Promise` values are awaited concurrently and their
+ *     results are combined and fulfilled in a new `Promise`.
  *
  * @module
  */
