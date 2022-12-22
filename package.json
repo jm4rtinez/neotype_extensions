@@ -1,7 +1,7 @@
 {
     "name": "@neotype/instances",
     "version": "0.1.0",
-    "description": "Default implementations for Neotype equivalence relations, total orders, and semigroups for bulit-in JavaScript objects",
+    "description": "Default implementations for Neotype equivalence relations, total orders, and semigroups for built-in JavaScript objects",
     "repository": {
         "type": "git",
         "url": "https://github.com/jm4rtinez/neotype_instances.git"
@@ -58,7 +58,7 @@
     },
     "scripts": {
         "clean": "npx rimraf ./dist",
-        "lint": "npx eslint --ext .ts .",
+        "lint": "npx eslint --ext .ts --max-warnings 0 .",
         "prettier:check": "npx prettier --check --ignore-path ./.gitignore .",
         "prettier:write": "npx prettier --write --ignore-path ./.gitignore .",
         "pretest": "npm run lint && npm run prettier:check",
@@ -109,18 +109,15 @@
             "@typescript-eslint"
         ],
         "rules": {
-            "@typescript-eslint/no-explicit-any": [
-                "off"
-            ],
             "@typescript-eslint/no-namespace": [
                 "off"
             ],
             "quotes": [
-                "warn",
+                "error",
                 "double"
             ],
             "semi": [
-                "warn",
+                "error",
                 "always"
             ]
         }
