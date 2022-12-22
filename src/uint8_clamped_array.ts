@@ -17,6 +17,8 @@
 /**
  * Augmentations for the `Uint8ClampedArray` type.
  *
+ * @remarks
+ *
  * ## Importing this module
  *
  * This module's augmentations can be applied by using the following import:
@@ -29,16 +31,15 @@
  *
  * `Uint8ClampedArray` implements `Eq` and `Ord`.
  *
- * -   Two Uint8ClampedArrays are equal when they are the same length and their
- *     elements are strictly equal using `===`.
- * -   Uint8ClampedArrays are ordered lexicographically, and their elements are
- *     ordered from least to greatest.
+ * -   Two `Uint8ClampedArray` values are equal when they are the same length
+ *     and their respective elements are strictly equal.
+ * -   `Uint8ClampedArray` values are compared lexicographically from left to
+ *     right, and their elements are ordered from least to greatest.
  *
  * ## `Uint8ClampedArray` as a semigroup
  *
- * `Uint8ClampedArray` implements `Semigroup`. Uint8ClampedArrays are combined
- * using concatenation. The combination will allocate memory equivalent to the
- * sum of the combined arrays' sizes.
+ * `Uint8ClampedArray` implements `Semigroup`. When combined, `Int8ClampedArray`
+ * values are are concatenated from left to right.
  *
  * @module
  */

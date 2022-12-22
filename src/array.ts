@@ -15,7 +15,10 @@
  */
 
 /**
- * Augmentations for the `Array` and `ReadonlyArray` types, and tuple literals.
+ * Augmentations for the `Array`, `ReadonlyArray`, tuple literal, and `readonly`
+ * tuple literal types.
+ *
+ * @remarks
  *
  * ## Importing this module
  *
@@ -25,33 +28,39 @@
  * import "@neotype/instances/array.js";
  * ```
  *
- * ## Comparing `Array` and `ReadonlyArray`
+ * ## Comparing `Array`, `ReadonlyArray`, tuple literals, and `readonly` tuple
+ * literals
  *
- * `Array` and `ReadonlyArray` implement `Eq` and `Ord` when their elements
- * implement `Eq` and `Ord`, respectively.
+ * `Array`, `ReadonlyArray`, tuple literals, and `readonly` tuple literals have
+ * the following behavior as an equivalence relation:
  *
- * -   Two arrays are equal if they are the same length and their respective
- *     elements are equal.
- * -   Arrays are ordered lexicographically.
+ * -   An `Array<T>` or a `ReadonlyArray<T>` implements `Eq` when `T` implements
+ *     `Eq`.
+ * -   A tuple or a `readonly` tuple implements `Eq` when each of its elements
+ *     implements `Eq`.
+ * -   Two arrays or two tuples are equal if they are the same length and their
+ *     respective elements are equal.
  * -   Read-only and non-read-only arrays can be compared to each other.
+ * -   Read-only and non-read-only tuples can be compared to each other.
+ *
+ * `Array`, `ReadonlyArray`, tuple literals, and `readonly` tuple literals have
+ * the following behavior as a total order:
+ *
+ * -   An `Array<T>` or a `ReadonlyArray<T>` implements `Ord` when `T`
+ *     implements `Ord`.
+ * -   A tuple or `readonly` tuple implements `Eq` when each of its elements
+ *     implements `Eq`.
+ * -   Arrays and tuples are compared lexicographically from left to right.
+ * -   Read-only and non-read-only arrays can be compared to each other.
+ * -   Read-only and non-read-only tuples can be compared to each other.
  *
  * ## `Array` and `ReadonlyArray` as semigroups
  *
- * `Array` and `ReadonlyArray` implement `Semigroup`.
+ * `Array` and `ReadonlyArray` have the following behavior as a semigroup:
  *
- * -   Arrays are combined using concatenation.
+ * -   When combined, arrays are concatenated from left to right.
  * -   Read-only and non-read-only arrays can be combined with each other.
- * -   If either array is read-only, the resulting array will also be read-only.
- *
- * ## Comparing tuple literals
- *
- * Tuple literals implement `Eq` and `Ord` when their elements implement `Eq`
- * and `Ord`, respectively.
- *
- * -   Two tuple literals are equal if they are the same length and their
- *     respective elements are equal.
- * -   Tuple literals are ordered lexicographically.
- * -   Read-only and non-read-only tuples can be compared to each other.
+ * -   If either array is read-only, the returned array will also be read-only.
  *
  * @module
  */
@@ -84,8 +93,8 @@ declare global {
 }
 
 Array.prototype[Eq.eq] = function <T extends Eq<T>>(
-    this: readonly T[],
-    that: readonly T[],
+    this: T[],
+    that: T[],
 ): boolean {
     return ieq(this, that);
 };

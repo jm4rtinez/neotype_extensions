@@ -17,6 +17,8 @@
 /**
  * Augmentations for the `Set` and `ReadonlySet` types.
  *
+ * @remarks
+ *
  * ## Importing this module
  *
  * This module's augmentations can be applied by using the following import:
@@ -29,8 +31,8 @@
  *
  * `Set` and `ReadonlySet` implement `Eq`.
  *
- * -   Two sets are equal if they are the same size and contain the same values.
- * -   Values are compared using strict equality (`===`).
+ * -   Two sets are equal if they are the same size and contain the same
+ *     elements. Elements are compared strictly.
  * -   Read-only and non-read-only sets can be compared to each other.
  *
  * ## `Set` and `ReadonlySet` as semigroups
@@ -38,7 +40,6 @@
  * `Set` and `ReadonlySet` implement `Semigroup`.
  *
  * -   Sets are combined by taking their union.
- * -   Duplicate values are determined using strict equality (`===`).
  * -   Read-only and non-read-only sets can be combined with each other.
  * -   If either set is read-only, the resulting set will also be read-only.
  *

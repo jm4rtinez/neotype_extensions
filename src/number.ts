@@ -15,7 +15,9 @@
  */
 
 /**
- * Augmentations for the `number` type.
+ * Augmentations for the `Number` type.
+ *
+ * @remarks
  *
  * ## Importing this module
  *
@@ -25,12 +27,12 @@
  * import "@neotype/instances/number.js";
  * ```
  *
- * ## Comparing `number`
+ * ## Comparing `Number`
  *
- * `number` implements `Eq` and `Ord`.
+ * `Number` implements `Eq` and `Ord`.
  *
- * -   Two numbers are equal if they are strictly equal using `===`.
- * -   Numbers are ordered from least to greatest.
+ * -   Two `Number` values are equal if they are strictly equal.
+ * -   `Number` values are ordered from least to greatest.
  *
  * @module
  */

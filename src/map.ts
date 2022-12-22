@@ -17,6 +17,8 @@
 /**
  * Augmentations for the `Map` and `ReadonlyMap` types.
  *
+ * @remarks
+ *
  * ## Importing this module
  *
  * This module's augmentations can be applied by using the following import:
@@ -27,11 +29,15 @@
  *
  * ## Comparing `Map` and `ReadonlyMap`
  *
- * `Map` and `ReadonlyMap` implement `Eq`.
+ * `Map` and `ReadonlyMap` have the following behavior as an equivalence
+ * relation:
  *
- * -   Two maps are equal if they are the same size and contain the same
- *     key-value pairs.
- * -   Keys and values are compared using strict equality (`===`).
+ * -   A `Map<K, V>` or a `ReadonlyMap<K, V>` implements `Eq` when `V`
+ *     implements `Eq`.
+ * -   Two maps are equal if:
+ *     1.   they are the same size;
+ *     2.   they contain the same keys (compared strictly); and
+ *     3.   for each key, the corresponding values are equal.
  * -   Read-only and non-read-only maps can be compared to each other.
  *
  * ## `Map` and `ReadonlyMap` as semigroups
@@ -39,7 +45,6 @@
  * `Map` and `ReadonlyMap` implement `Semigroup`.
  *
  * -   Maps are combined by taking their union.
- * -   Duplicate values are determined using strict equality (`===`).
  * -   If a key is mapped to two different values, only the right-hand map's
  *     value is retained.
  * -   Read-only and non-read-only maps can be combined with each other.

@@ -17,6 +17,8 @@
 /**
  * Augmentations for the `Date` type.
  *
+ * @remarks
+ *
  * ## Importing this module
  *
  * This module's augmentations can be applied by using the following import:
@@ -29,12 +31,13 @@
  *
  * `Date` implements `Eq` and `Ord`.
  *
- * -   Two dates are equal if they represent the same value in milleseconds
- *     since the [ECMAScript epoch][1].
- * -   Dates are ordered from least to greatest according to their
- *     representation in millseconds since the [ECMAScript epoch][1].
+ * -   Two `Date` values are equal if they have the same representation in
+ *     milleseconds since the [ECMAScript epoch][epoch].
+ * -   `Date` values are ordered from least to greatest according to their
+ *     representation in millseconds since the [ECMAScript epoch][epoch].
  *
- * [1]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#the_ecmascript_epoch_and_timestamps
+ * [epoch]:
+ *     https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#the_ecmascript_epoch_and_timestamps
  *
  * @module
  */

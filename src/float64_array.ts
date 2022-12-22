@@ -17,6 +17,8 @@
 /**
  * Augmentations for the `Float64Array` type.
  *
+ * @remarks
+ *
  * ## Importing this module
  *
  * This module's augmentations can be applied by using the following import:
@@ -29,16 +31,15 @@
  *
  * `Float64Array` implements `Eq` and `Ord`.
  *
- * -   Two Float64Arrays are equal when they are the same length and their
- *     elements are strictly equal using `===`.
- * -   Float64Arrays are ordered lexicographically, and their elements are
- *     ordered from least to greatest.
+ * -   Two `Float64Array` values are equal when they are the same length and
+ *     their respective elements are strictly equal.
+ * -   `Float64Array` values are compared lexicographically from left to right,
+ *     and their elements are ordered from least to greatest.
  *
  * ## `Float64Array` as a semigroup
  *
- * `Float64Array` implements `Semigroup`. Float64Arrays are combined using
- * concatenation. The combination will allocate memory equivalent to the sum of
- * the combined arrays' sizes.
+ * `Float64Array` implements `Semigroup`. When combined, `Float64Array` values
+ * are concatenated from left to right.
  *
  * @module
  */

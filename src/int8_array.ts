@@ -17,6 +17,8 @@
 /**
  * Augmentations for the `Int8Array` type.
  *
+ * @remarks
+ *
  * ## Importing this module
  *
  * This module's augmentations can be applied by using the following import:
@@ -29,16 +31,15 @@
  *
  * `Int8Array` implements `Eq` and `Ord`.
  *
- * -   Two Int8Arrays are equal when they are the same length and their elements
- *     are strictly equal using `===`.
- * -   Int8Arrays are ordered lexicographically, and their elements are ordered
- *     from least to greatest.
+ * -   Two `Int8Array` values are equal when they are the same length and their
+ *     respective elements are strictly equal.
+ * -   `Int8Array` values are compared lexicographically from left to right, and
+ *     their elements are ordered from least to greatest.
  *
  * ## `Int8Array` as a semigroup
  *
- * `Int8Array` implements `Semigroup`. Int8Arrays are combined using
- * concatenation. The combination will allocate memory equivalent to the sum of
- * the combined arrays' sizes.
+ * `Int8Array` implements `Semigroup`. When combined, `Int8Array` values are
+ * are concatenated from left to right.
  *
  * @module
  */
