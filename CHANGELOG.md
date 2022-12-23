@@ -7,7 +7,7 @@ project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### What's Changed
 
-#### 🚀 New Features
+#### 🚀 Enhancements
 
 -   Introduce augmentations for primitive types by
     [@jm4rtinez](https://github.com/jm4rtinez) in
