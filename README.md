@@ -23,10 +23,10 @@ The specific implementations are as follows:
 | Type                     | `Eq` | `Ord` | `Semigroup` |
 | ------------------------ | :--: | :---: | :---------: |
 | `Array`                  |  ✔   |   ✔   |      ✔      |
-| `bigint`                 |  ✔   |   ✔   |             |
+| `BigInt`                 |  ✔   |   ✔   |             |
 | `BigInt64Array`          |  ✔   |   ✔   |      ✔      |
 | `BigUint64Array`         |  ✔   |   ✔   |      ✔      |
-| `boolean`                |  ✔   |   ✔   |             |
+| `Boolean`                |  ✔   |   ✔   |             |
 | `Date`                   |  ✔   |   ✔   |             |
 | `Float32Array`           |  ✔   |   ✔   |      ✔      |
 | `Float64Array`           |  ✔   |   ✔   |      ✔      |
@@ -35,15 +35,15 @@ The specific implementations are as follows:
 | `Int16Array`             |  ✔   |   ✔   |      ✔      |
 | `Int32Array`             |  ✔   |   ✔   |      ✔      |
 | `Map`                    |  ✔   |       |      ✔      |
-| `number`                 |  ✔   |   ✔   |             |
+| `Number`                 |  ✔   |   ✔   |             |
 | `Promise`                |      |       |      ✔      |
 | `readonly` tuple literal |  ✔   |   ✔   |             |
 | `ReadonlyArray`          |  ✔   |   ✔   |      ✔      |
 | `ReadonlyMap`            |  ✔   |       |      ✔      |
 | `ReadonlySet`            |  ✔   |       |      ✔      |
 | `Set`                    |  ✔   |       |      ✔      |
-| `string`                 |  ✔   |   ✔   |      ✔      |
-| `symbol`                 |  ✔   |       |             |
+| `String`                 |  ✔   |   ✔   |      ✔      |
+| `Symbol`                 |  ✔   |       |             |
 | tuple literal            |  ✔   |   ✔   |             |
 | `Uint8Array`             |  ✔   |   ✔   |      ✔      |
 | `Uint8ClampedArray`      |  ✔   |   ✔   |      ✔      |
