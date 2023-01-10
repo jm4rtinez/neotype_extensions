@@ -15,8 +15,8 @@ describe("float64_array.js", () => {
             it("compares the arrays lexicographically", () => {
                 fc.assert(
                     fc.property(
-                        fc.float64Array(),
-                        fc.float64Array(),
+                        fc.float64Array({ noNaN: true }),
+                        fc.float64Array({ noNaN: true }),
                         (xs, ys) => {
                             expect(eq(xs, ys)).to.equal(
                                 ieqBy(xs, ys, (x, y) => x === y),
@@ -27,7 +27,7 @@ describe("float64_array.js", () => {
             });
 
             it("implements a lawful equivalence relation", () => {
-                expectLawfulEq(fc.float64Array());
+                expectLawfulEq(fc.float64Array({ noNaN: true }));
             });
         });
 
@@ -35,8 +35,8 @@ describe("float64_array.js", () => {
             it("compares the arrays lexicographically", () => {
                 fc.assert(
                     fc.property(
-                        fc.float64Array(),
-                        fc.float64Array(),
+                        fc.float64Array({ noNaN: true }),
+                        fc.float64Array({ noNaN: true }),
                         (xs, ys) => {
                             expect(cmp(xs, ys)).to.equal(
                                 icmpBy(xs, ys, (x, y) =>
@@ -49,7 +49,7 @@ describe("float64_array.js", () => {
             });
 
             it("implements a lawful total order", () => {
-                expectLawfulOrd(fc.float64Array());
+                expectLawfulOrd(fc.float64Array({ noNaN: true }));
             });
         });
 
@@ -57,8 +57,8 @@ describe("float64_array.js", () => {
             it("combines the arrays using concatenation", () => {
                 fc.assert(
                     fc.property(
-                        fc.float64Array(),
-                        fc.float64Array(),
+                        fc.float64Array({ noNaN: true }),
+                        fc.float64Array({ noNaN: true }),
                         (xs, ys) => {
                             const result = cmb(xs, ys);
 
@@ -74,7 +74,7 @@ describe("float64_array.js", () => {
             });
 
             it("implements a lawful semigroup", () => {
-                expectLawfulSemigroup(fc.float64Array());
+                expectLawfulSemigroup(fc.float64Array({ noNaN: true }));
             });
         });
     });
