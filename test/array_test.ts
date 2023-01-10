@@ -154,7 +154,7 @@ describe("array.js", () => {
 
     describe("readonly tuple literal", () => {
         describe("#[Eq.eq]", () => {
-            it("compares the readonly tuple literals and non-readonly tuple literals to each other", () => {
+            it("compares the readonly tuple literal and non-readonly tuple literal to each other", () => {
                 const xs: readonly [number, string] = [0, ""];
                 const ys: [number, string] = [0, ""];
                 eq(xs, xs);
@@ -164,7 +164,7 @@ describe("array.js", () => {
         });
 
         describe("#[Ord.cmp]", () => {
-            it("compares the readonly tuple literals and non-readonly tuple literals to each other", () => {
+            it("compares the readonly tuple literal and non-readonly tuple literal to each other", () => {
                 const xs: readonly [number, string] = [0, ""];
                 const ys: [number, string] = [0, ""];
                 cmp(xs, xs);
