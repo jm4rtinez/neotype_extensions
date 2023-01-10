@@ -12,7 +12,7 @@ import {
 describe("big_int64_array.js", () => {
     describe("BigInt64Array", () => {
         describe("#[Eq.eq]", () => {
-            it("compares arrays lexicographically", () => {
+            it("compares the arrays lexicographically", () => {
                 fc.assert(
                     fc.property(
                         fc.bigInt64Array(),
@@ -32,7 +32,7 @@ describe("big_int64_array.js", () => {
         });
 
         describe("#[Ord.cmp]", () => {
-            it("compares arrays lexicographically", () => {
+            it("compares the arrays lexicographically", () => {
                 fc.assert(
                     fc.property(
                         fc.bigInt64Array(),
@@ -54,7 +54,7 @@ describe("big_int64_array.js", () => {
         });
 
         describe("#[Semigroup.cmb]", () => {
-            it("combines arrays using concatenation", () => {
+            it("combines the arrays using concatenation", () => {
                 fc.assert(
                     fc.property(
                         fc.bigInt64Array(),

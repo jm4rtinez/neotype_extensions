@@ -14,7 +14,7 @@ import {
 describe("array.js", () => {
     describe("Array", () => {
         describe("#[Eq.eq]", () => {
-            it("compares arrays lexicographically", () => {
+            it("compares the arrays lexicographically", () => {
                 fc.assert(
                     fc.property(
                         fc.array(fc.float({ noNaN: true })),
@@ -32,7 +32,7 @@ describe("array.js", () => {
         });
 
         describe("#[Ord.cmp]", () => {
-            it("compares arrays lexicographically", () => {
+            it("compares the arrays lexicographically", () => {
                 fc.assert(
                     fc.property(
                         fc.array(fc.float({ noNaN: true })),
@@ -50,7 +50,7 @@ describe("array.js", () => {
         });
 
         describe("#[Semigroup.cmb]", () => {
-            it("combines arrays using concatenation", () => {
+            it("combines the arrays using concatenation", () => {
                 fc.assert(
                     fc.property(
                         fc.array(fc.anything()),
@@ -70,7 +70,7 @@ describe("array.js", () => {
 
     describe("ReadonlyArray", () => {
         describe("#[Eq.eq]", () => {
-            it("compares readonly and non-readonly arrays to each other", () => {
+            it("compares the readonly arrays and non-readonly arrays to each other", () => {
                 const xs: readonly number[] = [];
                 const ys: number[] = [];
                 eq(xs, xs);
@@ -80,7 +80,7 @@ describe("array.js", () => {
         });
 
         describe("#[Ord.cmp]", () => {
-            it("compares readonly and non-readonly arrays to each other", () => {
+            it("compares the readonly arrays and non-readonly arrays to each other", () => {
                 const xs: readonly number[] = [];
                 const ys: number[] = [];
                 cmp(xs, xs);
@@ -90,7 +90,7 @@ describe("array.js", () => {
         });
 
         describe("#[Semigroup.cmb]", () => {
-            it("combines readonly and non-readonly arrays with each other", () => {
+            it("combines the readonly arrays and non-readonly arrays with each other", () => {
                 const xs: readonly unknown[] = [];
                 const ys: unknown[] = [];
                 cmb(xs, xs);
@@ -102,7 +102,7 @@ describe("array.js", () => {
 
     describe("tuple literal", () => {
         describe("#[Eq.eq]", () => {
-            it("compares tuple literals lexicographically", () => {
+            it("compares the tuple literals lexicographically", () => {
                 fc.assert(
                     fc.property(
                         fc.float({ noNaN: true }),
@@ -126,7 +126,7 @@ describe("array.js", () => {
         });
 
         describe("#[Ord.cmp]", () => {
-            it("compares tuple literals lexicographically", () => {
+            it("compares the tuple literals lexicographically", () => {
                 fc.assert(
                     fc.property(
                         fc.float({ noNaN: true }),
@@ -154,7 +154,7 @@ describe("array.js", () => {
 
     describe("readonly tuple literal", () => {
         describe("#[Eq.eq]", () => {
-            it("compares readonly and non-readonly tuple literals to each other", () => {
+            it("compares the readonly tuple literals and non-readonly tuple literals to each other", () => {
                 const xs: readonly [number, string] = [0, ""];
                 const ys: [number, string] = [0, ""];
                 eq(xs, xs);
@@ -164,7 +164,7 @@ describe("array.js", () => {
         });
 
         describe("#[Ord.cmp]", () => {
-            it("compares readonly and non-readonly tuple literals to each other", () => {
+            it("compares the readonly tuple literals and non-readonly tuple literals to each other", () => {
                 const xs: readonly [number, string] = [0, ""];
                 const ys: [number, string] = [0, ""];
                 cmp(xs, xs);
