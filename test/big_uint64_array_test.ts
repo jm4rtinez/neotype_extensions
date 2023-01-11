@@ -32,7 +32,7 @@ describe("big_uint64_array.js", () => {
         });
 
         describe("#[Ord.cmp]", () => {
-            it("compares the arrays lexicograpically", () => {
+            it("compares the arrays lexicographically", () => {
                 fc.assert(
                     fc.property(
                         fc.bigUint64Array(),
@@ -54,7 +54,7 @@ describe("big_uint64_array.js", () => {
         });
 
         describe("#[Semigroup.cmb]", () => {
-            it("combines the arrays using concatenation", () => {
+            it("concatenates the arrays", () => {
                 fc.assert(
                     fc.property(
                         fc.bigUint64Array(),

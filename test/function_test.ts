@@ -9,7 +9,7 @@ import "../src/string.js";
 describe("function.js", () => {
     describe("Function", () => {
         describe("#[Semigroup.cmb]", () => {
-            it("combines the functions by returning a function that combines their results", () => {
+            it("combines the function results", () => {
                 fc.assert(
                     fc.property(fc.string(), (x) => {
                         const f = cmb(id<string>, id);

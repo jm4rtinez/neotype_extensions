@@ -12,7 +12,7 @@ import {
 describe("string.js", () => {
     describe("String", () => {
         describe("#[Eq.eq]", () => {
-            it("compares the string values strictly", () => {
+            it("compares the strings strictly", () => {
                 fc.assert(
                     fc.property(fc.string(), fc.string(), (x, y) => {
                         expect(eq(x, y)).to.equal(x === y);
@@ -26,7 +26,7 @@ describe("string.js", () => {
         });
 
         describe("#[Ord.cmp]", () => {
-            it("compares the string values lexicographically by their character code points", () => {
+            it("compares the strings lexicographically by their character code points", () => {
                 fc.assert(
                     fc.property(fc.string(), fc.string(), (x, y) => {
                         expect(cmp(x, y)).to.equal(
@@ -46,7 +46,7 @@ describe("string.js", () => {
         });
 
         describe("#[Semigroup.cmb]", () => {
-            it("combines the string values using concatenation", () => {
+            it("concatenates the strings", () => {
                 fc.assert(
                     fc.property(fc.string(), fc.string(), (x, y) => {
                         expect(cmb(x, y)).to.equal(x + y);

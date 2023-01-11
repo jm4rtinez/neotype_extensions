@@ -46,7 +46,7 @@ describe("int16_array.js", () => {
         });
 
         describe("#[Semigroup.cmb]", () => {
-            it("combines the arrays using concatenation", () => {
+            it("concatenates the arrays", () => {
                 fc.assert(
                     fc.property(fc.int16Array(), fc.int16Array(), (xs, ys) => {
                         const result = cmb(xs, ys);

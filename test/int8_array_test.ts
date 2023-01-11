@@ -28,7 +28,7 @@ describe("int8_array.js", () => {
         });
 
         describe("#[Ord.cmp]", () => {
-            it("compares the arrays lexicograhically", () => {
+            it("compares the arrays lexicographically", () => {
                 fc.assert(
                     fc.property(fc.int8Array(), fc.int8Array(), (xs, ys) => {
                         expect(cmp(xs, ys)).to.equal(
@@ -46,7 +46,7 @@ describe("int8_array.js", () => {
         });
 
         describe("#[Semigroup.cmb]", () => {
-            it("combines the arrays using concatenation", () => {
+            it("concatenates the arrays", () => {
                 fc.assert(
                     fc.property(fc.int8Array(), fc.int8Array(), (xs, ys) => {
                         const result = cmb(xs, ys);
