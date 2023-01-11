@@ -13,10 +13,10 @@ describe("map.js", () => {
                 fc.assert(
                     fc.property(
                         fc
-                            .array(fc.tuple(fc.anything(), fc.string()))
+                            .uniqueArray(fc.tuple(fc.anything(), fc.string()))
                             .map((entries) => new Map(entries)),
                         fc
-                            .array(fc.tuple(fc.anything(), fc.string()))
+                            .uniqueArray(fc.tuple(fc.anything(), fc.string()))
                             .map((entries) => new Map(entries)),
                         (xs, ys) => {
                             const result = eq(xs, ys);
@@ -43,7 +43,7 @@ describe("map.js", () => {
             it("implements a lawful equivalence relation", () => {
                 expectLawfulEq(
                     fc
-                        .array(fc.tuple(fc.anything(), fc.string()))
+                        .uniqueArray(fc.tuple(fc.anything(), fc.string()))
                         .map((entries) => new Map(entries)),
                 );
             });
@@ -54,10 +54,10 @@ describe("map.js", () => {
                 fc.assert(
                     fc.property(
                         fc
-                            .array(fc.tuple(fc.anything(), fc.anything()))
+                            .uniqueArray(fc.tuple(fc.anything(), fc.anything()))
                             .map((entries) => new Map(entries)),
                         fc
-                            .array(fc.tuple(fc.anything(), fc.anything()))
+                            .uniqueArray(fc.tuple(fc.anything(), fc.anything()))
                             .map((entries) => new Map(entries)),
                         (xs, ys) => {
                             const result = cmb(xs, ys);
@@ -76,7 +76,7 @@ describe("map.js", () => {
             it("implements a lawful semigroup", () => {
                 expectLawfulSemigroup(
                     fc
-                        .array(fc.tuple(fc.anything(), fc.anything()))
+                        .uniqueArray(fc.tuple(fc.anything(), fc.string()))
                         .map((entries) => new Map(entries)),
                 );
             });

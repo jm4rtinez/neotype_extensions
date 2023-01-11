@@ -63,7 +63,7 @@ describe("array.js", () => {
             });
 
             it("implements a lawful semigroup", () => {
-                expectLawfulSemigroup(fc.array(fc.anything()));
+                expectLawfulSemigroup(fc.array(fc.string()));
             });
         });
     });

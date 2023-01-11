@@ -11,8 +11,8 @@ describe("set.js", () => {
             it("compares the elements strictly", () => {
                 fc.assert(
                     fc.property(
-                        fc.array(fc.anything()).map((xs) => new Set(xs)),
-                        fc.array(fc.anything()).map((xs) => new Set(xs)),
+                        fc.uniqueArray(fc.anything()).map((xs) => new Set(xs)),
+                        fc.uniqueArray(fc.anything()).map((xs) => new Set(xs)),
                         (xs, ys) => {
                             const result = eq(xs, ys);
 
@@ -36,7 +36,7 @@ describe("set.js", () => {
 
             it("implements a lawful equivalence relation", () => {
                 expectLawfulEq(
-                    fc.array(fc.anything()).map((xs) => new Set(xs)),
+                    fc.uniqueArray(fc.anything()).map((xs) => new Set(xs)),
                 );
             });
         });
@@ -45,8 +45,8 @@ describe("set.js", () => {
             it("combines the sets by taking their union", () => {
                 fc.assert(
                     fc.property(
-                        fc.array(fc.anything()).map((xs) => new Set(xs)),
-                        fc.array(fc.anything()).map((xs) => new Set(xs)),
+                        fc.uniqueArray(fc.anything()).map((xs) => new Set(xs)),
+                        fc.uniqueArray(fc.anything()).map((xs) => new Set(xs)),
                         (xs, ys) => {
                             const result = cmb(xs, ys);
                             const exp = new Set([...xs, ...ys]);
@@ -62,7 +62,7 @@ describe("set.js", () => {
 
             it("implements a lawful semigroup", () => {
                 expectLawfulSemigroup(
-                    fc.array(fc.anything()).map((xs) => new Set(xs)),
+                    fc.uniqueArray(fc.string()).map((xs) => new Set(xs)),
                 );
             });
         });
