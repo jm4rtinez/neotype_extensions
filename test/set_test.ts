@@ -3,69 +3,90 @@ import { eq } from "@neotype/prelude/cmp.js";
 import { expect } from "chai";
 import * as fc from "fast-check";
 import "../src/set.js";
+import { expectLawfulEq, expectLawfulSemigroup } from "./util.js";
 
 describe("set.js", () => {
     describe("Set", () => {
-        specify("#[Eq.eq]", () => {
-            fc.assert(
-                fc.property(
-                    fc.array(fc.anything()).map((xs) => new Set(xs)),
-                    fc.array(fc.anything()).map((xs) => new Set(xs)),
-                    (xs, ys) => {
-                        const result = eq(xs, ys);
+        describe("#[Eq.eq]", () => {
+            it("compares the elements strictly", () => {
+                fc.assert(
+                    fc.property(
+                        fc.uniqueArray(fc.anything()).map((xs) => new Set(xs)),
+                        fc.uniqueArray(fc.anything()).map((xs) => new Set(xs)),
+                        (xs, ys) => {
+                            const result = eq(xs, ys);
 
-                        const exp = (() => {
-                            if (xs.size !== ys.size) {
-                                return false;
-                            }
-                            for (const x of xs) {
-                                if (!ys.has(x)) {
+                            const exp = (() => {
+                                if (xs.size !== ys.size) {
                                     return false;
                                 }
-                            }
-                            return true;
-                        })();
+                                for (const x of xs) {
+                                    if (!ys.has(x)) {
+                                        return false;
+                                    }
+                                }
+                                return true;
+                            })();
 
-                        expect(result).to.equal(exp);
-                    },
-                ),
-            );
+                            expect(result).to.equal(exp);
+                        },
+                    ),
+                );
+            });
+
+            it("implements a lawful equivalence relation", () => {
+                expectLawfulEq(
+                    fc.uniqueArray(fc.anything()).map((xs) => new Set(xs)),
+                );
+            });
         });
 
-        specify("#[Semigroup.cmb]", () => {
-            fc.assert(
-                fc.property(
-                    fc.array(fc.anything()).map((xs) => new Set(xs)),
-                    fc.array(fc.anything()).map((xs) => new Set(xs)),
-                    (xs, ys) => {
-                        const result = cmb(xs, ys);
-                        const exp = new Set([...xs, ...ys]);
+        describe("#[Semigroup.cmb]", () => {
+            it("combines the sets by taking their union", () => {
+                fc.assert(
+                    fc.property(
+                        fc.uniqueArray(fc.anything()).map((xs) => new Set(xs)),
+                        fc.uniqueArray(fc.anything()).map((xs) => new Set(xs)),
+                        (xs, ys) => {
+                            const result = cmb(xs, ys);
+                            const exp = new Set([...xs, ...ys]);
 
-                        expect(result.size).to.equal(exp.size);
-                        for (const x of result) {
-                            expect(exp.has(x)).to.be.true;
-                        }
-                    },
-                ),
-            );
+                            expect(result.size).to.equal(exp.size);
+                            for (const x of result) {
+                                expect(exp.has(x)).to.be.true;
+                            }
+                        },
+                    ),
+                );
+            });
+
+            it("implements a lawful semigroup", () => {
+                expectLawfulSemigroup(
+                    fc.uniqueArray(fc.string()).map((xs) => new Set(xs)),
+                );
+            });
         });
     });
 
     describe("ReadonlySet", () => {
-        specify("#[Eq.eq]", () => {
-            const xs: ReadonlySet<unknown> = new Set();
-            const ys: Set<unknown> = new Set();
-            eq(xs, xs);
-            eq(xs, ys);
-            eq(ys, xs);
+        describe("#[Eq.eq]", () => {
+            it("compares the readonly set and non-readonly set to each other", () => {
+                const xs: ReadonlySet<unknown> = new Set();
+                const ys: Set<unknown> = new Set();
+                eq(xs, xs);
+                eq(xs, ys);
+                eq(ys, xs);
+            });
         });
 
-        specify("#[Semigroup.cmb]", () => {
-            const xs: ReadonlySet<unknown> = new Set();
-            const ys: Set<unknown> = new Set();
-            cmb(xs, xs);
-            cmb(xs, ys);
-            cmb(ys, xs);
+        describe("#[Semigroup.cmb]", () => {
+            it("combines the readonly set and non-readonly set with each other", () => {
+                const xs: ReadonlySet<unknown> = new Set();
+                const ys: Set<unknown> = new Set();
+                cmb(xs, xs);
+                cmb(xs, ys);
+                cmb(ys, xs);
+            });
         });
     });
 });
