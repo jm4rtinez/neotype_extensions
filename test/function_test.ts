@@ -1,10 +1,10 @@
-import { cmb } from "@neotype/prelude/cmb.js";
+import { cmb, Semigroup } from "@neotype/prelude/cmb.js";
+import { Eq, eq } from "@neotype/prelude/cmp.js";
 import { id } from "@neotype/prelude/fn.js";
 import { expect } from "chai";
 import * as fc from "fast-check";
 import "../src/function.js";
 import "../src/string.js";
-import { expectLawfulEq } from "./util.js";
 
 describe("function.js", () => {
     describe("Function", () => {
@@ -20,7 +20,23 @@ describe("function.js", () => {
             });
 
             it("implements a lawful semigroup", () => {
-                expectLawfulEq(fc.string().map(id));
+                function expectLawfulFunctionSemigroup<
+                    A extends Semigroup<A> & Eq<A>,
+                >(arb: fc.Arbitrary<A>): void {
+                    type Id<in out A> = (x: A) => A;
+                    fc.assert(
+                        fc.property(arb, (x) => {
+                            expect(
+                                eq(
+                                    cmb<Id<A>>(id, cmb(id, id))(x),
+                                    cmb<Id<A>>(cmb(id, id), id)(x),
+                                ),
+                            ).to.be.true;
+                        }),
+                    );
+                }
+
+                expectLawfulFunctionSemigroup(fc.string());
             });
         });
     });
