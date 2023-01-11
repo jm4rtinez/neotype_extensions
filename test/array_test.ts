@@ -50,7 +50,7 @@ describe("array.js", () => {
         });
 
         describe("#[Semigroup.cmb]", () => {
-            it("combines the arrays using concatenation", () => {
+            it("concatenates the arrays", () => {
                 fc.assert(
                     fc.property(
                         fc.array(fc.anything()),
@@ -70,7 +70,7 @@ describe("array.js", () => {
 
     describe("ReadonlyArray", () => {
         describe("#[Eq.eq]", () => {
-            it("compares the readonly arrays and non-readonly arrays to each other", () => {
+            it("compares the readonly array and non-readonly array to each other", () => {
                 const xs: readonly number[] = [];
                 const ys: number[] = [];
                 eq(xs, xs);
@@ -80,7 +80,7 @@ describe("array.js", () => {
         });
 
         describe("#[Ord.cmp]", () => {
-            it("compares the readonly arrays and non-readonly arrays to each other", () => {
+            it("compares the readonly array and non-readonly array to each other", () => {
                 const xs: readonly number[] = [];
                 const ys: number[] = [];
                 cmp(xs, xs);
@@ -90,7 +90,7 @@ describe("array.js", () => {
         });
 
         describe("#[Semigroup.cmb]", () => {
-            it("combines the readonly arrays and non-readonly arrays with each other", () => {
+            it("combines the readonly array and non-readonly array with each other", () => {
                 const xs: readonly unknown[] = [];
                 const ys: unknown[] = [];
                 cmb(xs, xs);

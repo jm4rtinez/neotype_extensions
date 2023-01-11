@@ -7,7 +7,7 @@ import { expectLawfulEq, expectLawfulOrd } from "./util.js";
 describe("boolean.js", () => {
     describe("Boolean", () => {
         describe("#[Eq.eq]", () => {
-            it("compares the boolean values strictly", () => {
+            it("compares the booleans strictly", () => {
                 fc.assert(
                     fc.property(fc.boolean(), fc.boolean(), (x, y) => {
                         expect(eq(x, y)).to.equal(x === y);

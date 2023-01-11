@@ -7,7 +7,7 @@ import { expectLawfulEq, expectLawfulOrd } from "./util.js";
 describe("number.js", () => {
     describe("Number", () => {
         describe("#[Eq.eq]", () => {
-            it("compares the number values strictly", () => {
+            it("compares the numbers strictly", () => {
                 fc.assert(
                     fc.property(
                         fc.float({ noNaN: true }),
@@ -25,7 +25,7 @@ describe("number.js", () => {
         });
 
         describe("#[Ord.cmp]", () => {
-            it("compares the number values as ordered from least to greatest", () => {
+            it("compares the numbers as ordered from least to greatest", () => {
                 fc.assert(
                     fc.property(
                         fc.float({ noNaN: true }),

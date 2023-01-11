@@ -54,7 +54,7 @@ describe("uint32_array.js", () => {
         });
 
         describe("#[Semigroup.cmb]", () => {
-            it("combines the arrays using concatenation", () => {
+            it("concatenates the arrays", () => {
                 fc.assert(
                     fc.property(
                         fc.uint32Array(),

@@ -7,7 +7,7 @@ import { expectLawfulEq, expectLawfulOrd } from "./util.js";
 describe("big_int.js", () => {
     describe("BigInt", () => {
         describe("#[Eq.eq]", () => {
-            it("compares the bigint values strictly", () => {
+            it("compares the bigints strictly", () => {
                 fc.assert(
                     fc.property(fc.bigInt(), fc.bigInt(), (x, y) => {
                         expect(eq(x, y)).to.equal(x === y);
@@ -21,7 +21,7 @@ describe("big_int.js", () => {
         });
 
         describe("#[Ord.cmp]", () => {
-            it("compares the bigint values as ordered from least to greatest", () => {
+            it("compares the bigints as ordered from least to greatest", () => {
                 fc.assert(
                     fc.property(fc.bigInt(), fc.bigInt(), (x, y) => {
                         expect(cmp(x, y)).to.equal(Ordering.fromNumber(x - y));

@@ -42,7 +42,7 @@ describe("set.js", () => {
         });
 
         describe("#[Semigroup.cmb]", () => {
-            it("combines the sets by taking their union", () => {
+            it("takes the union of the sets", () => {
                 fc.assert(
                     fc.property(
                         fc.uniqueArray(fc.anything()).map((xs) => new Set(xs)),

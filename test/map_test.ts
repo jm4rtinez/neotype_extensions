@@ -9,7 +9,7 @@ import { expectLawfulEq, expectLawfulSemigroup } from "./util.js";
 describe("map.js", () => {
     describe("Map", () => {
         describe("#[Eq.eq]", () => {
-            it("compares the keys strictly and the values using their Eq implementation", () => {
+            it("compares the keys strictly and compares the values using their Eq implementation", () => {
                 fc.assert(
                     fc.property(
                         fc
@@ -50,7 +50,7 @@ describe("map.js", () => {
         });
 
         describe("#[Semigroup.cmb]", () => {
-            it("combines the maps by taking their union", () => {
+            it("takes the union of the maps", () => {
                 fc.assert(
                     fc.property(
                         fc

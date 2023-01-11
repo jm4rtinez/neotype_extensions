@@ -46,7 +46,7 @@ describe("int32_array.js", () => {
         });
 
         describe("#[Semigroup.cmb]", () => {
-            it("combines the arrays using concatenation", () => {
+            it("concatenates the arrays", () => {
                 fc.assert(
                     fc.property(fc.int32Array(), fc.int32Array(), (xs, ys) => {
                         const result = cmb(xs, ys);

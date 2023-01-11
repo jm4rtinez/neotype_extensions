@@ -7,7 +7,7 @@ import { expectLawfulEq, expectLawfulOrd } from "./util.js";
 describe("date.js", () => {
     describe("Date", () => {
         describe("#[Eq.eq]", () => {
-            it("compares Date values using their numerical representation", () => {
+            it("compares the dates using their numerical representation", () => {
                 fc.assert(
                     fc.property(fc.date(), fc.date(), (x, y) => {
                         expect(eq(x, y)).to.equal(x.getTime() === y.getTime());
@@ -21,7 +21,7 @@ describe("date.js", () => {
         });
 
         describe("#[Ord.cmp]", () => {
-            it("compares Date values using their numerical representation", () => {
+            it("compares the dates using their numerical representation", () => {
                 fc.assert(
                     fc.property(fc.date(), fc.date(), (x, y) => {
                         expect(cmp(x, y)).to.equal(

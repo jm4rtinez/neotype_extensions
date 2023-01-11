@@ -54,7 +54,7 @@ describe("big_int64_array.js", () => {
         });
 
         describe("#[Semigroup.cmb]", () => {
-            it("combines the arrays using concatenation", () => {
+            it("concatenates the arrays", () => {
                 fc.assert(
                     fc.property(
                         fc.bigInt64Array(),
