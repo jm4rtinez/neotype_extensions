@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file. This
 project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## Version 0.2.0 - 2023-01-22
+
+### What's Changed
+
+#### 💥 Breaking Changes
+
+-   Upgrade Neotype to v0.6 and TypeScript to v4.9 by
+    [@jm4rtinez](https://github.com/jm4rtinez) in
+    [#9](https://github.com/jm4rtinez/neotype_instances/pull/9)
+-   Require an `Eq` implemention from values in maps by
+    [@jm4rtinez](https://github.com/jm4rtinez) in
+    [#11](https://github.com/jm4rtinez/neotype_instances/pull/11)
+-   Rename the `big*` modules to `big_*` by
+    [@jm4rtinez](https://github.com/jm4rtinez) in
+    [#13](https://github.com/jm4rtinez/neotype_instances/pull/13)
+
+**Full Changelog**:
+https://github.com/jm4rtinez/neotype_instances/compare/v0.1.0...v0.2
+
 ## Version 0.1.0 - 2022-10-27
 
 ### What's Changed
