@@ -24,7 +24,7 @@
  * This module's augmentations can be applied by using the following import:
  *
  * ```ts
- * import "@neotype/instances/float32_array.js";
+ * import "@neotype/extensions/float32_array.js";
  * ```
  *
  * ## Comparing `Float32Array`

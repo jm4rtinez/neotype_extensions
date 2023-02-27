@@ -24,7 +24,7 @@
  * This module's augmentations can be applied by using the following import:
  *
  * ```ts
- * import "@neotype/instances/date.js";
+ * import "@neotype/extensions/date.js";
  * ```
  *
  * ## Comparing `Date`

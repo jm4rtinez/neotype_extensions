@@ -24,7 +24,7 @@
  * This module's augmentations can be applied by using the following import:
  *
  * ```ts
- * import "@neotype/instances/uint32_array.js";
+ * import "@neotype/extensions/uint32_array.js";
  * ```
  *
  * ## Comparing `Uint32Array`

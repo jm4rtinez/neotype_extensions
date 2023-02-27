@@ -24,7 +24,7 @@
  * This module's augmentations can be applied by using the following import:
  *
  * ```ts
- * import "@neotype/instances/function.js";
+ * import "@neotype/extensions/function.js";
  * ```
  *
  * ## `Function` as a semigroup

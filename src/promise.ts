@@ -24,7 +24,7 @@
  * This module's augmentations can be applied by using the following import:
  *
  * ```ts
- * import "@neotype/instances/promise.js";
+ * import "@neotype/extensions/promise.js";
  * ```
  *
  * ## `Promise` as a semigroup
