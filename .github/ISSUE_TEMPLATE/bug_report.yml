@@ -26,7 +26,7 @@ body:
       label: "📷 Version and Environment Information"
       description: "Tell us about your development environment."
       value: |
-        -   Neotype Instances version:
+        -   Neotype Extensions version:
         -   TypeScript version:
         -   Node.js version:
 
