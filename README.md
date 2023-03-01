@@ -1,11 +1,11 @@
-# Neotype Instances
+# Neotype Extensions
 
 Default implementations for [Neotype] equivalence relations, total orders, and
 semigroups for built-in JavaScript objects
 
 ## Features
 
-Neotype Instances provides default implementations for the Neotype `Eq`, `Ord`,
+Neotype Extensions provides default implementations for the Neotype `Eq`, `Ord`,
 and `Semigroup` interfaces for built-in JavaScript objects and their
 corresponding TypeScript definitions, including:
 
@@ -52,10 +52,10 @@ The specific implementations are as follows:
 
 ## Install
 
-Neotype Instances is available on NPM.
+Neotype Extensions is available on NPM.
 
 ```sh
-npm install @neotype/instances
+npm install @neotype/extensions
 ```
 
 ## Working with modules
@@ -65,10 +65,10 @@ all import statements. There are no exports. When imported, each module will
 augment a global object.
 
 ```ts
-import "@neotype/instances/number.js";
-import "@neotype/instances/string.js";
-import "@neotype/instances/boolean.js";
-import "@neotype/instances/promise.js";
+import "@neotype/extensions/number.js";
+import "@neotype/extensions/string.js";
+import "@neotype/extensions/boolean.js";
+import "@neotype/extensions/promise.js";
 // etc.
 ```
 

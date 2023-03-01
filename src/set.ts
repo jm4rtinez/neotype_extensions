@@ -24,7 +24,7 @@
  * This module's augmentations can be applied by using the following import:
  *
  * ```ts
- * import "@neotype/instances/set.js";
+ * import "@neotype/extensions/set.js";
  * ```
  *
  * ## Comparing `Set` and `ReadonlySet`

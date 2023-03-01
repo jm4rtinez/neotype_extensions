@@ -24,7 +24,7 @@
  * This module's augmentations can be applied by using the following import:
  *
  * ```ts
- * import "@neotype/instances/big_int64_array.js";
+ * import "@neotype/extensions/big_int64_array.js";
  * ```
  *
  * ## Comparing `BigInt64Array`

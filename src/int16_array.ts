@@ -24,7 +24,7 @@
  * This module's augmentations can be applied by using the following import:
  *
  * ```ts
- * import "@neotype/instances/int16_array.js";
+ * import "@neotype/extensions/int16_array.js";
  * ```
  *
  * ## Comparing `Int16Array`

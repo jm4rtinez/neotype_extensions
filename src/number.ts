@@ -24,7 +24,7 @@
  * This module's augmentations can be applied by using the following import:
  *
  * ```ts
- * import "@neotype/instances/number.js";
+ * import "@neotype/extensions/number.js";
  * ```
  *
  * ## Comparing `Number`

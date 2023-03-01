@@ -24,7 +24,7 @@
  * This module's augmentations can be applied by using the following import:
  *
  * ```ts
- * import "@neotype/instances/map.js";
+ * import "@neotype/extensions/map.js";
  * ```
  *
  * ## Comparing `Map` and `ReadonlyMap`

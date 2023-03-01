@@ -25,7 +25,7 @@
  * This module's augmentations can be applied by using the following import:
  *
  * ```ts
- * import "@neotype/instances/array.js";
+ * import "@neotype/extensions/array.js";
  * ```
  *
  * ## Comparing `Array`, `ReadonlyArray`, tuple literals, and `readonly` tuple
