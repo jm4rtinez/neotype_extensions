@@ -60,13 +60,13 @@ declare global {
 Uint8ClampedArray.prototype[Eq.eq] = function (
     that: Uint8ClampedArray,
 ): boolean {
-    return ieqBy(this, that, (x, y) => x === y);
+    return ieqBy(this, that, (lhs, rhs) => lhs === rhs);
 };
 
 Uint8ClampedArray.prototype[Ord.cmp] = function (
     that: Uint8ClampedArray,
 ): Ordering {
-    return icmpBy(this, that, (x, y) => Ordering.fromNumber(x - y));
+    return icmpBy(this, that, (lhs, rhs) => Ordering.fromNumber(lhs - rhs));
 };
 
 Uint8ClampedArray.prototype[Semigroup.cmb] = function (

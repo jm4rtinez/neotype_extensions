@@ -54,5 +54,5 @@ Promise.prototype[Semigroup.cmb] = function <T extends Semigroup<T>>(
     this: Promise<T>,
     that: Promise<T>,
 ): Promise<T> {
-    return this.then((x) => that.then((y) => cmb(x, y)));
+    return this.then((lhs) => that.then((rhs) => cmb(lhs, rhs)));
 };

@@ -58,11 +58,11 @@ declare global {
 }
 
 Float64Array.prototype[Eq.eq] = function (that: Float64Array): boolean {
-    return ieqBy(this, that, (x, y) => x === y);
+    return ieqBy(this, that, (lhs, rhs) => lhs === rhs);
 };
 
 Float64Array.prototype[Ord.cmp] = function (that: Float64Array): Ordering {
-    return icmpBy(this, that, (x, y) => Ordering.fromNumber(x - y));
+    return icmpBy(this, that, (lhs, rhs) => Ordering.fromNumber(lhs - rhs));
 };
 
 Float64Array.prototype[Semigroup.cmb] = function (

@@ -80,9 +80,9 @@ Map.prototype[Eq.eq] = function <K, V extends Eq<V>>(
     if (this.size !== that.size) {
         return false;
     }
-    for (const [kx, x] of this.entries()) {
+    for (const [key, val] of this.entries()) {
         // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-        if (!(that.has(kx) && eq(that.get(kx)!, x))) {
+        if (!(that.has(key) && eq(that.get(key)!, val))) {
             return false;
         }
     }
