@@ -58,11 +58,11 @@ declare global {
 }
 
 Uint8Array.prototype[Eq.eq] = function (that: Uint8Array): boolean {
-    return ieqBy(this, that, (x, y) => x === y);
+    return ieqBy(this, that, (lhs, rhs) => lhs === rhs);
 };
 
 Uint8Array.prototype[Ord.cmp] = function (that: Uint8Array): Ordering {
-    return icmpBy(this, that, (x, y) => Ordering.fromNumber(x - y));
+    return icmpBy(this, that, (lhs, rhs) => Ordering.fromNumber(lhs - rhs));
 };
 
 Uint8Array.prototype[Semigroup.cmb] = function (that: Uint8Array): Uint8Array {

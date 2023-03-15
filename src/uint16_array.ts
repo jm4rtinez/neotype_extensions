@@ -58,11 +58,11 @@ declare global {
 }
 
 Uint16Array.prototype[Eq.eq] = function (that: Uint16Array): boolean {
-    return ieqBy(this, that, (x, y) => x === y);
+    return ieqBy(this, that, (lhs, rhs) => lhs === rhs);
 };
 
 Uint16Array.prototype[Ord.cmp] = function (that: Uint16Array): Ordering {
-    return icmpBy(this, that, (x, y) => Ordering.fromNumber(x - y));
+    return icmpBy(this, that, (lhs, rhs) => Ordering.fromNumber(lhs - rhs));
 };
 
 Uint16Array.prototype[Semigroup.cmb] = function (

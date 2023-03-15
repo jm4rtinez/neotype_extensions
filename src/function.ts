@@ -31,8 +31,8 @@
  *
  * `Function` has the following behavior as a semigroup:
  *
- * -   A function `<T extends unknown[], A>(...args: T) => A` implements
- *     `Semigroup` when `A` implements `Semigroup`.
+ * -   A function `<TArgs extends unknown[], T>(...args: TArgs) => T` implements
+ *     `Semigroup` when `T` implements `Semigroup`.
  * -   Combining two functions returns a new function that, when applied,
  *     applies the original functions from left to right and combines their
  *     results.
@@ -44,16 +44,19 @@ import { cmb, Semigroup } from "@neotype/prelude/cmb.js";
 
 declare global {
     interface Function {
-        [Semigroup.cmb]<T extends unknown[], A extends Semigroup<A>>(
-            this: (...args: T) => A,
-            that: (...args: T) => A,
-        ): (...args: T) => A;
+        [Semigroup.cmb]<TArgs extends unknown[], T extends Semigroup<T>>(
+            this: (...args: TArgs) => T,
+            that: (...args: TArgs) => T,
+        ): (...args: TArgs) => T;
     }
 }
 
 Function.prototype[Semigroup.cmb] = function <
-    T extends unknown[],
-    A extends Semigroup<A>,
->(this: (...args: T) => A, that: (...args: T) => A): (...args: T) => A {
+    TArgs extends unknown[],
+    T extends Semigroup<T>,
+>(
+    this: (...args: TArgs) => T,
+    that: (...args: TArgs) => T,
+): (...args: TArgs) => T {
     return (...args) => cmb(this(...args), that(...args));
 };

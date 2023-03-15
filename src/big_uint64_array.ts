@@ -58,11 +58,11 @@ declare global {
 }
 
 BigUint64Array.prototype[Eq.eq] = function (that: BigUint64Array): boolean {
-    return ieqBy(this, that, (x, y) => x === y);
+    return ieqBy(this, that, (lhs, rhs) => lhs === rhs);
 };
 
 BigUint64Array.prototype[Ord.cmp] = function (that: BigUint64Array): Ordering {
-    return icmpBy(this, that, (x, y) => Ordering.fromNumber(x - y));
+    return icmpBy(this, that, (lhs, rhs) => Ordering.fromNumber(lhs - rhs));
 };
 
 BigUint64Array.prototype[Semigroup.cmb] = function (

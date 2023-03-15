@@ -67,8 +67,8 @@ Set.prototype[Eq.eq] = function <T>(this: Set<T>, that: Set<T>): boolean {
     if (this.size !== that.size) {
         return false;
     }
-    for (const x of this.values()) {
-        if (!that.has(x)) {
+    for (const val of this.values()) {
+        if (!that.has(val)) {
             return false;
         }
     }
