@@ -71,10 +71,10 @@
         "postpublish": "npm run clean"
     },
     "peerDependencies": {
-        "@neotype/prelude": "^0.7"
+        "@neotype/prelude": "^0.8"
     },
     "devDependencies": {
-        "@neotype/prelude": "^0.7",
+        "@neotype/prelude": "^0.8",
         "@types/chai": "^4.3.1",
         "@types/mocha": "^9.1.1",
         "@typescript-eslint/eslint-plugin": "^5.30.5",
