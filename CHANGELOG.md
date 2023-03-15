@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file. This
 project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## Version 0.3.0 - 2023-03-14
+
+### What's Changed
+
+#### 💥 Breaking Changes
+
+-   Rename the package to `@neotype/extensions` by
+    [@jm4rtinez](https://github.com/jm4rtinez) in
+    [#25](https://github.com/jm4rtinez/neotype_extensions/pull/25)
+-   Bump @neotype/prelude peer dependency to v0.8.0 by
+    [@jm4rtinez](https://github.com/jm4rtinez) in
+    [#27](https://github.com/jm4rtinez/neotype_extensions/pull/27)
+
+**Full Changelog**:
+https://github.com/jm4rtinez/neotype_extensions/compare/v0.2.0...v0.3.0
+
 ## Version 0.2.0 - 2023-01-22
 
 ### What's Changed
