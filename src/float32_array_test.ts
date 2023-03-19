@@ -2,21 +2,21 @@ import { cmb } from "@neotype/prelude/cmb.js";
 import { cmp, eq, icmpBy, ieqBy, Ordering } from "@neotype/prelude/cmp.js";
 import { expect } from "chai";
 import * as fc from "fast-check";
-import "../src/uint16_array.js";
+import "./float32_array.js";
 import {
     expectLawfulEq,
     expectLawfulOrd,
     expectLawfulSemigroup,
-} from "./util.js";
+} from "./_test/utils.js";
 
-describe("uint16_array.js", () => {
-    describe("Uint16Array", () => {
+describe("float32_array.js", () => {
+    describe("Float32Array", () => {
         describe("#[Eq.eq]", () => {
             it("compares the arrays lexicographically", () => {
                 fc.assert(
                     fc.property(
-                        fc.uint16Array(),
-                        fc.uint16Array(),
+                        fc.float32Array({ noNaN: true }),
+                        fc.float32Array({ noNaN: true }),
                         (xs, ys) => {
                             expect(eq(xs, ys)).to.equal(
                                 ieqBy(xs, ys, (x, y) => x === y),
@@ -27,7 +27,7 @@ describe("uint16_array.js", () => {
             });
 
             it("implements a lawful equivalence relation", () => {
-                expectLawfulEq(fc.uint16Array());
+                expectLawfulEq(fc.float32Array({ noNaN: true }));
             });
         });
 
@@ -35,8 +35,8 @@ describe("uint16_array.js", () => {
             it("compares the arrays lexicographically", () => {
                 fc.assert(
                     fc.property(
-                        fc.uint16Array(),
-                        fc.uint16Array(),
+                        fc.float32Array({ noNaN: true }),
+                        fc.float32Array({ noNaN: true }),
                         (xs, ys) => {
                             expect(cmp(xs, ys)).to.equal(
                                 icmpBy(xs, ys, (x, y) =>
@@ -49,7 +49,7 @@ describe("uint16_array.js", () => {
             });
 
             it("implements a lawful total order", () => {
-                expectLawfulOrd(fc.uint16Array());
+                expectLawfulOrd(fc.float32Array({ noNaN: true }));
             });
         });
 
@@ -57,12 +57,12 @@ describe("uint16_array.js", () => {
             it("concatenates the arrays", () => {
                 fc.assert(
                     fc.property(
-                        fc.uint16Array(),
-                        fc.uint16Array(),
+                        fc.float32Array({ noNaN: true }),
+                        fc.float32Array({ noNaN: true }),
                         (xs, ys) => {
                             const result = cmb(xs, ys);
 
-                            const exp = new Uint16Array(xs.length + ys.length);
+                            const exp = new Float32Array(xs.length + ys.length);
                             exp.set(xs);
                             exp.set(ys, xs.length);
 
@@ -74,7 +74,7 @@ describe("uint16_array.js", () => {
             });
 
             it("implements a lawful semigroup", () => {
-                expectLawfulSemigroup(fc.uint16Array());
+                expectLawfulSemigroup(fc.float32Array({ noNaN: true }));
             });
         });
     });

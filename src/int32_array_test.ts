@@ -2,19 +2,19 @@ import { cmb } from "@neotype/prelude/cmb.js";
 import { cmp, eq, icmpBy, ieqBy, Ordering } from "@neotype/prelude/cmp.js";
 import { expect } from "chai";
 import * as fc from "fast-check";
-import "../src/uint8_array.js";
+import "./int32_array.js";
 import {
     expectLawfulEq,
     expectLawfulOrd,
     expectLawfulSemigroup,
-} from "./util.js";
+} from "./_test/utils.js";
 
-describe("uint8_array.js", () => {
-    describe("Uint8Array", () => {
+describe("int32_array.js", () => {
+    describe("Int32Array", () => {
         describe("#[Eq.eq]", () => {
             it("compares the arrays lexicographically", () => {
                 fc.assert(
-                    fc.property(fc.uint8Array(), fc.uint8Array(), (xs, ys) => {
+                    fc.property(fc.int32Array(), fc.int32Array(), (xs, ys) => {
                         expect(eq(xs, ys)).to.equal(
                             ieqBy(xs, ys, (x, y) => x === y),
                         );
@@ -23,14 +23,14 @@ describe("uint8_array.js", () => {
             });
 
             it("implements a lawful equivalence relation", () => {
-                expectLawfulEq(fc.uint8Array());
+                expectLawfulEq(fc.int32Array());
             });
         });
 
         describe("#[Ord.cmp]", () => {
             it("compares the arrays lexicographically", () => {
                 fc.assert(
-                    fc.property(fc.uint8Array(), fc.uint8Array(), (xs, ys) => {
+                    fc.property(fc.int32Array(), fc.int32Array(), (xs, ys) => {
                         expect(cmp(xs, ys)).to.equal(
                             icmpBy(xs, ys, (x, y) =>
                                 Ordering.fromNumber(x - y),
@@ -41,17 +41,17 @@ describe("uint8_array.js", () => {
             });
 
             it("implements a lawful total order", () => {
-                expectLawfulOrd(fc.uint8Array());
+                expectLawfulOrd(fc.int32Array());
             });
         });
 
         describe("#[Semigroup.cmb]", () => {
             it("concatenates the arrays", () => {
                 fc.assert(
-                    fc.property(fc.uint8Array(), fc.uint8Array(), (xs, ys) => {
+                    fc.property(fc.int32Array(), fc.int32Array(), (xs, ys) => {
                         const result = cmb(xs, ys);
 
-                        const exp = new Uint8Array(xs.length + ys.length);
+                        const exp = new Int32Array(xs.length + ys.length);
                         exp.set(xs);
                         exp.set(ys, xs.length);
 
@@ -62,7 +62,7 @@ describe("uint8_array.js", () => {
             });
 
             it("implements a lawful semigroup", () => {
-                expectLawfulSemigroup(fc.uint8Array());
+                expectLawfulSemigroup(fc.int32Array());
             });
         });
     });

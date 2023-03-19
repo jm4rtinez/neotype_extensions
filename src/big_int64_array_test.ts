@@ -2,21 +2,21 @@ import { cmb } from "@neotype/prelude/cmb.js";
 import { cmp, eq, icmpBy, ieqBy, Ordering } from "@neotype/prelude/cmp.js";
 import { expect } from "chai";
 import * as fc from "fast-check";
-import "../src/big_uint64_array.js";
+import "./big_int64_array.js";
 import {
     expectLawfulEq,
     expectLawfulOrd,
     expectLawfulSemigroup,
-} from "./util.js";
+} from "./_test/utils.js";
 
-describe("big_uint64_array.js", () => {
-    describe("BigUint64Array", () => {
+describe("big_int64_array.js", () => {
+    describe("BigInt64Array", () => {
         describe("#[Eq.eq]", () => {
             it("compares the arrays lexicographically", () => {
                 fc.assert(
                     fc.property(
-                        fc.bigUint64Array(),
-                        fc.bigUint64Array(),
+                        fc.bigInt64Array(),
+                        fc.bigInt64Array(),
                         (xs, ys) => {
                             expect(eq(xs, ys)).to.equal(
                                 ieqBy(xs, ys, (x, y) => x === y),
@@ -27,7 +27,7 @@ describe("big_uint64_array.js", () => {
             });
 
             it("implements a lawful equivalence relation", () => {
-                expectLawfulEq(fc.bigUint64Array());
+                expectLawfulEq(fc.bigInt64Array());
             });
         });
 
@@ -35,8 +35,8 @@ describe("big_uint64_array.js", () => {
             it("compares the arrays lexicographically", () => {
                 fc.assert(
                     fc.property(
-                        fc.bigUint64Array(),
-                        fc.bigUint64Array(),
+                        fc.bigInt64Array(),
+                        fc.bigInt64Array(),
                         (xs, ys) => {
                             expect(cmp(xs, ys)).to.equal(
                                 icmpBy(xs, ys, (x, y) =>
@@ -57,12 +57,12 @@ describe("big_uint64_array.js", () => {
             it("concatenates the arrays", () => {
                 fc.assert(
                     fc.property(
-                        fc.bigUint64Array(),
-                        fc.bigUint64Array(),
+                        fc.bigInt64Array(),
+                        fc.bigInt64Array(),
                         (xs, ys) => {
                             const result = cmb(xs, ys);
 
-                            const exp = new BigUint64Array(
+                            const exp = new BigInt64Array(
                                 xs.length + ys.length,
                             );
                             exp.set(xs);
@@ -75,7 +75,7 @@ describe("big_uint64_array.js", () => {
                 );
             });
 
-            it("implements a lawfulSemigroup", () => {
+            it("implements a lawful semigroup", () => {
                 expectLawfulSemigroup(fc.bigInt64Array());
             });
         });

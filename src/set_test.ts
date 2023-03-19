@@ -2,8 +2,8 @@ import { cmb } from "@neotype/prelude/cmb.js";
 import { eq } from "@neotype/prelude/cmp.js";
 import { expect } from "chai";
 import * as fc from "fast-check";
-import "../src/set.js";
-import { expectLawfulEq, expectLawfulSemigroup } from "./util.js";
+import "./set.js";
+import { expectLawfulEq, expectLawfulSemigroup } from "./_test/utils.js";
 
 describe("set.js", () => {
     describe("Set", () => {

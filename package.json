@@ -92,6 +92,15 @@
         "ts-node": "^10.8.2",
         "typescript": "~4.9"
     },
+    "c8": {
+        "reporter": [
+            "text"
+        ],
+        "exclude": [
+            "**/*_test.ts",
+            "**/_test/*"
+        ]
+    },
     "eslintConfig": {
         "env": {
             "browser": true,
@@ -132,7 +141,7 @@
             "no-warnings"
         ],
         "spec": [
-            "test/*_test.ts"
+            "**/*_test.ts"
         ]
     },
     "prettier": {

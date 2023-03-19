@@ -2,12 +2,12 @@ import { cmb } from "@neotype/prelude/cmb.js";
 import { cmp, eq, icmpBy, ieqBy, Ordering } from "@neotype/prelude/cmp.js";
 import { expect } from "chai";
 import * as fc from "fast-check";
-import "../src/uint32_array.js";
+import "./uint32_array.js";
 import {
     expectLawfulEq,
     expectLawfulOrd,
     expectLawfulSemigroup,
-} from "./util.js";
+} from "./_test/utils.js";
 
 describe("uint32_array.js", () => {
     describe("Uint32Array", () => {
