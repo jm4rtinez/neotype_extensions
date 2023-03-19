@@ -2,21 +2,21 @@ import { cmb } from "@neotype/prelude/cmb.js";
 import { cmp, eq, icmpBy, ieqBy, Ordering } from "@neotype/prelude/cmp.js";
 import { expect } from "chai";
 import * as fc from "fast-check";
-import "../src/uint8_clamped_array.js";
+import "./float64_array.js";
 import {
     expectLawfulEq,
     expectLawfulOrd,
     expectLawfulSemigroup,
-} from "./util.js";
+} from "./_test/utils.js";
 
-describe("uint8_clamped_array.js", () => {
-    describe("Uint8ClampedArray", () => {
+describe("float64_array.js", () => {
+    describe("Float64Array", () => {
         describe("#[Eq.eq]", () => {
             it("compares the arrays lexicographically", () => {
                 fc.assert(
                     fc.property(
-                        fc.uint8ClampedArray(),
-                        fc.uint8ClampedArray(),
+                        fc.float64Array({ noNaN: true }),
+                        fc.float64Array({ noNaN: true }),
                         (xs, ys) => {
                             expect(eq(xs, ys)).to.equal(
                                 ieqBy(xs, ys, (x, y) => x === y),
@@ -27,7 +27,7 @@ describe("uint8_clamped_array.js", () => {
             });
 
             it("implements a lawful equivalence relation", () => {
-                expectLawfulEq(fc.uint8ClampedArray());
+                expectLawfulEq(fc.float64Array({ noNaN: true }));
             });
         });
 
@@ -35,8 +35,8 @@ describe("uint8_clamped_array.js", () => {
             it("compares the arrays lexicographically", () => {
                 fc.assert(
                     fc.property(
-                        fc.uint8ClampedArray(),
-                        fc.uint8ClampedArray(),
+                        fc.float64Array({ noNaN: true }),
+                        fc.float64Array({ noNaN: true }),
                         (xs, ys) => {
                             expect(cmp(xs, ys)).to.equal(
                                 icmpBy(xs, ys, (x, y) =>
@@ -49,7 +49,7 @@ describe("uint8_clamped_array.js", () => {
             });
 
             it("implements a lawful total order", () => {
-                expectLawfulOrd(fc.uint8ClampedArray());
+                expectLawfulOrd(fc.float64Array({ noNaN: true }));
             });
         });
 
@@ -57,14 +57,12 @@ describe("uint8_clamped_array.js", () => {
             it("concatenates the arrays", () => {
                 fc.assert(
                     fc.property(
-                        fc.uint8ClampedArray(),
-                        fc.uint8ClampedArray(),
+                        fc.float64Array({ noNaN: true }),
+                        fc.float64Array({ noNaN: true }),
                         (xs, ys) => {
                             const result = cmb(xs, ys);
 
-                            const exp = new Uint8ClampedArray(
-                                xs.length + ys.length,
-                            );
+                            const exp = new Float64Array(xs.length + ys.length);
                             exp.set(xs);
                             exp.set(ys, xs.length);
 
@@ -76,7 +74,7 @@ describe("uint8_clamped_array.js", () => {
             });
 
             it("implements a lawful semigroup", () => {
-                expectLawfulSemigroup(fc.uint8ClampedArray());
+                expectLawfulSemigroup(fc.float64Array({ noNaN: true }));
             });
         });
     });

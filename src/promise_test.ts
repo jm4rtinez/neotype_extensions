@@ -2,8 +2,8 @@ import { cmb, type Semigroup } from "@neotype/prelude/cmb.js";
 import { eq, type Eq } from "@neotype/prelude/cmp.js";
 import { expect } from "chai";
 import * as fc from "fast-check";
-import "../src/promise.js";
-import "../src/string.js";
+import "./promise.js";
+import "./string.js";
 
 describe("promise.js", () => {
     describe("Promise", () => {

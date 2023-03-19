@@ -3,8 +3,8 @@ import { Eq, eq } from "@neotype/prelude/cmp.js";
 import { id } from "@neotype/prelude/fn.js";
 import { expect } from "chai";
 import * as fc from "fast-check";
-import "../src/function.js";
-import "../src/string.js";
+import "./function.js";
+import "./string.js";
 
 describe("function.js", () => {
     describe("Function", () => {

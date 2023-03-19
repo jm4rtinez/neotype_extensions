@@ -1,8 +1,8 @@
 import { eq } from "@neotype/prelude/cmp.js";
 import { expect } from "chai";
 import * as fc from "fast-check";
-import "../src/symbol.js";
-import { expectLawfulEq } from "./util.js";
+import "./symbol.js";
+import { expectLawfulEq } from "./_test/utils.js";
 
 describe("symbol.js", () => {
     describe("Symbol", () => {

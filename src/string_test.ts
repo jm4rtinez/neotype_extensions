@@ -2,12 +2,12 @@ import { cmb } from "@neotype/prelude/cmb.js";
 import { cmp, eq, Ordering } from "@neotype/prelude/cmp.js";
 import { expect } from "chai";
 import * as fc from "fast-check";
-import "../src/string.js";
+import "./string.js";
 import {
     expectLawfulEq,
     expectLawfulOrd,
     expectLawfulSemigroup,
-} from "./util.js";
+} from "./_test/utils.js";
 
 describe("string.js", () => {
     describe("String", () => {

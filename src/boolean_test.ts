@@ -1,8 +1,8 @@
 import { cmp, eq, Ordering } from "@neotype/prelude/cmp.js";
 import { expect } from "chai";
 import * as fc from "fast-check";
-import "../src/boolean.js";
-import { expectLawfulEq, expectLawfulOrd } from "./util.js";
+import "./boolean.js";
+import { expectLawfulEq, expectLawfulOrd } from "./_test/utils.js";
 
 describe("boolean.js", () => {
     describe("Boolean", () => {
