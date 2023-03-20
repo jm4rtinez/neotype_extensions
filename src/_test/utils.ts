@@ -1,7 +1,7 @@
 import { cmb, Semigroup } from "@neotype/prelude/cmb.js";
 import { cmp, Eq, eq, le, Ord } from "@neotype/prelude/cmp.js";
-import { expect } from "chai";
 import * as fc from "fast-check";
+import { expect } from "vitest";
 
 export function expectLawfulEq<A extends Eq<A>>(arb: fc.Arbitrary<A>): void {
     fc.assert(

@@ -34,6 +34,7 @@
         "node": "16.* || >= 18.*"
     },
     "exports": {
+        "./_*": null,
         "./array.js": "./dist/array.js",
         "./big_int.js": "./dist/big_int.js",
         "./big_int64_array.js": "./dist/big_int64_array.js",
@@ -59,14 +60,15 @@
         "./package.json": "./package.json"
     },
     "scripts": {
-        "clean": "npx rimraf ./dist",
-        "lint": "npx eslint --ext .ts --max-warnings 0 .",
-        "prettier:check": "npx prettier --check --ignore-path ./.gitignore .",
-        "prettier:write": "npx prettier --write --ignore-path ./.gitignore .",
+        "clean": "rimraf ./dist",
+        "lint": "eslint --ext .ts --max-warnings 0 .",
+        "prettier:check": "prettier --check --ignore-path ./.gitignore .",
+        "prettier:write": "prettier --write --ignore-path ./.gitignore .",
         "style": "npm run lint && npm run prettier:check",
-        "test": "npx c8 mocha",
+        "test": "vitest run --coverage",
+        "test:watch": "vitest",
         "prebuild": "npm run clean",
-        "build": "npx tsc --project ./tsconfig.build.json",
+        "build": "tsc --project ./tsconfig.build.json",
         "prepublishOnly": "npm run build",
         "postpublish": "npm run clean"
     },
@@ -75,31 +77,19 @@
     },
     "devDependencies": {
         "@neotype/prelude": "^0.8",
-        "@types/chai": "^4.3.1",
-        "@types/mocha": "^9.1.1",
         "@typescript-eslint/eslint-plugin": "^5.30.5",
         "@typescript-eslint/parser": "^5.30.5",
-        "c8": "^7.12.0",
-        "chai": "^4.3.6",
+        "@vitest/coverage-c8": "^0.29.3",
         "eslint": "^8.19.0",
         "eslint-config-prettier": "^8.5.0",
         "eslint-plugin-import": "^2.26.0",
         "fast-check": "^3.1.4",
-        "mocha": "^10.0.0",
         "prettier": "2.7.1",
         "prettier-plugin-organize-imports": "^3.1.1",
         "rimraf": "^3.0.2",
         "ts-node": "^10.8.2",
-        "typescript": "~4.9"
-    },
-    "c8": {
-        "reporter": [
-            "text"
-        ],
-        "exclude": [
-            "**/*_test.ts",
-            "**/_test/*"
-        ]
+        "typescript": "~4.9",
+        "vitest": "^0.29.3"
     },
     "eslintConfig": {
         "env": {
@@ -133,16 +123,6 @@
                 "always"
             ]
         }
-    },
-    "mocha": {
-        "node-option": [
-            "experimental-specifier-resolution=node",
-            "loader=ts-node/esm",
-            "no-warnings"
-        ],
-        "spec": [
-            "**/*_test.ts"
-        ]
     },
     "prettier": {
         "trailingComma": "all",
