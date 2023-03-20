@@ -1,6 +1,6 @@
 import { cmp, eq, Ordering } from "@neotype/prelude/cmp.js";
-import { expect } from "chai";
 import * as fc from "fast-check";
+import { describe, expect, it } from "vitest";
 import "./big_int.js";
 import { expectLawfulEq, expectLawfulOrd } from "./_test/utils.js";
 
