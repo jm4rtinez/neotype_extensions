@@ -56,7 +56,7 @@
         "./uint16_array.js": "./dist/uint16_array.js",
         "./uint32_array.js": "./dist/uint32_array.js",
         "./uint8_array.js": "./dist/uint8_array.js",
-        "./uint8_clamped_array.tjs": "./dist/uint8_clamped_array.js",
+        "./uint8_clamped_array.js": "./dist/uint8_clamped_array.js",
         "./package.json": "./package.json"
     },
     "scripts": {
