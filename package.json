@@ -69,7 +69,7 @@
         "test:watch": "vitest",
         "typecheck": "tsc --skipLibCheck --noEmit",
         "prebuild": "npm run clean",
-        "build": "tsc --project ./tsconfig.build.json",
+        "build": "tsc --project ./tsconfig_build.json",
         "prepublishOnly": "npm run build",
         "postpublish": "npm run clean"
     },
