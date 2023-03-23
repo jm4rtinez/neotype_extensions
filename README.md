@@ -1,7 +1,7 @@
 # Neotype Extensions
 
-Default implementations for [Neotype] equivalence relations, total orders, and
-semigroups for built-in JavaScript objects
+_Default implementations for [Neotype] equivalence relations, total orders, and_
+_semigroups for built-in JavaScript objects_
 
 ## Features
 
@@ -65,10 +65,10 @@ all import statements. There are no exports. When imported, each module will
 augment a global object.
 
 ```ts
-import "@neotype/extensions/number.js";
-import "@neotype/extensions/string.js";
 import "@neotype/extensions/boolean.js";
+import "@neotype/extensions/number.js";
 import "@neotype/extensions/promise.js";
+import "@neotype/extensions/string.js";
 // etc.
 ```
 
