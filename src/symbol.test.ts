@@ -17,8 +17,8 @@
 import { eq } from "@neotype/prelude/cmp.js";
 import * as fc from "fast-check";
 import { describe, expect, it } from "vitest";
-import "./symbol.js";
 import { expectLawfulEq } from "./_test/utils.js";
+import "./symbol.js";
 
 describe("Symbol", () => {
     describe("#[Eq.eq]", () => {

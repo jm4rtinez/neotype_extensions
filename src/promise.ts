@@ -38,7 +38,7 @@
  * @module
  */
 
-import { cmb, Semigroup } from "@neotype/prelude/cmb.js";
+import { Semigroup, cmb } from "@neotype/prelude/cmb.js";
 
 declare global {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars

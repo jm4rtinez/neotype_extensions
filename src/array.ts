@@ -66,7 +66,7 @@
  */
 
 import { Semigroup } from "@neotype/prelude/cmb.js";
-import { Eq, icmp, ieq, Ord, type Ordering } from "@neotype/prelude/cmp.js";
+import { Eq, Ord, icmp, ieq, type Ordering } from "@neotype/prelude/cmp.js";
 
 declare global {
     interface Array<T> {

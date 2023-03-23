@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-import { cmb, Semigroup } from "@neotype/prelude/cmb.js";
-import { cmp, Eq, eq, le, Ord } from "@neotype/prelude/cmp.js";
+import { cmb, type Semigroup } from "@neotype/prelude/cmb.js";
+import { cmp, eq, le, type Eq, type Ord } from "@neotype/prelude/cmp.js";
 import * as fc from "fast-check";
 import { expect } from "vitest";
 

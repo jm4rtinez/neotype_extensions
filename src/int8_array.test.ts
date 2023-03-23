@@ -15,15 +15,15 @@
  */
 
 import { cmb } from "@neotype/prelude/cmb.js";
-import { cmp, eq, icmpBy, ieqBy, Ordering } from "@neotype/prelude/cmp.js";
+import { Ordering, cmp, eq, icmpBy, ieqBy } from "@neotype/prelude/cmp.js";
 import * as fc from "fast-check";
 import { describe, expect, it } from "vitest";
-import "./int8_array.js";
 import {
     expectLawfulEq,
     expectLawfulOrd,
     expectLawfulSemigroup,
 } from "./_test/utils.js";
+import "./int8_array.js";
 
 describe("Int8Array", () => {
     describe("#[Eq.eq]", () => {

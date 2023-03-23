@@ -15,15 +15,15 @@
  */
 
 import { cmb } from "@neotype/prelude/cmb.js";
-import { cmp, eq, Ordering } from "@neotype/prelude/cmp.js";
+import { Ordering, cmp, eq } from "@neotype/prelude/cmp.js";
 import * as fc from "fast-check";
 import { describe, expect, it } from "vitest";
-import "./string.js";
 import {
     expectLawfulEq,
     expectLawfulOrd,
     expectLawfulSemigroup,
 } from "./_test/utils.js";
+import "./string.js";
 
 describe("String", () => {
     describe("#[Eq.eq]", () => {
