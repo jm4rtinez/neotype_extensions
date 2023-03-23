@@ -45,17 +45,17 @@
 import { Eq, Ord, Ordering } from "@neotype/prelude/cmp.js";
 
 declare global {
-    interface Date {
-        [Eq.eq](that: Date): boolean;
+	interface Date {
+		[Eq.eq](that: Date): boolean;
 
-        [Ord.cmp](that: Date): Ordering;
-    }
+		[Ord.cmp](that: Date): Ordering;
+	}
 }
 
 Date.prototype[Eq.eq] = function (that: Date): boolean {
-    return this.getTime() === that.getTime();
+	return this.getTime() === that.getTime();
 };
 
 Date.prototype[Ord.cmp] = function (that: Date): Ordering {
-    return Ordering.fromNumber(this.getTime() - that.getTime());
+	return Ordering.fromNumber(this.getTime() - that.getTime());
 };

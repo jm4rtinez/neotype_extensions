@@ -1,153 +1,155 @@
 {
-    "name": "@neotype/extensions",
-    "version": "0.3.0",
-    "description": "Default implementations for Neotype equivalence relations, total orders, and semigroups for built-in JavaScript objects",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/jm4rtinez/neotype_extensions.git"
-    },
-    "keywords": [
-        "default",
-        "eq",
-        "implementation",
-        "interface",
-        "neotype",
-        "ord",
-        "prelude",
-        "semigroup"
-    ],
-    "author": "Josh Martinez",
-    "license": "Apache-2.0",
-    "homepage": "https://github.com/jm4rtinez/neotype_extensions#readme",
-    "bugs": {
-        "url": "https://github.com/jm4rtinez/neotype_extensions/issues"
-    },
-    "files": [
-        "dist",
-        "src"
-    ],
-    "publishConfig": {
-        "access": "public"
-    },
-    "type": "module",
-    "engines": {
-        "node": "16.* || >= 18.*"
-    },
-    "exports": {
-        "./_*": null,
-        "./array.js": "./dist/array.js",
-        "./big_int.js": "./dist/big_int.js",
-        "./big_int64_array.js": "./dist/big_int64_array.js",
-        "./big_uint64_array.js": "./dist/big_uint64_array.js",
-        "./boolean.js": "./dist/boolean.js",
-        "./date.js": "./dist/date.js",
-        "./float32_array.js": "./dist/float32_array.js",
-        "./float64_array.js": "./dist/float64_array.js",
-        "./function.js": "./dist/function.js",
-        "./int16_array.js": "./dist/int16_array.js",
-        "./int32_array.js": "./dist/int32_array.js",
-        "./int8_array.js": "./dist/int8_array.js",
-        "./map.js": "./dist/map.js",
-        "./number.js": "./dist/number.js",
-        "./promise.js": "./dist/promise.js",
-        "./set.js": "./dist/set.js",
-        "./string.js": "./dist/string.js",
-        "./symbol.js": "./dist/symbol.js",
-        "./uint16_array.js": "./dist/uint16_array.js",
-        "./uint32_array.js": "./dist/uint32_array.js",
-        "./uint8_array.js": "./dist/uint8_array.js",
-        "./uint8_clamped_array.js": "./dist/uint8_clamped_array.js",
-        "./package.json": "./package.json"
-    },
-    "scripts": {
-        "clean": "rimraf ./dist",
-        "lint": "eslint --ext .ts --max-warnings 0 .",
-        "prettier:check": "prettier --check --ignore-path ./.gitignore .",
-        "prettier:write": "prettier --write --ignore-path ./.gitignore .",
-        "style": "npm run lint && npm run prettier:check",
-        "test": "npm run typecheck && vitest run --coverage",
-        "test:watch": "vitest",
-        "typecheck": "tsc --skipLibCheck --noEmit",
-        "prebuild": "npm run clean",
-        "build": "tsc --project ./tsconfig.build.json",
-        "prepublishOnly": "npm run build",
-        "postpublish": "npm run clean"
-    },
-    "peerDependencies": {
-        "@neotype/prelude": "^0.8"
-    },
-    "devDependencies": {
-        "@neotype/prelude": "^0.8",
-        "@typescript-eslint/eslint-plugin": "^5.55.0",
-        "@typescript-eslint/parser": "^5.55.0",
-        "@vitest/coverage-c8": "^0.29.3",
-        "eslint": "^8.36.0",
-        "eslint-config-prettier": "^8.8.0",
-        "eslint-plugin-import": "^2.27.5",
-        "fast-check": "^3.7.1",
-        "prettier": "2.8.6",
-        "prettier-plugin-organize-imports": "^3.2.2",
-        "rimraf": "^3.0.2",
-        "ts-node": "^10.9.1",
-        "typescript": "~5.0",
-        "vitest": "^0.29.3"
-    },
-    "eslintConfig": {
-        "env": {
-            "browser": true,
-            "es2021": true,
-            "node": true
-        },
-        "extends": [
-            "eslint:recommended",
-            "plugin:@typescript-eslint/recommended",
-            "prettier"
-        ],
-        "parser": "@typescript-eslint/parser",
-        "parserOptions": {
-            "ecmaVersion": "latest",
-            "sourceType": "module"
-        },
-        "plugins": [
-            "@typescript-eslint"
-        ],
-        "rules": {
-            "@typescript-eslint/consistent-type-imports": "error",
-            "@typescript-eslint/no-explicit-any": "off",
-            "@typescript-eslint/no-import-type-side-effects": "error",
-            "@typescript-eslint/no-namespace": "off",
-            "no-inner-declarations": "off",
-            "quotes": [
-                "error",
-                "double"
-            ],
-            "semi": [
-                "error",
-                "always"
-            ]
-        }
-    },
-    "eslintIgnore": [
-        "dist"
-    ],
-    "prettier": {
-        "trailingComma": "all",
-        "tabWidth": 4,
-        "overrides": [
-            {
-                "files": [
-                    "*.yaml",
-                    "*.yml"
-                ],
-                "options": {
-                    "tabWidth": 2
-                }
-            }
-        ],
-        "proseWrap": "always"
-    },
-    "volta": {
-        "node": "18.12.1",
-        "npm": "9.1.3"
-    }
+	"name": "@neotype/extensions",
+	"version": "0.3.0",
+	"description": "Default implementations for Neotype equivalence relations, total orders, and semigroups for built-in JavaScript objects",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/jm4rtinez/neotype_extensions.git"
+	},
+	"keywords": [
+		"default",
+		"eq",
+		"implementation",
+		"interface",
+		"neotype",
+		"ord",
+		"prelude",
+		"semigroup"
+	],
+	"author": "Josh Martinez",
+	"license": "Apache-2.0",
+	"homepage": "https://github.com/jm4rtinez/neotype_extensions#readme",
+	"bugs": {
+		"url": "https://github.com/jm4rtinez/neotype_extensions/issues"
+	},
+	"files": [
+		"dist",
+		"src"
+	],
+	"publishConfig": {
+		"access": "public"
+	},
+	"type": "module",
+	"engines": {
+		"node": "16.* || >= 18.*"
+	},
+	"exports": {
+		"./_*": null,
+		"./array.js": "./dist/array.js",
+		"./big_int.js": "./dist/big_int.js",
+		"./big_int64_array.js": "./dist/big_int64_array.js",
+		"./big_uint64_array.js": "./dist/big_uint64_array.js",
+		"./boolean.js": "./dist/boolean.js",
+		"./date.js": "./dist/date.js",
+		"./float32_array.js": "./dist/float32_array.js",
+		"./float64_array.js": "./dist/float64_array.js",
+		"./function.js": "./dist/function.js",
+		"./int16_array.js": "./dist/int16_array.js",
+		"./int32_array.js": "./dist/int32_array.js",
+		"./int8_array.js": "./dist/int8_array.js",
+		"./map.js": "./dist/map.js",
+		"./number.js": "./dist/number.js",
+		"./promise.js": "./dist/promise.js",
+		"./set.js": "./dist/set.js",
+		"./string.js": "./dist/string.js",
+		"./symbol.js": "./dist/symbol.js",
+		"./uint16_array.js": "./dist/uint16_array.js",
+		"./uint32_array.js": "./dist/uint32_array.js",
+		"./uint8_array.js": "./dist/uint8_array.js",
+		"./uint8_clamped_array.js": "./dist/uint8_clamped_array.js",
+		"./package.json": "./package.json"
+	},
+	"scripts": {
+		"clean": "rimraf ./dist",
+		"lint": "eslint --ext .ts --max-warnings 0 .",
+		"prettier:check": "prettier --check --ignore-path ./.gitignore .",
+		"prettier:write": "prettier --write --ignore-path ./.gitignore .",
+		"style": "npm run lint && npm run prettier:check",
+		"test": "npm run typecheck && vitest run --coverage",
+		"test:watch": "vitest",
+		"typecheck": "tsc --skipLibCheck --noEmit",
+		"prebuild": "npm run clean",
+		"build": "tsc --project ./tsconfig.build.json",
+		"prepublishOnly": "npm run build",
+		"postpublish": "npm run clean"
+	},
+	"peerDependencies": {
+		"@neotype/prelude": "^0.8"
+	},
+	"devDependencies": {
+		"@neotype/prelude": "^0.8",
+		"@typescript-eslint/eslint-plugin": "^5.55.0",
+		"@typescript-eslint/parser": "^5.55.0",
+		"@vitest/coverage-c8": "^0.29.3",
+		"eslint": "^8.36.0",
+		"eslint-config-prettier": "^8.8.0",
+		"eslint-plugin-import": "^2.27.5",
+		"fast-check": "^3.7.1",
+		"prettier": "2.8.6",
+		"prettier-plugin-organize-imports": "^3.2.2",
+		"rimraf": "^3.0.2",
+		"ts-node": "^10.9.1",
+		"typescript": "~5.0",
+		"vitest": "^0.29.3"
+	},
+	"eslintConfig": {
+		"env": {
+			"browser": true,
+			"es2021": true,
+			"node": true
+		},
+		"extends": [
+			"eslint:recommended",
+			"plugin:@typescript-eslint/recommended",
+			"prettier"
+		],
+		"parser": "@typescript-eslint/parser",
+		"parserOptions": {
+			"ecmaVersion": "latest",
+			"sourceType": "module"
+		},
+		"plugins": [
+			"@typescript-eslint"
+		],
+		"rules": {
+			"@typescript-eslint/consistent-type-imports": "error",
+			"@typescript-eslint/no-explicit-any": "off",
+			"@typescript-eslint/no-import-type-side-effects": "error",
+			"@typescript-eslint/no-namespace": "off",
+			"no-inner-declarations": "off",
+			"quotes": [
+				"error",
+				"double"
+			],
+			"semi": [
+				"error",
+				"always"
+			]
+		}
+	},
+	"eslintIgnore": [
+		"dist"
+	],
+	"prettier": {
+		"trailingComma": "all",
+		"useTabs": true,
+		"tabWidth": 4,
+		"overrides": [
+			{
+				"files": [
+					"*.yaml",
+					"*.yml"
+				],
+				"options": {
+					"useTabs": false,
+					"tabWidth": 2
+				}
+			}
+		],
+		"proseWrap": "always"
+	},
+	"volta": {
+		"node": "18.12.1",
+		"npm": "9.1.3"
+	}
 }

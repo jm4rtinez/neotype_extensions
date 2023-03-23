@@ -41,18 +41,18 @@
 import { Semigroup, cmb } from "@neotype/prelude/cmb.js";
 
 declare global {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    interface Promise<T> {
-        [Semigroup.cmb]<T extends Semigroup<T>>(
-            this: Promise<T>,
-            that: Promise<T>,
-        ): Promise<T>;
-    }
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	interface Promise<T> {
+		[Semigroup.cmb]<T extends Semigroup<T>>(
+			this: Promise<T>,
+			that: Promise<T>,
+		): Promise<T>;
+	}
 }
 
 Promise.prototype[Semigroup.cmb] = function <T extends Semigroup<T>>(
-    this: Promise<T>,
-    that: Promise<T>,
+	this: Promise<T>,
+	that: Promise<T>,
 ): Promise<T> {
-    return this.then((lhs) => that.then((rhs) => cmb(lhs, rhs)));
+	return this.then((lhs) => that.then((rhs) => cmb(lhs, rhs)));
 };

@@ -57,46 +57,46 @@ import { Semigroup } from "@neotype/prelude/cmb.js";
 import { Eq, eq } from "@neotype/prelude/cmp.js";
 
 declare global {
-    interface Map<K, V> {
-        [Eq.eq]<V extends Eq<V>>(this: Map<K, V>, that: Map<K, V>): boolean;
+	interface Map<K, V> {
+		[Eq.eq]<V extends Eq<V>>(this: Map<K, V>, that: Map<K, V>): boolean;
 
-        [Semigroup.cmb](that: Map<K, V>): Map<K, V>;
-    }
+		[Semigroup.cmb](that: Map<K, V>): Map<K, V>;
+	}
 
-    interface ReadonlyMap<K, V> {
-        [Eq.eq]<V extends Eq<V>>(
-            this: ReadonlyMap<K, V>,
-            that: ReadonlyMap<K, V>,
-        ): boolean;
+	interface ReadonlyMap<K, V> {
+		[Eq.eq]<V extends Eq<V>>(
+			this: ReadonlyMap<K, V>,
+			that: ReadonlyMap<K, V>,
+		): boolean;
 
-        [Semigroup.cmb](that: ReadonlyMap<K, V>): ReadonlyMap<K, V>;
-    }
+		[Semigroup.cmb](that: ReadonlyMap<K, V>): ReadonlyMap<K, V>;
+	}
 }
 
 Map.prototype[Eq.eq] = function <K, V extends Eq<V>>(
-    this: Map<K, V>,
-    that: Map<K, V>,
+	this: Map<K, V>,
+	that: Map<K, V>,
 ): boolean {
-    if (this.size !== that.size) {
-        return false;
-    }
-    for (const [key, val] of this.entries()) {
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-        if (!(that.has(key) && eq(that.get(key)!, val))) {
-            return false;
-        }
-    }
-    return true;
+	if (this.size !== that.size) {
+		return false;
+	}
+	for (const [key, val] of this.entries()) {
+		// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+		if (!(that.has(key) && eq(that.get(key)!, val))) {
+			return false;
+		}
+	}
+	return true;
 };
 
 Map.prototype[Semigroup.cmb] = function <K, V>(
-    this: Map<K, V>,
-    that: Map<K, V>,
+	this: Map<K, V>,
+	that: Map<K, V>,
 ): Map<K, V> {
-    return new Map(
-        (function* (self: Map<K, V>) {
-            yield* self;
-            yield* that;
-        })(this),
-    );
+	return new Map(
+		(function* (self: Map<K, V>) {
+			yield* self;
+			yield* that;
+		})(this),
+	);
 };

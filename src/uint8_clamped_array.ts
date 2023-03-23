@@ -48,32 +48,32 @@ import { Semigroup } from "@neotype/prelude/cmb.js";
 import { Eq, Ord, Ordering, icmpBy, ieqBy } from "@neotype/prelude/cmp.js";
 
 declare global {
-    interface Uint8ClampedArray {
-        [Eq.eq](that: Uint8ClampedArray): boolean;
+	interface Uint8ClampedArray {
+		[Eq.eq](that: Uint8ClampedArray): boolean;
 
-        [Ord.cmp](that: Uint8ClampedArray): Ordering;
+		[Ord.cmp](that: Uint8ClampedArray): Ordering;
 
-        [Semigroup.cmb](that: Uint8ClampedArray): Uint8ClampedArray;
-    }
+		[Semigroup.cmb](that: Uint8ClampedArray): Uint8ClampedArray;
+	}
 }
 
 Uint8ClampedArray.prototype[Eq.eq] = function (
-    that: Uint8ClampedArray,
+	that: Uint8ClampedArray,
 ): boolean {
-    return ieqBy(this, that, (lhs, rhs) => lhs === rhs);
+	return ieqBy(this, that, (lhs, rhs) => lhs === rhs);
 };
 
 Uint8ClampedArray.prototype[Ord.cmp] = function (
-    that: Uint8ClampedArray,
+	that: Uint8ClampedArray,
 ): Ordering {
-    return icmpBy(this, that, (lhs, rhs) => Ordering.fromNumber(lhs - rhs));
+	return icmpBy(this, that, (lhs, rhs) => Ordering.fromNumber(lhs - rhs));
 };
 
 Uint8ClampedArray.prototype[Semigroup.cmb] = function (
-    that: Uint8ClampedArray,
+	that: Uint8ClampedArray,
 ): Uint8ClampedArray {
-    const result = new Uint8ClampedArray(this.length + that.length);
-    result.set(this);
-    result.set(that, this.length);
-    return result;
+	const result = new Uint8ClampedArray(this.length + that.length);
+	result.set(this);
+	result.set(that, this.length);
+	return result;
 };
