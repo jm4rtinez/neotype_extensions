@@ -50,39 +50,39 @@ import { Semigroup } from "@neotype/prelude/cmb.js";
 import { Eq } from "@neotype/prelude/cmp.js";
 
 declare global {
-    interface Set<T> {
-        [Eq.eq](that: Set<T>): boolean;
+	interface Set<T> {
+		[Eq.eq](that: Set<T>): boolean;
 
-        [Semigroup.cmb](that: Set<T>): Set<T>;
-    }
+		[Semigroup.cmb](that: Set<T>): Set<T>;
+	}
 
-    interface ReadonlySet<T> {
-        [Eq.eq](that: ReadonlySet<T>): boolean;
+	interface ReadonlySet<T> {
+		[Eq.eq](that: ReadonlySet<T>): boolean;
 
-        [Semigroup.cmb](that: ReadonlySet<T>): ReadonlySet<T>;
-    }
+		[Semigroup.cmb](that: ReadonlySet<T>): ReadonlySet<T>;
+	}
 }
 
 Set.prototype[Eq.eq] = function <T>(this: Set<T>, that: Set<T>): boolean {
-    if (this.size !== that.size) {
-        return false;
-    }
-    for (const val of this.values()) {
-        if (!that.has(val)) {
-            return false;
-        }
-    }
-    return true;
+	if (this.size !== that.size) {
+		return false;
+	}
+	for (const val of this.values()) {
+		if (!that.has(val)) {
+			return false;
+		}
+	}
+	return true;
 };
 
 Set.prototype[Semigroup.cmb] = function <T>(
-    this: Set<T>,
-    that: Set<T>,
+	this: Set<T>,
+	that: Set<T>,
 ): Set<T> {
-    return new Set(
-        (function* (self: Set<T>) {
-            yield* self;
-            yield* that;
-        })(this),
-    );
+	return new Set(
+		(function* (self: Set<T>) {
+			yield* self;
+			yield* that;
+		})(this),
+	);
 };

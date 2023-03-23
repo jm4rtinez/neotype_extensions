@@ -69,43 +69,43 @@ import { Semigroup } from "@neotype/prelude/cmb.js";
 import { Eq, Ord, icmp, ieq, type Ordering } from "@neotype/prelude/cmp.js";
 
 declare global {
-    interface Array<T> {
-        [Eq.eq]<T extends Eq<T>>(this: T[], that: T[]): boolean;
+	interface Array<T> {
+		[Eq.eq]<T extends Eq<T>>(this: T[], that: T[]): boolean;
 
-        [Ord.cmp]<T extends Ord<T>>(this: T[], that: T[]): Ordering;
+		[Ord.cmp]<T extends Ord<T>>(this: T[], that: T[]): Ordering;
 
-        [Semigroup.cmb](that: T[]): T[];
-    }
+		[Semigroup.cmb](that: T[]): T[];
+	}
 
-    interface ReadonlyArray<T> {
-        [Eq.eq]<T extends Eq<T>>(
-            this: readonly T[],
-            that: readonly T[],
-        ): boolean;
+	interface ReadonlyArray<T> {
+		[Eq.eq]<T extends Eq<T>>(
+			this: readonly T[],
+			that: readonly T[],
+		): boolean;
 
-        [Ord.cmp]<T extends Ord<T>>(
-            this: readonly T[],
-            that: readonly T[],
-        ): Ordering;
+		[Ord.cmp]<T extends Ord<T>>(
+			this: readonly T[],
+			that: readonly T[],
+		): Ordering;
 
-        [Semigroup.cmb](that: readonly T[]): T[];
-    }
+		[Semigroup.cmb](that: readonly T[]): T[];
+	}
 }
 
 Array.prototype[Eq.eq] = function <T extends Eq<T>>(
-    this: T[],
-    that: T[],
+	this: T[],
+	that: T[],
 ): boolean {
-    return ieq(this, that);
+	return ieq(this, that);
 };
 
 Array.prototype[Ord.cmp] = function <T extends Ord<T>>(
-    this: T[],
-    that: T[],
+	this: T[],
+	that: T[],
 ): Ordering {
-    return icmp(this, that);
+	return icmp(this, that);
 };
 
 Array.prototype[Semigroup.cmb] = function <T>(that: T[]): T[] {
-    return [...this, ...that];
+	return [...this, ...that];
 };

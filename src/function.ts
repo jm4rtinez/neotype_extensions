@@ -43,20 +43,20 @@
 import { Semigroup, cmb } from "@neotype/prelude/cmb.js";
 
 declare global {
-    interface Function {
-        [Semigroup.cmb]<TArgs extends unknown[], T extends Semigroup<T>>(
-            this: (...args: TArgs) => T,
-            that: (...args: TArgs) => T,
-        ): (...args: TArgs) => T;
-    }
+	interface Function {
+		[Semigroup.cmb]<TArgs extends unknown[], T extends Semigroup<T>>(
+			this: (...args: TArgs) => T,
+			that: (...args: TArgs) => T,
+		): (...args: TArgs) => T;
+	}
 }
 
 Function.prototype[Semigroup.cmb] = function <
-    TArgs extends unknown[],
-    T extends Semigroup<T>,
+	TArgs extends unknown[],
+	T extends Semigroup<T>,
 >(
-    this: (...args: TArgs) => T,
-    that: (...args: TArgs) => T,
+	this: (...args: TArgs) => T,
+	that: (...args: TArgs) => T,
 ): (...args: TArgs) => T {
-    return (...args) => cmb(this(...args), that(...args));
+	return (...args) => cmb(this(...args), that(...args));
 };

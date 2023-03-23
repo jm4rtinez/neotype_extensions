@@ -40,17 +40,17 @@
 import { Eq, Ord, Ordering } from "@neotype/prelude/cmp.js";
 
 declare global {
-    interface Boolean {
-        [Eq.eq](that: boolean): boolean;
+	interface Boolean {
+		[Eq.eq](that: boolean): boolean;
 
-        [Ord.cmp](that: boolean): Ordering;
-    }
+		[Ord.cmp](that: boolean): Ordering;
+	}
 }
 
 Boolean.prototype[Eq.eq] = function (that: boolean): boolean {
-    return this === that;
+	return this === that;
 };
 
 Boolean.prototype[Ord.cmp] = function (that: boolean): Ordering {
-    return Ordering.fromNumber(Number(this) - Number(that));
+	return Ordering.fromNumber(Number(this) - Number(that));
 };

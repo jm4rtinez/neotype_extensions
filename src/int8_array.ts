@@ -48,26 +48,26 @@ import { Semigroup } from "@neotype/prelude/cmb.js";
 import { Eq, Ord, Ordering, icmpBy, ieqBy } from "@neotype/prelude/cmp.js";
 
 declare global {
-    interface Int8Array {
-        [Eq.eq](that: Int8Array): boolean;
+	interface Int8Array {
+		[Eq.eq](that: Int8Array): boolean;
 
-        [Ord.cmp](that: Int8Array): Ordering;
+		[Ord.cmp](that: Int8Array): Ordering;
 
-        [Semigroup.cmb](that: Int8Array): Int8Array;
-    }
+		[Semigroup.cmb](that: Int8Array): Int8Array;
+	}
 }
 
 Int8Array.prototype[Eq.eq] = function (that: Int8Array): boolean {
-    return ieqBy(this, that, (lhs, rhs) => lhs === rhs);
+	return ieqBy(this, that, (lhs, rhs) => lhs === rhs);
 };
 
 Int8Array.prototype[Ord.cmp] = function (that: Int8Array): Ordering {
-    return icmpBy(this, that, (lhs, rhs) => Ordering.fromNumber(lhs - rhs));
+	return icmpBy(this, that, (lhs, rhs) => Ordering.fromNumber(lhs - rhs));
 };
 
 Int8Array.prototype[Semigroup.cmb] = function (that: Int8Array): Int8Array {
-    const result = new Int8Array(this.length + that.length);
-    result.set(this);
-    result.set(that, this.length);
-    return result;
+	const result = new Int8Array(this.length + that.length);
+	result.set(this);
+	result.set(that, this.length);
+	return result;
 };

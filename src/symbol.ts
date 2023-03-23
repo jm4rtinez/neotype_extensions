@@ -38,11 +38,11 @@
 import { Eq } from "@neotype/prelude/cmp.js";
 
 declare global {
-    interface Symbol {
-        [Eq.eq](that: symbol): boolean;
-    }
+	interface Symbol {
+		[Eq.eq](that: symbol): boolean;
+	}
 }
 
 Symbol.prototype[Eq.eq] = function (that: symbol): boolean {
-    return this === that;
+	return this === that;
 };

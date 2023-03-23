@@ -76,4 +76,4 @@ See each module's documentation for recommended import practices.
 
 [neotype]: https://github.com/jm4rtinez/neotype_prelude
 [es6 modules]:
-    https://exploringjs.com/es6/ch_modules.html#sec_basics-of-es6-modules
+	https://exploringjs.com/es6/ch_modules.html#sec_basics-of-es6-modules

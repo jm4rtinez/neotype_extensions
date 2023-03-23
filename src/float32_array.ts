@@ -48,28 +48,28 @@ import { Semigroup } from "@neotype/prelude/cmb.js";
 import { Eq, Ord, Ordering, icmpBy, ieqBy } from "@neotype/prelude/cmp.js";
 
 declare global {
-    interface Float32Array {
-        [Eq.eq](that: Float32Array): boolean;
+	interface Float32Array {
+		[Eq.eq](that: Float32Array): boolean;
 
-        [Ord.cmp](that: Float32Array): Ordering;
+		[Ord.cmp](that: Float32Array): Ordering;
 
-        [Semigroup.cmb](that: Float32Array): Float32Array;
-    }
+		[Semigroup.cmb](that: Float32Array): Float32Array;
+	}
 }
 
 Float32Array.prototype[Eq.eq] = function (that: Float32Array): boolean {
-    return ieqBy(this, that, (lhs, rhs) => lhs === rhs);
+	return ieqBy(this, that, (lhs, rhs) => lhs === rhs);
 };
 
 Float32Array.prototype[Ord.cmp] = function (that: Float32Array): Ordering {
-    return icmpBy(this, that, (lhs, rhs) => Ordering.fromNumber(lhs - rhs));
+	return icmpBy(this, that, (lhs, rhs) => Ordering.fromNumber(lhs - rhs));
 };
 
 Float32Array.prototype[Semigroup.cmb] = function (
-    that: Float32Array,
+	that: Float32Array,
 ): Float32Array {
-    const result = new Float32Array(this.length + that.length);
-    result.set(this);
-    result.set(that, this.length);
-    return result;
+	const result = new Float32Array(this.length + that.length);
+	result.set(this);
+	result.set(that, this.length);
+	return result;
 };

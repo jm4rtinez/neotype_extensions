@@ -21,33 +21,33 @@ import { expectLawfulEq, expectLawfulOrd } from "./_test/utils.js";
 import "./date.js";
 
 describe("Date", () => {
-    describe("#[Eq.eq]", () => {
-        it("compares the dates using their numerical representation", () => {
-            fc.assert(
-                fc.property(fc.date(), fc.date(), (x, y) => {
-                    expect(eq(x, y)).to.equal(x.getTime() === y.getTime());
-                }),
-            );
-        });
+	describe("#[Eq.eq]", () => {
+		it("compares the dates using their numerical representation", () => {
+			fc.assert(
+				fc.property(fc.date(), fc.date(), (x, y) => {
+					expect(eq(x, y)).to.equal(x.getTime() === y.getTime());
+				}),
+			);
+		});
 
-        it("implements a lawful equivalence relation", () => {
-            expectLawfulEq(fc.date());
-        });
-    });
+		it("implements a lawful equivalence relation", () => {
+			expectLawfulEq(fc.date());
+		});
+	});
 
-    describe("#[Ord.cmp]", () => {
-        it("compares the dates using their numerical representation", () => {
-            fc.assert(
-                fc.property(fc.date(), fc.date(), (x, y) => {
-                    expect(cmp(x, y)).to.equal(
-                        Ordering.fromNumber(x.getTime() - y.getTime()),
-                    );
-                }),
-            );
-        });
+	describe("#[Ord.cmp]", () => {
+		it("compares the dates using their numerical representation", () => {
+			fc.assert(
+				fc.property(fc.date(), fc.date(), (x, y) => {
+					expect(cmp(x, y)).to.equal(
+						Ordering.fromNumber(x.getTime() - y.getTime()),
+					);
+				}),
+			);
+		});
 
-        it("implements a lawful total order", () => {
-            expectLawfulOrd(fc.date());
-        });
-    });
+		it("implements a lawful total order", () => {
+			expectLawfulOrd(fc.date());
+		});
+	});
 });

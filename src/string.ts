@@ -46,29 +46,29 @@ import { Semigroup } from "@neotype/prelude/cmb.js";
 import { Eq, Ord, Ordering } from "@neotype/prelude/cmp.js";
 
 declare global {
-    interface String {
-        [Eq.eq](that: string): boolean;
+	interface String {
+		[Eq.eq](that: string): boolean;
 
-        [Ord.cmp](that: string): Ordering;
+		[Ord.cmp](that: string): Ordering;
 
-        [Semigroup.cmb](that: string): string;
-    }
+		[Semigroup.cmb](that: string): string;
+	}
 }
 
 String.prototype[Eq.eq] = function (that: string): boolean {
-    return this === that;
+	return this === that;
 };
 
 String.prototype[Ord.cmp] = function (that: string): Ordering {
-    if (this < that) {
-        return Ordering.less;
-    }
-    if (this > that) {
-        return Ordering.greater;
-    }
-    return Ordering.equal;
+	if (this < that) {
+		return Ordering.less;
+	}
+	if (this > that) {
+		return Ordering.greater;
+	}
+	return Ordering.equal;
 };
 
 String.prototype[Semigroup.cmb] = function (that: string): string {
-    return this + that;
+	return this + that;
 };

@@ -21,33 +21,33 @@ import { expectLawfulEq, expectLawfulOrd } from "./_test/utils.js";
 import "./boolean.js";
 
 describe("Boolean", () => {
-    describe("#[Eq.eq]", () => {
-        it("compares the booleans strictly", () => {
-            fc.assert(
-                fc.property(fc.boolean(), fc.boolean(), (x, y) => {
-                    expect(eq(x, y)).to.equal(x === y);
-                }),
-            );
-        });
+	describe("#[Eq.eq]", () => {
+		it("compares the booleans strictly", () => {
+			fc.assert(
+				fc.property(fc.boolean(), fc.boolean(), (x, y) => {
+					expect(eq(x, y)).to.equal(x === y);
+				}),
+			);
+		});
 
-        it("implements a lawful equivalence relation", () => {
-            expectLawfulEq(fc.boolean());
-        });
-    });
+		it("implements a lawful equivalence relation", () => {
+			expectLawfulEq(fc.boolean());
+		});
+	});
 
-    describe("#[Ord.cmp]", () => {
-        it("compares false as less than true", () => {
-            fc.assert(
-                fc.property(fc.boolean(), fc.boolean(), (x, y) => {
-                    expect(cmp(x, y)).to.equal(
-                        Ordering.fromNumber(Number(x) - Number(y)),
-                    );
-                }),
-            );
-        });
+	describe("#[Ord.cmp]", () => {
+		it("compares false as less than true", () => {
+			fc.assert(
+				fc.property(fc.boolean(), fc.boolean(), (x, y) => {
+					expect(cmp(x, y)).to.equal(
+						Ordering.fromNumber(Number(x) - Number(y)),
+					);
+				}),
+			);
+		});
 
-        it("implements a lawful total order", () => {
-            expectLawfulOrd(fc.boolean());
-        });
-    });
+		it("implements a lawful total order", () => {
+			expectLawfulOrd(fc.boolean());
+		});
+	});
 });

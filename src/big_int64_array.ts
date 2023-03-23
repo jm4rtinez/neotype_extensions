@@ -48,28 +48,28 @@ import { Semigroup } from "@neotype/prelude/cmb.js";
 import { Eq, Ord, Ordering, icmpBy, ieqBy } from "@neotype/prelude/cmp.js";
 
 declare global {
-    interface BigInt64Array {
-        [Eq.eq](that: BigInt64Array): boolean;
+	interface BigInt64Array {
+		[Eq.eq](that: BigInt64Array): boolean;
 
-        [Ord.cmp](that: BigInt64Array): Ordering;
+		[Ord.cmp](that: BigInt64Array): Ordering;
 
-        [Semigroup.cmb](that: BigInt64Array): BigInt64Array;
-    }
+		[Semigroup.cmb](that: BigInt64Array): BigInt64Array;
+	}
 }
 
 BigInt64Array.prototype[Eq.eq] = function (that: BigInt64Array): boolean {
-    return ieqBy(this, that, (lhs, rhs) => lhs === rhs);
+	return ieqBy(this, that, (lhs, rhs) => lhs === rhs);
 };
 
 BigInt64Array.prototype[Ord.cmp] = function (that: BigInt64Array): Ordering {
-    return icmpBy(this, that, (lhs, rhs) => Ordering.fromNumber(lhs - rhs));
+	return icmpBy(this, that, (lhs, rhs) => Ordering.fromNumber(lhs - rhs));
 };
 
 BigInt64Array.prototype[Semigroup.cmb] = function (
-    that: BigInt64Array,
+	that: BigInt64Array,
 ): BigInt64Array {
-    const result = new BigInt64Array(this.length + that.length);
-    result.set(this);
-    result.set(that, this.length);
-    return result;
+	const result = new BigInt64Array(this.length + that.length);
+	result.set(this);
+	result.set(that, this.length);
+	return result;
 };
