@@ -18,8 +18,8 @@ import { cmb } from "@neotype/prelude/cmb.js";
 import { eq } from "@neotype/prelude/cmp.js";
 import * as fc from "fast-check";
 import { describe, expect, it } from "vitest";
-import "./set.js";
 import { expectLawfulEq, expectLawfulSemigroup } from "./_test/utils.js";
+import "./set.js";
 
 describe("Set", () => {
     describe("#[Eq.eq]", () => {

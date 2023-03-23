@@ -40,7 +40,7 @@
  * @module
  */
 
-import { cmb, Semigroup } from "@neotype/prelude/cmb.js";
+import { Semigroup, cmb } from "@neotype/prelude/cmb.js";
 
 declare global {
     interface Function {

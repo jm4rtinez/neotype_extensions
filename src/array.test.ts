@@ -18,14 +18,14 @@ import { cmb } from "@neotype/prelude/cmb.js";
 import { cmp, eq, icmp, ieq } from "@neotype/prelude/cmp.js";
 import * as fc from "fast-check";
 import { describe, expect, it } from "vitest";
-import "./array.js";
-import "./number.js";
-import "./string.js";
 import {
     expectLawfulEq,
     expectLawfulOrd,
     expectLawfulSemigroup,
 } from "./_test/utils.js";
+import "./array.js";
+import "./number.js";
+import "./string.js";
 
 describe("Array", () => {
     describe("#[Eq.eq]", () => {

@@ -7,7 +7,6 @@
         "declarationMap": true,
         "sourceMap": true,
         "outDir": "./dist",
-        "importsNotUsedAsValues": "remove",
         "downlevelIteration": false,
         "esModuleInterop": false,
         "allowSyntheticDefaultImports": false,

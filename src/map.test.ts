@@ -18,9 +18,9 @@ import { cmb } from "@neotype/prelude/cmb.js";
 import { eq } from "@neotype/prelude/cmp.js";
 import * as fc from "fast-check";
 import { describe, expect, it } from "vitest";
+import { expectLawfulEq, expectLawfulSemigroup } from "./_test/utils.js";
 import "./map.js";
 import "./string.js";
-import { expectLawfulEq, expectLawfulSemigroup } from "./_test/utils.js";
 
 describe("Map", () => {
     describe("#[Eq.eq]", () => {
