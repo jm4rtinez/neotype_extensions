@@ -25,65 +25,71 @@ import {
 } from "./_test/utils.js";
 import "./float32_array.js";
 
-describe("#[Eq.eq]", () => {
-	it("compares the arrays lexicographically", () => {
-		const property = fc.property(
-			fc.float32Array({ noNaN: true }),
-			fc.float32Array({ noNaN: true }),
-			(lhs, rhs) => {
-				expect(eq(lhs, rhs)).to.equal(
-					ieqBy(lhs, rhs, (lhsElem, rhsElem) => lhsElem === rhsElem),
-				);
-			},
-		);
-		fc.assert(property);
+describe("Float32Array", () => {
+	describe("#[Eq.eq]", () => {
+		it("compares the arrays lexicographically", () => {
+			const property = fc.property(
+				fc.float32Array({ noNaN: true }),
+				fc.float32Array({ noNaN: true }),
+				(lhs, rhs) => {
+					expect(eq(lhs, rhs)).to.equal(
+						ieqBy(
+							lhs,
+							rhs,
+							(lhsElem, rhsElem) => lhsElem === rhsElem,
+						),
+					);
+				},
+			);
+			fc.assert(property);
+		});
+
+		it("implements a lawful equivalence relation", () => {
+			expectLawfulEq(fc.float32Array({ noNaN: true }));
+		});
 	});
 
-	it("implements a lawful equivalence relation", () => {
-		expectLawfulEq(fc.float32Array({ noNaN: true }));
-	});
-});
+	describe("#[Ord.cmp]", () => {
+		it("compares the arrays lexicographically", () => {
+			const property = fc.property(
+				fc.float32Array({ noNaN: true }),
+				fc.float32Array({ noNaN: true }),
+				(lhs, rhs) => {
+					expect(cmp(lhs, rhs)).to.equal(
+						icmpBy(lhs, rhs, (lhsElem, rhsElem) =>
+							Ordering.fromNumber(lhsElem - rhsElem),
+						),
+					);
+				},
+			);
+			fc.assert(property);
+		});
 
-describe("#[Ord.cmp]", () => {
-	it("compares the arrays lexicographically", () => {
-		const property = fc.property(
-			fc.float32Array({ noNaN: true }),
-			fc.float32Array({ noNaN: true }),
-			(lhs, rhs) => {
-				expect(cmp(lhs, rhs)).to.equal(
-					icmpBy(lhs, rhs, (lhsElem, rhsElem) =>
-						Ordering.fromNumber(lhsElem - rhsElem),
-					),
-				);
-			},
-		);
-		fc.assert(property);
-	});
-
-	it("implements a lawful total order", () => {
-		expectLawfulOrd(fc.float32Array({ noNaN: true }));
-	});
-});
-
-describe("#[Semigroup.cmb]", () => {
-	it("concatenates the arrays", () => {
-		const property = fc.property(
-			fc.float32Array({ noNaN: true }),
-			fc.float32Array({ noNaN: true }),
-			(lhs, rhs) => {
-				const result = cmb(lhs, rhs);
-
-				const expected = new Float32Array(lhs.length + rhs.length);
-				expected.set(lhs);
-				expected.set(rhs, lhs.length);
-
-				expect(result).to.deep.equal(expected);
-			},
-		);
-		fc.assert(property);
+		it("implements a lawful total order", () => {
+			expectLawfulOrd(fc.float32Array({ noNaN: true }));
+		});
 	});
 
-	it("implements a lawful semigroup", () => {
-		expectLawfulSemigroup(fc.float32Array({ noNaN: true }));
+	describe("#[Semigroup.cmb]", () => {
+		it("concatenates the arrays", () => {
+			const property = fc.property(
+				fc.float32Array({ noNaN: true }),
+				fc.float32Array({ noNaN: true }),
+				(lhs, rhs) => {
+					const result = cmb(lhs, rhs);
+
+					const expected = new Float32Array(lhs.length + rhs.length);
+					expected.set(lhs);
+					expected.set(rhs, lhs.length);
+
+					expect(result).to.deep.equal(expected);
+				},
+			);
+			fc.assert(property);
+		});
+
+		it("implements a lawful semigroup", () => {
+			expectLawfulSemigroup(fc.float32Array({ noNaN: true }));
+		});
 	});
 });
