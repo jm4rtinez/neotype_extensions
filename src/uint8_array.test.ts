@@ -25,75 +25,71 @@ import {
 } from "./_test/utils.js";
 import "./uint8_array.js";
 
-describe("uint8_array.js", () => {
-	describe("Uint8Array", () => {
-		describe("#[Eq.eq]", () => {
-			it("compares the arrays lexicographically", () => {
-				const property = fc.property(
-					fc.uint8Array(),
-					fc.uint8Array(),
-					(lhs, rhs) => {
-						expect(eq(lhs, rhs)).to.equal(
-							ieqBy(
-								lhs,
-								rhs,
-								(lhsElem, rhsElem) => lhsElem === rhsElem,
-							),
-						);
-					},
-				);
-				fc.assert(property);
-			});
-
-			it("implements a lawful equivalence relation", () => {
-				expectLawfulEq(fc.uint8Array());
-			});
+describe("Uint8Array", () => {
+	describe("#[Eq.eq]", () => {
+		it("compares the arrays lexicographically", () => {
+			const property = fc.property(
+				fc.uint8Array(),
+				fc.uint8Array(),
+				(lhs, rhs) => {
+					expect(eq(lhs, rhs)).to.equal(
+						ieqBy(
+							lhs,
+							rhs,
+							(lhsElem, rhsElem) => lhsElem === rhsElem,
+						),
+					);
+				},
+			);
+			fc.assert(property);
 		});
 
-		describe("#[Ord.cmp]", () => {
-			it("compares the arrays lexicographically", () => {
-				const property = fc.property(
-					fc.uint8Array(),
-					fc.uint8Array(),
-					(lhs, rhs) => {
-						expect(cmp(lhs, rhs)).to.equal(
-							icmpBy(lhs, rhs, (lhsElem, rhsElem) =>
-								Ordering.fromNumber(lhsElem - rhsElem),
-							),
-						);
-					},
-				);
-				fc.assert(property);
-			});
+		it("implements a lawful equivalence relation", () => {
+			expectLawfulEq(fc.uint8Array());
+		});
+	});
 
-			it("implements a lawful total order", () => {
-				expectLawfulOrd(fc.uint8Array());
-			});
+	describe("#[Ord.cmp]", () => {
+		it("compares the arrays lexicographically", () => {
+			const property = fc.property(
+				fc.uint8Array(),
+				fc.uint8Array(),
+				(lhs, rhs) => {
+					expect(cmp(lhs, rhs)).to.equal(
+						icmpBy(lhs, rhs, (lhsElem, rhsElem) =>
+							Ordering.fromNumber(lhsElem - rhsElem),
+						),
+					);
+				},
+			);
+			fc.assert(property);
 		});
 
-		describe("#[Semigroup.cmb]", () => {
-			it("concatenates the arrays", () => {
-				const property = fc.property(
-					fc.uint8Array(),
-					fc.uint8Array(),
-					(lhs, rhs) => {
-						const result = cmb(lhs, rhs);
+		it("implements a lawful total order", () => {
+			expectLawfulOrd(fc.uint8Array());
+		});
+	});
 
-						const expected = new Uint8Array(
-							lhs.length + rhs.length,
-						);
-						expected.set(lhs);
-						expected.set(rhs, lhs.length);
+	describe("#[Semigroup.cmb]", () => {
+		it("concatenates the arrays", () => {
+			const property = fc.property(
+				fc.uint8Array(),
+				fc.uint8Array(),
+				(lhs, rhs) => {
+					const result = cmb(lhs, rhs);
 
-						expect(result).to.deep.equal(expected);
-					},
-				);
-				fc.assert(property);
-			});
+					const expected = new Uint8Array(lhs.length + rhs.length);
+					expected.set(lhs);
+					expected.set(rhs, lhs.length);
 
-			it("implements a lawful semigroup", () => {
-				expectLawfulSemigroup(fc.uint8Array());
-			});
+					expect(result).to.deep.equal(expected);
+				},
+			);
+			fc.assert(property);
+		});
+
+		it("implements a lawful semigroup", () => {
+			expectLawfulSemigroup(fc.uint8Array());
 		});
 	});
 });
