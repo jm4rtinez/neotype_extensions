@@ -28,8 +28,10 @@ import "./int16_array.js";
 describe("Int16Array", () => {
 	describe("#[Eq.eq]", () => {
 		it("compares the arrays lexicographically", () => {
-			fc.assert(
-				fc.property(fc.int16Array(), fc.int16Array(), (lhs, rhs) => {
+			const property = fc.property(
+				fc.int16Array(),
+				fc.int16Array(),
+				(lhs, rhs) => {
 					expect(eq(lhs, rhs)).to.equal(
 						ieqBy(
 							lhs,
@@ -37,8 +39,9 @@ describe("Int16Array", () => {
 							(lhsElem, rhsElem) => lhsElem === rhsElem,
 						),
 					);
-				}),
+				},
 			);
+			fc.assert(property);
 		});
 
 		it("implements a lawful equivalence relation", () => {
@@ -48,15 +51,18 @@ describe("Int16Array", () => {
 
 	describe("#[Ord.cmp]", () => {
 		it("compares the arrays lexicographically", () => {
-			fc.assert(
-				fc.property(fc.int16Array(), fc.int16Array(), (lhs, rhs) => {
+			const property = fc.property(
+				fc.int16Array(),
+				fc.int16Array(),
+				(lhs, rhs) => {
 					expect(cmp(lhs, rhs)).to.equal(
 						icmpBy(lhs, rhs, (lhsElem, rhsElem) =>
 							Ordering.fromNumber(lhsElem - rhsElem),
 						),
 					);
-				}),
+				},
 			);
+			fc.assert(property);
 		});
 
 		it("implements a lawful total order", () => {
@@ -66,8 +72,10 @@ describe("Int16Array", () => {
 
 	describe("#[Semigroup.cmb]", () => {
 		it("concatenates the arrays", () => {
-			fc.assert(
-				fc.property(fc.int16Array(), fc.int16Array(), (lhs, rhs) => {
+			const property = fc.property(
+				fc.int16Array(),
+				fc.int16Array(),
+				(lhs, rhs) => {
 					const result = cmb(lhs, rhs);
 
 					const expected = new Int16Array(lhs.length + rhs.length);
@@ -75,8 +83,9 @@ describe("Int16Array", () => {
 					expected.set(rhs, lhs.length);
 
 					expect(result).to.deep.equal(expected);
-				}),
+				},
 			);
+			fc.assert(property);
 		});
 
 		it("implements a lawful semigroup", () => {

@@ -25,34 +25,33 @@ import "./string.js";
 describe("Map", () => {
 	describe("#[Eq.eq]", () => {
 		it("compares the keys strictly and compares the values using their Eq implementation", () => {
-			fc.assert(
-				fc.property(
-					fc
-						.uniqueArray(fc.tuple(fc.anything(), fc.string()))
-						.map((entries) => new Map(entries)),
-					fc
-						.uniqueArray(fc.tuple(fc.anything(), fc.string()))
-						.map((entries) => new Map(entries)),
-					(lhs, rhs) => {
-						const result = eq(lhs, rhs);
+			const property = fc.property(
+				fc
+					.uniqueArray(fc.tuple(fc.anything(), fc.string()))
+					.map((entries) => new Map(entries)),
+				fc
+					.uniqueArray(fc.tuple(fc.anything(), fc.string()))
+					.map((entries) => new Map(entries)),
+				(lhs, rhs) => {
+					const result = eq(lhs, rhs);
 
-						const expected = (() => {
-							if (lhs.size !== rhs.size) {
+					const expected = (() => {
+						if (lhs.size !== rhs.size) {
+							return false;
+						}
+						for (const [key, val] of lhs.entries()) {
+							// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+							if (!(rhs.has(key) && eq(rhs.get(key)!, val))) {
 								return false;
 							}
-							for (const [key, val] of lhs.entries()) {
-								// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-								if (!(rhs.has(key) && eq(rhs.get(key)!, val))) {
-									return false;
-								}
-							}
-							return true;
-						})();
+						}
+						return true;
+					})();
 
-						expect(result).to.equal(expected);
-					},
-				),
+					expect(result).to.equal(expected);
+				},
 			);
+			fc.assert(property);
 		});
 
 		it("implements a lawful equivalence relation", () => {
@@ -66,26 +65,25 @@ describe("Map", () => {
 
 	describe("#[Semigroup.cmb]", () => {
 		it("takes the union of the maps", () => {
-			fc.assert(
-				fc.property(
-					fc
-						.uniqueArray(fc.tuple(fc.anything(), fc.anything()))
-						.map((entries) => new Map(entries)),
-					fc
-						.uniqueArray(fc.tuple(fc.anything(), fc.anything()))
-						.map((entries) => new Map(entries)),
-					(lhs, rhs) => {
-						const result = cmb(lhs, rhs);
-						const expected = new Map([...lhs, ...rhs]);
+			const property = fc.property(
+				fc
+					.uniqueArray(fc.tuple(fc.anything(), fc.anything()))
+					.map((entries) => new Map(entries)),
+				fc
+					.uniqueArray(fc.tuple(fc.anything(), fc.anything()))
+					.map((entries) => new Map(entries)),
+				(lhs, rhs) => {
+					const result = cmb(lhs, rhs);
+					const expected = new Map([...lhs, ...rhs]);
 
-						expect(result.size).to.equal(expected.size);
-						for (const [key, val] of result) {
-							expect(expected.has(key)).to.be.true;
-							expect(expected.get(key)).to.deep.equal(val);
-						}
-					},
-				),
+					expect(result.size).to.equal(expected.size);
+					for (const [key, val] of result) {
+						expect(expected.has(key)).to.be.true;
+						expect(expected.get(key)).to.deep.equal(val);
+					}
+				},
 			);
+			fc.assert(property);
 		});
 
 		it("implements a lawful semigroup", () => {

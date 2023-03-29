@@ -23,11 +23,14 @@ import "./boolean.js";
 describe("Boolean", () => {
 	describe("#[Eq.eq]", () => {
 		it("compares the booleans strictly", () => {
-			fc.assert(
-				fc.property(fc.boolean(), fc.boolean(), (lhs, rhs) => {
+			const property = fc.property(
+				fc.boolean(),
+				fc.boolean(),
+				(lhs, rhs) => {
 					expect(eq(lhs, rhs)).to.equal(lhs === rhs);
-				}),
+				},
 			);
+			fc.assert(property);
 		});
 
 		it("implements a lawful equivalence relation", () => {
@@ -37,13 +40,16 @@ describe("Boolean", () => {
 
 	describe("#[Ord.cmp]", () => {
 		it("compares false as less than true", () => {
-			fc.assert(
-				fc.property(fc.boolean(), fc.boolean(), (lhs, rhs) => {
+			const property = fc.property(
+				fc.boolean(),
+				fc.boolean(),
+				(lhs, rhs) => {
 					expect(cmp(lhs, rhs)).to.equal(
 						Ordering.fromNumber(Number(lhs) - Number(rhs)),
 					);
-				}),
+				},
 			);
+			fc.assert(property);
 		});
 
 		it("implements a lawful total order", () => {

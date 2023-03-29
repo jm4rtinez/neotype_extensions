@@ -24,33 +24,28 @@ import "./set.js";
 describe("Set", () => {
 	describe("#[Eq.eq]", () => {
 		it("compares the elements strictly", () => {
-			fc.assert(
-				fc.property(
-					fc
-						.uniqueArray(fc.anything())
-						.map((elems) => new Set(elems)),
-					fc
-						.uniqueArray(fc.anything())
-						.map((elems) => new Set(elems)),
-					(lhs, rhs) => {
-						const result = eq(lhs, rhs);
+			const property = fc.property(
+				fc.uniqueArray(fc.anything()).map((elems) => new Set(elems)),
+				fc.uniqueArray(fc.anything()).map((elems) => new Set(elems)),
+				(lhs, rhs) => {
+					const result = eq(lhs, rhs);
 
-						const expected = (() => {
-							if (lhs.size !== rhs.size) {
+					const expected = (() => {
+						if (lhs.size !== rhs.size) {
+							return false;
+						}
+						for (const val of lhs) {
+							if (!rhs.has(val)) {
 								return false;
 							}
-							for (const val of lhs) {
-								if (!rhs.has(val)) {
-									return false;
-								}
-							}
-							return true;
-						})();
+						}
+						return true;
+					})();
 
-						expect(result).to.equal(expected);
-					},
-				),
+					expect(result).to.equal(expected);
+				},
 			);
+			fc.assert(property);
 		});
 
 		it("implements a lawful equivalence relation", () => {
@@ -62,25 +57,20 @@ describe("Set", () => {
 
 	describe("#[Semigroup.cmb]", () => {
 		it("takes the union of the sets", () => {
-			fc.assert(
-				fc.property(
-					fc
-						.uniqueArray(fc.anything())
-						.map((elems) => new Set(elems)),
-					fc
-						.uniqueArray(fc.anything())
-						.map((elems) => new Set(elems)),
-					(lhs, rhs) => {
-						const result = cmb(lhs, rhs);
-						const expected = new Set([...lhs, ...rhs]);
+			const property = fc.property(
+				fc.uniqueArray(fc.anything()).map((elems) => new Set(elems)),
+				fc.uniqueArray(fc.anything()).map((elems) => new Set(elems)),
+				(lhs, rhs) => {
+					const result = cmb(lhs, rhs);
+					const expected = new Set([...lhs, ...rhs]);
 
-						expect(result.size).to.equal(expected.size);
-						for (const val of result) {
-							expect(expected.has(val)).to.be.true;
-						}
-					},
-				),
+					expect(result.size).to.equal(expected.size);
+					for (const val of result) {
+						expect(expected.has(val)).to.be.true;
+					}
+				},
 			);
+			fc.assert(property);
 		});
 
 		it("implements a lawful semigroup", () => {

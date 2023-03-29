@@ -25,13 +25,12 @@ import "./string.js";
 describe("Function", () => {
 	describe("#[Semigroup.cmb]", () => {
 		it("combines the function results", () => {
-			fc.assert(
-				fc.property(fc.string(), (val) => {
-					const f = cmb(id<string>, id);
-					const result = f(val);
-					expect(result).to.equal(cmb(val, val));
-				}),
-			);
+			const property = fc.property(fc.string(), (val) => {
+				const f = cmb(id<string>, id);
+				const result = f(val);
+				expect(result).to.equal(cmb(val, val));
+			});
+			fc.assert(property);
 		});
 
 		it("implements a lawful semigroup", () => {
@@ -39,16 +38,15 @@ describe("Function", () => {
 				A extends Semigroup<A> & Eq<A>,
 			>(arb: fc.Arbitrary<A>): void {
 				type Id<in out A> = (val: A) => A;
-				fc.assert(
-					fc.property(arb, (val) => {
-						expect(
-							eq(
-								cmb<Id<A>>(id, cmb(id, id))(val),
-								cmb<Id<A>>(cmb(id, id), id)(val),
-							),
-						).to.be.true;
-					}),
-				);
+				const property = fc.property(arb, (val) => {
+					expect(
+						eq(
+							cmb<Id<A>>(id, cmb(id, id))(val),
+							cmb<Id<A>>(cmb(id, id), id)(val),
+						),
+					).to.be.true;
+				});
+				fc.assert(property);
 			}
 
 			expectLawfulFunctionSemigroup(fc.string());
