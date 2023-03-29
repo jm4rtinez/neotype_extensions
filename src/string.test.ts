@@ -28,11 +28,14 @@ import "./string.js";
 describe("String", () => {
 	describe("#[Eq.eq]", () => {
 		it("compares the strings strictly", () => {
-			fc.assert(
-				fc.property(fc.string(), fc.string(), (x, y) => {
-					expect(eq(x, y)).to.equal(x === y);
-				}),
+			const property = fc.property(
+				fc.string(),
+				fc.string(),
+				(lhs, rhs) => {
+					expect(eq(lhs, rhs)).to.equal(lhs === rhs);
+				},
 			);
+			fc.assert(property);
 		});
 
 		it("implements a lawful equivalence relation", () => {
@@ -42,17 +45,20 @@ describe("String", () => {
 
 	describe("#[Ord.cmp]", () => {
 		it("compares the strings lexicographically by their character code points", () => {
-			fc.assert(
-				fc.property(fc.string(), fc.string(), (x, y) => {
-					expect(cmp(x, y)).to.equal(
-						x < y
+			const property = fc.property(
+				fc.string(),
+				fc.string(),
+				(lhs, rhs) => {
+					expect(cmp(lhs, rhs)).to.equal(
+						lhs < rhs
 							? Ordering.less
-							: x > y
+							: lhs > rhs
 							? Ordering.greater
 							: Ordering.equal,
 					);
-				}),
+				},
 			);
+			fc.assert(property);
 		});
 
 		it("implements a lawful total order", () => {
@@ -62,11 +68,14 @@ describe("String", () => {
 
 	describe("#[Semigroup.cmb]", () => {
 		it("concatenates the strings", () => {
-			fc.assert(
-				fc.property(fc.string(), fc.string(), (x, y) => {
-					expect(cmb(x, y)).to.equal(x + y);
-				}),
+			const property = fc.property(
+				fc.string(),
+				fc.string(),
+				(lhs, rhs) => {
+					expect(cmb(lhs, rhs)).to.equal(lhs + rhs);
+				},
 			);
+			fc.assert(property);
 		});
 
 		it("implements a lawful semigroup", () => {

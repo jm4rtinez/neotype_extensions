@@ -30,15 +30,14 @@ import "./string.js";
 describe("Array", () => {
 	describe("#[Eq.eq]", () => {
 		it("compares the arrays lexicographically", () => {
-			fc.assert(
-				fc.property(
-					fc.array(fc.float({ noNaN: true })),
-					fc.array(fc.float({ noNaN: true })),
-					(xs, ys) => {
-						expect(eq(xs, ys)).to.equal(ieq(xs, ys));
-					},
-				),
+			const property = fc.property(
+				fc.array(fc.float({ noNaN: true })),
+				fc.array(fc.float({ noNaN: true })),
+				(lhs, rhs) => {
+					expect(eq(lhs, rhs)).to.equal(ieq(lhs, rhs));
+				},
 			);
+			fc.assert(property);
 		});
 
 		it("implements a lawful equivalence relation", () => {
@@ -48,15 +47,14 @@ describe("Array", () => {
 
 	describe("#[Ord.cmp]", () => {
 		it("compares the arrays lexicographically", () => {
-			fc.assert(
-				fc.property(
-					fc.array(fc.float({ noNaN: true })),
-					fc.array(fc.float({ noNaN: true })),
-					(xs, ys) => {
-						expect(cmp(xs, ys)).to.equal(icmp(xs, ys));
-					},
-				),
+			const property = fc.property(
+				fc.array(fc.float({ noNaN: true })),
+				fc.array(fc.float({ noNaN: true })),
+				(lhs, rhs) => {
+					expect(cmp(lhs, rhs)).to.equal(icmp(lhs, rhs));
+				},
 			);
+			fc.assert(property);
 		});
 
 		it("implements a lawful total order", () => {
@@ -66,15 +64,14 @@ describe("Array", () => {
 
 	describe("#[Semigroup.cmb]", () => {
 		it("concatenates the arrays", () => {
-			fc.assert(
-				fc.property(
-					fc.array(fc.anything()),
-					fc.array(fc.anything()),
-					(xs, ys) => {
-						expect(cmb(xs, ys)).to.deep.equal([...xs, ...ys]);
-					},
-				),
+			const property = fc.property(
+				fc.array(fc.anything()),
+				fc.array(fc.anything()),
+				(lhs, rhs) => {
+					expect(cmb(lhs, rhs)).to.deep.equal([...lhs, ...rhs]);
+				},
 			);
+			fc.assert(property);
 		});
 
 		it("implements a lawful semigroup", () => {
@@ -86,31 +83,31 @@ describe("Array", () => {
 describe("ReadonlyArray", () => {
 	describe("#[Eq.eq]", () => {
 		it("compares the readonly array and non-readonly array to each other", () => {
-			const xs: readonly number[] = [];
-			const ys: number[] = [];
-			eq(xs, xs);
-			eq(xs, ys);
-			eq(ys, xs);
+			const readonly: readonly number[] = [];
+			const writable: number[] = [];
+			eq(readonly, readonly);
+			eq(readonly, writable);
+			eq(writable, readonly);
 		});
 	});
 
 	describe("#[Ord.cmp]", () => {
 		it("compares the readonly array and non-readonly array to each other", () => {
-			const xs: readonly number[] = [];
-			const ys: number[] = [];
-			cmp(xs, xs);
-			cmp(xs, ys);
-			cmp(ys, xs);
+			const readonly: readonly number[] = [];
+			const writable: number[] = [];
+			cmp(readonly, readonly);
+			cmp(readonly, writable);
+			cmp(writable, readonly);
 		});
 	});
 
 	describe("#[Semigroup.cmb]", () => {
 		it("combines the readonly array and non-readonly array with each other", () => {
-			const xs: readonly unknown[] = [];
-			const ys: unknown[] = [];
-			cmb(xs, xs);
-			cmb(xs, ys);
-			cmb(ys, xs);
+			const readonly: readonly number[] = [];
+			const writable: number[] = [];
+			cmb(readonly, readonly);
+			cmb(readonly, writable);
+			cmb(writable, readonly);
 		});
 	});
 });
@@ -118,19 +115,20 @@ describe("ReadonlyArray", () => {
 describe("tuple literal", () => {
 	describe("#[Eq.eq]", () => {
 		it("compares the tuple literals lexicographically", () => {
-			fc.assert(
-				fc.property(
-					fc.float({ noNaN: true }),
-					fc.string(),
-					fc.float({ noNaN: true }),
-					fc.string(),
-					(a, x, b, y) => {
-						const xs: [number, string] = [a, x];
-						const ys: [number, string] = [b, y];
-						expect(eq(xs, ys)).to.equal(eq(a, b) && eq(x, y));
-					},
-				),
+			const property = fc.property(
+				fc.float({ noNaN: true }),
+				fc.string(),
+				fc.float({ noNaN: true }),
+				fc.string(),
+				(lhs0, lhs1, rhs0, rhs1) => {
+					const lhs: [number, string] = [lhs0, lhs1];
+					const rhs: [number, string] = [rhs0, rhs1];
+					expect(eq(lhs, rhs)).to.equal(
+						eq(lhs0, rhs0) && eq(lhs1, rhs1),
+					);
+				},
 			);
+			fc.assert(property);
 		});
 
 		it("implements a lawful equivalence relation", () => {
@@ -140,19 +138,20 @@ describe("tuple literal", () => {
 
 	describe("#[Ord.cmp]", () => {
 		it("compares the tuple literals lexicographically", () => {
-			fc.assert(
-				fc.property(
-					fc.float({ noNaN: true }),
-					fc.string(),
-					fc.float({ noNaN: true }),
-					fc.string(),
-					(a, x, b, y) => {
-						const xs: [number, string] = [a, x];
-						const ys: [number, string] = [b, y];
-						expect(cmp(xs, ys)).to.equal(cmb(cmp(a, b), cmp(x, y)));
-					},
-				),
+			const property = fc.property(
+				fc.float({ noNaN: true }),
+				fc.string(),
+				fc.float({ noNaN: true }),
+				fc.string(),
+				(lhs0, lhs1, rhs0, rhs1) => {
+					const lhs: [number, string] = [lhs0, lhs1];
+					const rhs: [number, string] = [rhs0, rhs1];
+					expect(cmp(lhs, rhs)).to.equal(
+						cmb(cmp(lhs0, rhs0), cmp(lhs1, rhs1)),
+					);
+				},
 			);
+			fc.assert(property);
 		});
 
 		it("implements a lawful total order", () => {
@@ -164,21 +163,21 @@ describe("tuple literal", () => {
 describe("readonly tuple literal", () => {
 	describe("#[Eq.eq]", () => {
 		it("compares the readonly tuple literal and non-readonly tuple literal to each other", () => {
-			const xs: readonly [number, string] = [0, ""];
-			const ys: [number, string] = [0, ""];
-			eq(xs, xs);
-			eq(xs, ys);
-			eq(ys, xs);
+			const readonly: readonly [number, string] = [0, ""];
+			const writable: [number, string] = [0, ""];
+			eq(readonly, readonly);
+			eq(readonly, writable);
+			eq(writable, readonly);
 		});
 	});
 
 	describe("#[Ord.cmp]", () => {
 		it("compares the readonly tuple literal and non-readonly tuple literal to each other", () => {
-			const xs: readonly [number, string] = [0, ""];
-			const ys: [number, string] = [0, ""];
-			cmp(xs, xs);
-			cmp(xs, ys);
-			cmp(ys, xs);
+			const readonly: readonly [number, string] = [0, ""];
+			const writable: [number, string] = [0, ""];
+			cmp(readonly, readonly);
+			cmp(readonly, writable);
+			cmp(writable, readonly);
 		});
 	});
 });

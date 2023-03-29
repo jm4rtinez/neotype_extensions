@@ -23,15 +23,14 @@ import "./number.js";
 describe("Number", () => {
 	describe("#[Eq.eq]", () => {
 		it("compares the numbers strictly", () => {
-			fc.assert(
-				fc.property(
-					fc.float({ noNaN: true }),
-					fc.float({ noNaN: true }),
-					(x, y) => {
-						expect(eq(x, y)).to.equal(x === y);
-					},
-				),
+			const property = fc.property(
+				fc.float({ noNaN: true }),
+				fc.float({ noNaN: true }),
+				(lhs, rhs) => {
+					expect(eq(lhs, rhs)).to.equal(lhs === rhs);
+				},
 			);
+			fc.assert(property);
 		});
 
 		it("implements a lawful equivalence relation", () => {
@@ -41,15 +40,16 @@ describe("Number", () => {
 
 	describe("#[Ord.cmp]", () => {
 		it("compares the numbers as ordered from least to greatest", () => {
-			fc.assert(
-				fc.property(
-					fc.float({ noNaN: true }),
-					fc.float({ noNaN: true }),
-					(x, y) => {
-						expect(cmp(x, y)).to.equal(Ordering.fromNumber(x - y));
-					},
-				),
+			const property = fc.property(
+				fc.float({ noNaN: true }),
+				fc.float({ noNaN: true }),
+				(lhs, rhs) => {
+					expect(cmp(lhs, rhs)).to.equal(
+						Ordering.fromNumber(lhs - rhs),
+					);
+				},
 			);
+			fc.assert(property);
 		});
 
 		it("implements a lawful total order", () => {

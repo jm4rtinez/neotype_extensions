@@ -28,17 +28,20 @@ import "./uint8_clamped_array.js";
 describe("Uint8ClampedArray", () => {
 	describe("#[Eq.eq]", () => {
 		it("compares the arrays lexicographically", () => {
-			fc.assert(
-				fc.property(
-					fc.uint8ClampedArray(),
-					fc.uint8ClampedArray(),
-					(xs, ys) => {
-						expect(eq(xs, ys)).to.equal(
-							ieqBy(xs, ys, (x, y) => x === y),
-						);
-					},
-				),
+			const property = fc.property(
+				fc.uint8ClampedArray(),
+				fc.uint8ClampedArray(),
+				(lhs, rhs) => {
+					expect(eq(lhs, rhs)).to.equal(
+						ieqBy(
+							lhs,
+							rhs,
+							(lhsElem, rhsElem) => lhsElem === rhsElem,
+						),
+					);
+				},
 			);
+			fc.assert(property);
 		});
 
 		it("implements a lawful equivalence relation", () => {
@@ -48,19 +51,18 @@ describe("Uint8ClampedArray", () => {
 
 	describe("#[Ord.cmp]", () => {
 		it("compares the arrays lexicographically", () => {
-			fc.assert(
-				fc.property(
-					fc.uint8ClampedArray(),
-					fc.uint8ClampedArray(),
-					(xs, ys) => {
-						expect(cmp(xs, ys)).to.equal(
-							icmpBy(xs, ys, (x, y) =>
-								Ordering.fromNumber(x - y),
-							),
-						);
-					},
-				),
+			const property = fc.property(
+				fc.uint8ClampedArray(),
+				fc.uint8ClampedArray(),
+				(lhs, rhs) => {
+					expect(cmp(lhs, rhs)).to.equal(
+						icmpBy(lhs, rhs, (lhsElem, rhsElem) =>
+							Ordering.fromNumber(lhsElem - rhsElem),
+						),
+					);
+				},
 			);
+			fc.assert(property);
 		});
 
 		it("implements a lawful total order", () => {
@@ -70,24 +72,22 @@ describe("Uint8ClampedArray", () => {
 
 	describe("#[Semigroup.cmb]", () => {
 		it("concatenates the arrays", () => {
-			fc.assert(
-				fc.property(
-					fc.uint8ClampedArray(),
-					fc.uint8ClampedArray(),
-					(xs, ys) => {
-						const result = cmb(xs, ys);
+			const property = fc.property(
+				fc.uint8ClampedArray(),
+				fc.uint8ClampedArray(),
+				(lhs, rhs) => {
+					const result = cmb(lhs, rhs);
 
-						const exp = new Uint8ClampedArray(
-							xs.length + ys.length,
-						);
-						exp.set(xs);
-						exp.set(ys, xs.length);
+					const expected = new Uint8ClampedArray(
+						lhs.length + rhs.length,
+					);
+					expected.set(lhs);
+					expected.set(rhs, lhs.length);
 
-						expect(result).to.deep.equal(exp);
-						expect(exp.length).to.equal(xs.length + ys.length);
-					},
-				),
+					expect(result).to.deep.equal(expected);
+				},
 			);
+			fc.assert(property);
 		});
 
 		it("implements a lawful semigroup", () => {

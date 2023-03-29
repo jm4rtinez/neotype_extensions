@@ -28,17 +28,20 @@ import "./big_int64_array.js";
 describe("BigInt64Array", () => {
 	describe("#[Eq.eq]", () => {
 		it("compares the arrays lexicographically", () => {
-			fc.assert(
-				fc.property(
-					fc.bigInt64Array(),
-					fc.bigInt64Array(),
-					(xs, ys) => {
-						expect(eq(xs, ys)).to.equal(
-							ieqBy(xs, ys, (x, y) => x === y),
-						);
-					},
-				),
+			const property = fc.property(
+				fc.bigInt64Array(),
+				fc.bigInt64Array(),
+				(lhs, rhs) => {
+					expect(eq(lhs, rhs)).to.equal(
+						ieqBy(
+							lhs,
+							rhs,
+							(lhsElem, rhsElem) => lhsElem === rhsElem,
+						),
+					);
+				},
 			);
+			fc.assert(property);
 		});
 
 		it("implements a lawful equivalence relation", () => {
@@ -48,19 +51,18 @@ describe("BigInt64Array", () => {
 
 	describe("#[Ord.cmp]", () => {
 		it("compares the arrays lexicographically", () => {
-			fc.assert(
-				fc.property(
-					fc.bigInt64Array(),
-					fc.bigInt64Array(),
-					(xs, ys) => {
-						expect(cmp(xs, ys)).to.equal(
-							icmpBy(xs, ys, (x, y) =>
-								Ordering.fromNumber(x - y),
-							),
-						);
-					},
-				),
+			const property = fc.property(
+				fc.bigInt64Array(),
+				fc.bigInt64Array(),
+				(lhs, rhs) => {
+					expect(cmp(lhs, rhs)).to.equal(
+						icmpBy(lhs, rhs, (lhsElem, rhsElem) =>
+							Ordering.fromNumber(lhsElem - rhsElem),
+						),
+					);
+				},
 			);
+			fc.assert(property);
 		});
 
 		it("implements a lawful total order", () => {
@@ -70,22 +72,20 @@ describe("BigInt64Array", () => {
 
 	describe("#[Semigroup.cmb]", () => {
 		it("concatenates the arrays", () => {
-			fc.assert(
-				fc.property(
-					fc.bigInt64Array(),
-					fc.bigInt64Array(),
-					(xs, ys) => {
-						const result = cmb(xs, ys);
+			const property = fc.property(
+				fc.bigInt64Array(),
+				fc.bigInt64Array(),
+				(lhs, rhs) => {
+					const result = cmb(lhs, rhs);
 
-						const exp = new BigInt64Array(xs.length + ys.length);
-						exp.set(xs);
-						exp.set(ys, xs.length);
+					const expected = new BigInt64Array(lhs.length + rhs.length);
+					expected.set(lhs);
+					expected.set(rhs, lhs.length);
 
-						expect(result).to.deep.equal(exp);
-						expect(exp.length).to.equal(xs.length + ys.length);
-					},
-				),
+					expect(result).to.deep.equal(expected);
+				},
 			);
+			fc.assert(property);
 		});
 
 		it("implements a lawful semigroup", () => {
