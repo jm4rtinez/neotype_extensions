@@ -31,9 +31,13 @@ describe("#[Eq.eq]", () => {
 			fc.property(
 				fc.float32Array({ noNaN: true }),
 				fc.float32Array({ noNaN: true }),
-				(xs, ys) => {
-					expect(eq(xs, ys)).to.equal(
-						ieqBy(xs, ys, (x, y) => x === y),
+				(lhs, rhs) => {
+					expect(eq(lhs, rhs)).to.equal(
+						ieqBy(
+							lhs,
+							rhs,
+							(lhsElem, rhsElem) => lhsElem === rhsElem,
+						),
 					);
 				},
 			),
@@ -51,9 +55,11 @@ describe("#[Ord.cmp]", () => {
 			fc.property(
 				fc.float32Array({ noNaN: true }),
 				fc.float32Array({ noNaN: true }),
-				(xs, ys) => {
-					expect(cmp(xs, ys)).to.equal(
-						icmpBy(xs, ys, (x, y) => Ordering.fromNumber(x - y)),
+				(lhs, rhs) => {
+					expect(cmp(lhs, rhs)).to.equal(
+						icmpBy(lhs, rhs, (lhsElem, rhsElem) =>
+							Ordering.fromNumber(lhsElem - rhsElem),
+						),
 					);
 				},
 			),
@@ -71,15 +77,14 @@ describe("#[Semigroup.cmb]", () => {
 			fc.property(
 				fc.float32Array({ noNaN: true }),
 				fc.float32Array({ noNaN: true }),
-				(xs, ys) => {
-					const result = cmb(xs, ys);
+				(lhs, rhs) => {
+					const result = cmb(lhs, rhs);
 
-					const exp = new Float32Array(xs.length + ys.length);
-					exp.set(xs);
-					exp.set(ys, xs.length);
+					const expected = new Float32Array(lhs.length + rhs.length);
+					expected.set(lhs);
+					expected.set(rhs, lhs.length);
 
-					expect(result).to.deep.equal(exp);
-					expect(exp.length).to.equal(xs.length + ys.length);
+					expect(result).to.deep.equal(expected);
 				},
 			),
 		);

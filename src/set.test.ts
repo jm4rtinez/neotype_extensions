@@ -26,24 +26,28 @@ describe("Set", () => {
 		it("compares the elements strictly", () => {
 			fc.assert(
 				fc.property(
-					fc.uniqueArray(fc.anything()).map((xs) => new Set(xs)),
-					fc.uniqueArray(fc.anything()).map((xs) => new Set(xs)),
-					(xs, ys) => {
-						const result = eq(xs, ys);
+					fc
+						.uniqueArray(fc.anything())
+						.map((elems) => new Set(elems)),
+					fc
+						.uniqueArray(fc.anything())
+						.map((elems) => new Set(elems)),
+					(lhs, rhs) => {
+						const result = eq(lhs, rhs);
 
-						const exp = (() => {
-							if (xs.size !== ys.size) {
+						const expected = (() => {
+							if (lhs.size !== rhs.size) {
 								return false;
 							}
-							for (const x of xs) {
-								if (!ys.has(x)) {
+							for (const val of lhs) {
+								if (!rhs.has(val)) {
 									return false;
 								}
 							}
 							return true;
 						})();
 
-						expect(result).to.equal(exp);
+						expect(result).to.equal(expected);
 					},
 				),
 			);
@@ -51,7 +55,7 @@ describe("Set", () => {
 
 		it("implements a lawful equivalence relation", () => {
 			expectLawfulEq(
-				fc.uniqueArray(fc.anything()).map((xs) => new Set(xs)),
+				fc.uniqueArray(fc.anything()).map((elems) => new Set(elems)),
 			);
 		});
 	});
@@ -60,15 +64,19 @@ describe("Set", () => {
 		it("takes the union of the sets", () => {
 			fc.assert(
 				fc.property(
-					fc.uniqueArray(fc.anything()).map((xs) => new Set(xs)),
-					fc.uniqueArray(fc.anything()).map((xs) => new Set(xs)),
-					(xs, ys) => {
-						const result = cmb(xs, ys);
-						const exp = new Set([...xs, ...ys]);
+					fc
+						.uniqueArray(fc.anything())
+						.map((elems) => new Set(elems)),
+					fc
+						.uniqueArray(fc.anything())
+						.map((elems) => new Set(elems)),
+					(lhs, rhs) => {
+						const result = cmb(lhs, rhs);
+						const expected = new Set([...lhs, ...rhs]);
 
-						expect(result.size).to.equal(exp.size);
-						for (const x of result) {
-							expect(exp.has(x)).to.be.true;
+						expect(result.size).to.equal(expected.size);
+						for (const val of result) {
+							expect(expected.has(val)).to.be.true;
 						}
 					},
 				),
@@ -77,7 +85,7 @@ describe("Set", () => {
 
 		it("implements a lawful semigroup", () => {
 			expectLawfulSemigroup(
-				fc.uniqueArray(fc.string()).map((xs) => new Set(xs)),
+				fc.uniqueArray(fc.string()).map((elems) => new Set(elems)),
 			);
 		});
 	});
@@ -86,21 +94,21 @@ describe("Set", () => {
 describe("ReadonlySet", () => {
 	describe("#[Eq.eq]", () => {
 		it("compares the readonly set and non-readonly set to each other", () => {
-			const xs: ReadonlySet<unknown> = new Set();
-			const ys: Set<unknown> = new Set();
-			eq(xs, xs);
-			eq(xs, ys);
-			eq(ys, xs);
+			const readonly: ReadonlySet<unknown> = new Set();
+			const writable: Set<unknown> = new Set();
+			eq(readonly, readonly);
+			eq(readonly, writable);
+			eq(writable, readonly);
 		});
 	});
 
 	describe("#[Semigroup.cmb]", () => {
 		it("combines the readonly set and non-readonly set with each other", () => {
-			const xs: ReadonlySet<unknown> = new Set();
-			const ys: Set<unknown> = new Set();
-			cmb(xs, xs);
-			cmb(xs, ys);
-			cmb(ys, xs);
+			const readonly: ReadonlySet<unknown> = new Set();
+			const writable: Set<unknown> = new Set();
+			cmb(readonly, readonly);
+			cmb(readonly, writable);
+			cmb(writable, readonly);
 		});
 	});
 });

@@ -9,8 +9,8 @@ describe("big_int.js", () => {
 		describe("#[Eq.eq]", () => {
 			it("compares the bigints strictly", () => {
 				fc.assert(
-					fc.property(fc.bigInt(), fc.bigInt(), (x, y) => {
-						expect(eq(x, y)).to.equal(x === y);
+					fc.property(fc.bigInt(), fc.bigInt(), (lhs, rhs) => {
+						expect(eq(lhs, rhs)).to.equal(lhs === rhs);
 					}),
 				);
 			});
@@ -23,8 +23,10 @@ describe("big_int.js", () => {
 		describe("#[Ord.cmp]", () => {
 			it("compares the bigints as ordered from least to greatest", () => {
 				fc.assert(
-					fc.property(fc.bigInt(), fc.bigInt(), (x, y) => {
-						expect(cmp(x, y)).to.equal(Ordering.fromNumber(x - y));
+					fc.property(fc.bigInt(), fc.bigInt(), (lhs, rhs) => {
+						expect(cmp(lhs, rhs)).to.equal(
+							Ordering.fromNumber(lhs - rhs),
+						);
 					}),
 				);
 			});

@@ -24,8 +24,10 @@ describe("Date", () => {
 	describe("#[Eq.eq]", () => {
 		it("compares the dates using their numerical representation", () => {
 			fc.assert(
-				fc.property(fc.date(), fc.date(), (x, y) => {
-					expect(eq(x, y)).to.equal(x.getTime() === y.getTime());
+				fc.property(fc.date(), fc.date(), (lhs, rhs) => {
+					expect(eq(lhs, rhs)).to.equal(
+						lhs.getTime() === rhs.getTime(),
+					);
 				}),
 			);
 		});
@@ -38,9 +40,9 @@ describe("Date", () => {
 	describe("#[Ord.cmp]", () => {
 		it("compares the dates using their numerical representation", () => {
 			fc.assert(
-				fc.property(fc.date(), fc.date(), (x, y) => {
-					expect(cmp(x, y)).to.equal(
-						Ordering.fromNumber(x.getTime() - y.getTime()),
+				fc.property(fc.date(), fc.date(), (lhs, rhs) => {
+					expect(cmp(lhs, rhs)).to.equal(
+						Ordering.fromNumber(lhs.getTime() - rhs.getTime()),
 					);
 				}),
 			);

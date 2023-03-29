@@ -33,23 +33,23 @@ describe("Map", () => {
 					fc
 						.uniqueArray(fc.tuple(fc.anything(), fc.string()))
 						.map((entries) => new Map(entries)),
-					(xs, ys) => {
-						const result = eq(xs, ys);
+					(lhs, rhs) => {
+						const result = eq(lhs, rhs);
 
-						const exp = (() => {
-							if (xs.size !== ys.size) {
+						const expected = (() => {
+							if (lhs.size !== rhs.size) {
 								return false;
 							}
-							for (const [kx, x] of xs.entries()) {
+							for (const [key, val] of lhs.entries()) {
 								// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-								if (!(ys.has(kx) && eq(ys.get(kx)!, x))) {
+								if (!(rhs.has(key) && eq(rhs.get(key)!, val))) {
 									return false;
 								}
 							}
 							return true;
 						})();
 
-						expect(result).to.equal(exp);
+						expect(result).to.equal(expected);
 					},
 				),
 			);
@@ -74,14 +74,14 @@ describe("Map", () => {
 					fc
 						.uniqueArray(fc.tuple(fc.anything(), fc.anything()))
 						.map((entries) => new Map(entries)),
-					(xs, ys) => {
-						const result = cmb(xs, ys);
-						const exp = new Map([...xs, ...ys]);
+					(lhs, rhs) => {
+						const result = cmb(lhs, rhs);
+						const expected = new Map([...lhs, ...rhs]);
 
-						expect(result.size).to.equal(exp.size);
-						for (const [kx, x] of result) {
-							expect(exp.has(kx)).to.be.true;
-							expect(exp.get(kx)).to.deep.equal(x);
+						expect(result.size).to.equal(expected.size);
+						for (const [key, val] of result) {
+							expect(expected.has(key)).to.be.true;
+							expect(expected.get(key)).to.deep.equal(val);
 						}
 					},
 				),
@@ -101,21 +101,21 @@ describe("Map", () => {
 describe("ReadonlyMap", () => {
 	describe("#[Eq.eq]", () => {
 		it("compares the readonly map and non-readonly map to each other", () => {
-			const xs: ReadonlyMap<unknown, string> = new Map();
-			const ys: Map<unknown, string> = new Map();
-			eq(xs, xs);
-			eq(xs, ys);
-			eq(ys, xs);
+			const readonly: ReadonlyMap<unknown, string> = new Map();
+			const writable: Map<unknown, string> = new Map();
+			eq(readonly, readonly);
+			eq(readonly, writable);
+			eq(writable, readonly);
 		});
 	});
 
 	describe("#[Semigroup.cmb]", () => {
 		it("combines the readonly map and non-readonly map with each other", () => {
-			const xs: ReadonlyMap<unknown, unknown> = new Map();
-			const ys: Map<unknown, unknown> = new Map();
-			cmb(xs, xs);
-			cmb(xs, ys);
-			cmb(ys, xs);
+			const readonly: ReadonlyMap<unknown, unknown> = new Map();
+			const writable: Map<unknown, unknown> = new Map();
+			cmb(readonly, readonly);
+			cmb(readonly, writable);
+			cmb(writable, readonly);
 		});
 	});
 });

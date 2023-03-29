@@ -27,8 +27,8 @@ describe("Number", () => {
 				fc.property(
 					fc.float({ noNaN: true }),
 					fc.float({ noNaN: true }),
-					(x, y) => {
-						expect(eq(x, y)).to.equal(x === y);
+					(lhs, rhs) => {
+						expect(eq(lhs, rhs)).to.equal(lhs === rhs);
 					},
 				),
 			);
@@ -45,8 +45,10 @@ describe("Number", () => {
 				fc.property(
 					fc.float({ noNaN: true }),
 					fc.float({ noNaN: true }),
-					(x, y) => {
-						expect(cmp(x, y)).to.equal(Ordering.fromNumber(x - y));
+					(lhs, rhs) => {
+						expect(cmp(lhs, rhs)).to.equal(
+							Ordering.fromNumber(lhs - rhs),
+						);
 					},
 				),
 			);

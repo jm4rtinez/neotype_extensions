@@ -24,8 +24,8 @@ describe("Boolean", () => {
 	describe("#[Eq.eq]", () => {
 		it("compares the booleans strictly", () => {
 			fc.assert(
-				fc.property(fc.boolean(), fc.boolean(), (x, y) => {
-					expect(eq(x, y)).to.equal(x === y);
+				fc.property(fc.boolean(), fc.boolean(), (lhs, rhs) => {
+					expect(eq(lhs, rhs)).to.equal(lhs === rhs);
 				}),
 			);
 		});
@@ -38,9 +38,9 @@ describe("Boolean", () => {
 	describe("#[Ord.cmp]", () => {
 		it("compares false as less than true", () => {
 			fc.assert(
-				fc.property(fc.boolean(), fc.boolean(), (x, y) => {
-					expect(cmp(x, y)).to.equal(
-						Ordering.fromNumber(Number(x) - Number(y)),
+				fc.property(fc.boolean(), fc.boolean(), (lhs, rhs) => {
+					expect(cmp(lhs, rhs)).to.equal(
+						Ordering.fromNumber(Number(lhs) - Number(rhs)),
 					);
 				}),
 			);

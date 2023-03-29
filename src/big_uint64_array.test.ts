@@ -32,9 +32,13 @@ describe("BigUint64Array", () => {
 				fc.property(
 					fc.bigUint64Array(),
 					fc.bigUint64Array(),
-					(xs, ys) => {
-						expect(eq(xs, ys)).to.equal(
-							ieqBy(xs, ys, (x, y) => x === y),
+					(lhs, rhs) => {
+						expect(eq(lhs, rhs)).to.equal(
+							ieqBy(
+								lhs,
+								rhs,
+								(lhsElem, rhsElem) => lhsElem === rhsElem,
+							),
 						);
 					},
 				),
@@ -52,10 +56,10 @@ describe("BigUint64Array", () => {
 				fc.property(
 					fc.bigUint64Array(),
 					fc.bigUint64Array(),
-					(xs, ys) => {
-						expect(cmp(xs, ys)).to.equal(
-							icmpBy(xs, ys, (x, y) =>
-								Ordering.fromNumber(x - y),
+					(lhs, rhs) => {
+						expect(cmp(lhs, rhs)).to.equal(
+							icmpBy(lhs, rhs, (lhsElem, rhsElem) =>
+								Ordering.fromNumber(lhsElem - rhsElem),
 							),
 						);
 					},
@@ -74,15 +78,16 @@ describe("BigUint64Array", () => {
 				fc.property(
 					fc.bigUint64Array(),
 					fc.bigUint64Array(),
-					(xs, ys) => {
-						const result = cmb(xs, ys);
+					(lhs, rhs) => {
+						const result = cmb(lhs, rhs);
 
-						const exp = new BigUint64Array(xs.length + ys.length);
-						exp.set(xs);
-						exp.set(ys, xs.length);
+						const expected = new BigUint64Array(
+							lhs.length + rhs.length,
+						);
+						expected.set(lhs);
+						expected.set(rhs, lhs.length);
 
-						expect(result).to.deep.equal(exp);
-						expect(exp.length).to.equal(xs.length + ys.length);
+						expect(result).to.deep.equal(expected);
 					},
 				),
 			);

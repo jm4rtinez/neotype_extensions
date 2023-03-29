@@ -25,12 +25,12 @@ describe("Promise", () => {
 	describe("#[Semigroup.cmb]", () => {
 		it("combines the fulfilled results", async () => {
 			await fc.assert(
-				fc.asyncProperty(fc.string(), fc.string(), async (x, y) => {
+				fc.asyncProperty(fc.string(), fc.string(), async (lhs, rhs) => {
 					const result = await cmb(
-						Promise.resolve(x),
-						Promise.resolve(y),
+						Promise.resolve(lhs),
+						Promise.resolve(rhs),
 					);
-					expect(result).to.equal(cmb(x, y));
+					expect(result).to.equal(cmb(lhs, rhs));
 				}),
 			);
 		});
@@ -40,16 +40,21 @@ describe("Promise", () => {
 				A extends Semigroup<A> & Eq<A>,
 			>(arb: fc.Arbitrary<Promise<A>>): Promise<void> {
 				await fc.assert(
-					fc.asyncProperty(arb, arb, arb, async (x, y, z) => {
-						const t0 = await cmb(x, cmb(y, z));
-						const t1 = await cmb(cmb(x, y), z);
-						expect(eq(t0, t1)).to.be.true;
-					}),
+					fc.asyncProperty(
+						arb,
+						arb,
+						arb,
+						async (first, second, third) => {
+							const t0 = await cmb(first, cmb(second, third));
+							const t1 = await cmb(cmb(first, second), third);
+							expect(eq(t0, t1)).to.be.true;
+						},
+					),
 				);
 			}
 
 			await expectLawfulPromiseSemigroup(
-				fc.string().map((x) => Promise.resolve(x)),
+				fc.string().map((val) => Promise.resolve(val)),
 			);
 		});
 	});
