@@ -1,10 +1,10 @@
 {
 	"name": "@neotype/extensions",
 	"version": "0.3.0",
-	"description": "Default implementations for Neotype equivalence relations, total orders, and semigroups for built-in JavaScript objects",
+	"description": "Default implementations for neotype_prelude equivalence relations, total orders, and semigroups for built-in JavaScript objects",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/jm4rtinez/neotype_extensions.git"
+		"url": "https://github.com/jmartinezmaes/neotype_extensions.git"
 	},
 	"keywords": [
 		"default",
@@ -18,9 +18,9 @@
 	],
 	"author": "Josh Martinez",
 	"license": "Apache-2.0",
-	"homepage": "https://github.com/jm4rtinez/neotype_extensions#readme",
+	"homepage": "https://github.com/jmartinezmaes/neotype_extensions#readme",
 	"bugs": {
-		"url": "https://github.com/jm4rtinez/neotype_extensions/issues"
+		"url": "https://github.com/jmartinezmaes/neotype_extensions/issues"
 	},
 	"files": [
 		"dist",

@@ -1,12 +1,12 @@
-# Neotype Extensions
+# neotype_extensions
 
-_Default implementations for [Neotype] equivalence relations, total orders, and_
-_semigroups for built-in JavaScript objects_
+_Default implementations for [neotype_prelude] equivalence relations, total_
+_orders, and semigroups for built-in JavaScript objects_
 
 ## Features
 
-Neotype Extensions provides default implementations for the Neotype `Eq`, `Ord`,
-and `Semigroup` interfaces for built-in JavaScript objects and their
+This library provides default implementations for the neotype_prelude `Eq`,
+`Ord`, and `Semigroup` interfaces for built-in JavaScript objects and their
 corresponding TypeScript definitions, including:
 
 -   Primitives: `boolean`, `number`, `bigint`, `string`, and `symbol`
@@ -15,10 +15,10 @@ corresponding TypeScript definitions, including:
     -   Tuple literals and `readonly` tuple literals
     -   `Set` and `ReadonlySet`
     -   `Map` and `ReadonlyMap`
--   Dates, Promises, and Functions
+-   Dates, promises, and functions
 -   Typed arrays
 
-The specific implementations are as follows:
+The specific implementations are:
 
 | Type                     | `Eq` | `Ord` | `Semigroup` |
 | ------------------------ | :--: | :---: | :---------: |
@@ -52,10 +52,10 @@ The specific implementations are as follows:
 
 ## Install
 
-Neotype Extensions is available on NPM.
+neotype_extensions is available on NPM.
 
 ```sh
-npm install @neotype/extensions
+npm install @neotype/extensions @neotype/prelude
 ```
 
 ## Working with modules
@@ -74,6 +74,6 @@ import "@neotype/extensions/string.js";
 
 See each module's documentation for recommended import practices.
 
-[neotype]: https://github.com/jm4rtinez/neotype_prelude
+[neotype_prelude]: https://github.com/jmartinezmaes/neotype_prelude
 [es6 modules]:
 	https://exploringjs.com/es6/ch_modules.html#sec_basics-of-es6-modules
