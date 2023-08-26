@@ -69,6 +69,9 @@ String.prototype[Ord.cmp] = function (that: string): Ordering {
 	return Ordering.equal;
 };
 
-String.prototype[Semigroup.cmb] = function (that: string): string {
+String.prototype[Semigroup.cmb] = function (
+	this: string,
+	that: string,
+): string {
 	return this + that;
 };

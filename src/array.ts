@@ -106,6 +106,6 @@ Array.prototype[Ord.cmp] = function <T extends Ord<T>>(
 	return icmp(this, that);
 };
 
-Array.prototype[Semigroup.cmb] = function <T>(that: T[]): T[] {
+Array.prototype[Semigroup.cmb] = function <T>(this: T[], that: T[]): T[] {
 	return [...this, ...that];
 };
