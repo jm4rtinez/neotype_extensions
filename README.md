@@ -1,7 +1,10 @@
 # neotype_extensions
 
-_Default implementations for [neotype_prelude] equivalence relations, total_
-_orders, and semigroups for built-in JavaScript objects_
+Default implementations for [neotype_prelude] equivalence relations, total
+orders, and semigroups for built-in JavaScript objects
+
+[![Build and Test](https://github.com/jmartinezmaes/neotype_extensions/actions/workflows/build_and_test.yml/badge.svg)](https://github.com/jmartinezmaes/neotype_prelude/actions/workflows/build_and_test.yml)
+[![NPM Version](https://img.shields.io/npm/v/@neotype/extensions?color=33cd56&logo=npm)](https://www.npmjs.com/package/@neotype/prelude)
 
 ## Features
 
@@ -22,33 +25,33 @@ The specific implementations are:
 
 | Type                     | `Eq` | `Ord` | `Semigroup` |
 | ------------------------ | :--: | :---: | :---------: |
-| `Array`                  |  ✔   |   ✔   |      ✔      |
-| `BigInt`                 |  ✔   |   ✔   |             |
-| `BigInt64Array`          |  ✔   |   ✔   |      ✔      |
-| `BigUint64Array`         |  ✔   |   ✔   |      ✔      |
-| `Boolean`                |  ✔   |   ✔   |             |
-| `Date`                   |  ✔   |   ✔   |             |
-| `Float32Array`           |  ✔   |   ✔   |      ✔      |
-| `Float64Array`           |  ✔   |   ✔   |      ✔      |
-| `Function`               |      |       |      ✔      |
-| `Int8Array`              |  ✔   |   ✔   |      ✔      |
-| `Int16Array`             |  ✔   |   ✔   |      ✔      |
-| `Int32Array`             |  ✔   |   ✔   |      ✔      |
-| `Map`                    |  ✔   |       |      ✔      |
-| `Number`                 |  ✔   |   ✔   |             |
-| `Promise`                |      |       |      ✔      |
-| `readonly` tuple literal |  ✔   |   ✔   |             |
-| `ReadonlyArray`          |  ✔   |   ✔   |      ✔      |
-| `ReadonlyMap`            |  ✔   |       |      ✔      |
-| `ReadonlySet`            |  ✔   |       |      ✔      |
-| `Set`                    |  ✔   |       |      ✔      |
-| `String`                 |  ✔   |   ✔   |      ✔      |
-| `Symbol`                 |  ✔   |       |             |
-| tuple literal            |  ✔   |   ✔   |             |
-| `Uint8Array`             |  ✔   |   ✔   |      ✔      |
-| `Uint8ClampedArray`      |  ✔   |   ✔   |      ✔      |
-| `Uint16Array`            |  ✔   |   ✔   |      ✔      |
-| `Uint32Array`            |  ✔   |   ✔   |      ✔      |
+| `Array`                  |  ✓   |   ✓   |      ✓      |
+| `BigInt`                 |  ✓   |   ✓   |             |
+| `BigInt64Array`          |  ✓   |   ✓   |      ✓      |
+| `BigUint64Array`         |  ✓   |   ✓   |      ✓      |
+| `Boolean`                |  ✓   |   ✓   |             |
+| `Date`                   |  ✓   |   ✓   |             |
+| `Float32Array`           |  ✓   |   ✓   |      ✓      |
+| `Float64Array`           |  ✓   |   ✓   |      ✓      |
+| `Function`               |      |       |      ✓      |
+| `Int8Array`              |  ✓   |   ✓   |      ✓      |
+| `Int16Array`             |  ✓   |   ✓   |      ✓      |
+| `Int32Array`             |  ✓   |   ✓   |      ✓      |
+| `Map`                    |  ✓   |       |      ✓      |
+| `Number`                 |  ✓   |   ✓   |             |
+| `Promise`                |      |       |      ✓      |
+| `readonly` tuple literal |  ✓   |   ✓   |             |
+| `ReadonlyArray`          |  ✓   |   ✓   |      ✓      |
+| `ReadonlyMap`            |  ✓   |       |      ✓      |
+| `ReadonlySet`            |  ✓   |       |      ✓      |
+| `Set`                    |  ✓   |       |      ✓      |
+| `String`                 |  ✓   |   ✓   |      ✓      |
+| `Symbol`                 |  ✓   |       |             |
+| tuple literal            |  ✓   |   ✓   |             |
+| `Uint8Array`             |  ✓   |   ✓   |      ✓      |
+| `Uint8ClampedArray`      |  ✓   |   ✓   |      ✓      |
+| `Uint16Array`            |  ✓   |   ✓   |      ✓      |
+| `Uint32Array`            |  ✓   |   ✓   |      ✓      |
 
 ## Install
 
