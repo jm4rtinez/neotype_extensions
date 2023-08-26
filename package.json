@@ -16,7 +16,7 @@
 		"prelude",
 		"semigroup"
 	],
-	"author": "Josh Martinez",
+	"author": "Joshua Martinez-Maes",
 	"license": "Apache-2.0",
 	"homepage": "https://github.com/jmartinezmaes/neotype_extensions#readme",
 	"bugs": {
