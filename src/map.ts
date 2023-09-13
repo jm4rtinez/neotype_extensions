@@ -15,7 +15,7 @@
  */
 
 /**
- * Augmentations for the `Map` and `ReadonlyMap` types.
+ * Augmentations for maps.
  *
  * @remarks
  *
@@ -27,10 +27,9 @@
  * import "@neotype/extensions/map.js";
  * ```
  *
- * ## Comparing `Map` and `ReadonlyMap`
+ * ## Comparing maps
  *
- * `Map` and `ReadonlyMap` have the following behavior as an equivalence
- * relation:
+ * Maps have the following behavior as an equivalence relation:
  *
  * -   A `Map<K, V>` or a `ReadonlyMap<K, V>` implements `Eq` when `V`
  *     implements `Eq`.
@@ -40,9 +39,9 @@
  *     3.   for each key, the corresponding values are equal.
  * -   Read-only and non-read-only maps can be compared to each other.
  *
- * ## `Map` and `ReadonlyMap` as semigroups
+ * ## Combining maps as a semigroup
  *
- * `Map` and `ReadonlyMap` implement `Semigroup`.
+ * Maps implement `Semigroup`.
  *
  * -   Maps are combined by taking their union.
  * -   If a key is mapped to two different values, only the right-hand map's

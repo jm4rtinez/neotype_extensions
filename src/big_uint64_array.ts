@@ -15,7 +15,7 @@
  */
 
 /**
- * Augmentations for the `BigUint64Array` type.
+ * Augmentations for `BigUint64Array`.
  *
  * @remarks
  *
@@ -31,15 +31,15 @@
  *
  * `BigUint64Array` implements `Eq` and `Ord`.
  *
- * -   Two `BigUint64Array` values are equal when they are the same length and
- *     their respective elements are strictly equal.
- * -   `BigUint64Array` values are compared lexicographically from left to
- *     right, and their elements are ordered from least to greatest.
+ * -   Two `BigUint64Array` are equal when they are the same length and their
+ *     respective elements are strictly equal.
+ * -   `BigUint64Array` are compared lexicographically from left to right, and
+ *     their elements are ordered from least to greatest.
  *
- * ## `BigUint64Array` as a semigroup
+ * ## Combining `BigUint64Array` as a semigroup
  *
- * `BigUint64Array` implements `Semigroup`. When combined, `BigUint64Array`
- * values are concatenated from left to right.
+ * `BigUint64Array` implements `Semigroup`. When combined, `BigUint64Array` are
+ * concatenated from left to right.
  *
  * @module
  */

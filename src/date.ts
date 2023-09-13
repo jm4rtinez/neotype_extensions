@@ -15,7 +15,7 @@
  */
 
 /**
- * Augmentations for the `Date` type.
+ * Augmentations for dates.
  *
  * @remarks
  *
@@ -27,16 +27,16 @@
  * import "@neotype/extensions/date.js";
  * ```
  *
- * ## Comparing `Date`
+ * ## Comparing dates
  *
- * `Date` implements `Eq` and `Ord`.
+ * Dates implement `Eq` and `Ord`.
  *
- * -   Two `Date` values are equal if they have the same representation in
- *     milleseconds since the [ECMAScript epoch][epoch].
- * -   `Date` values are ordered from least to greatest according to their
- *     representation in millseconds since the [ECMAScript epoch][epoch].
+ * -   Two dates are equal if they have the same representation in milleseconds
+ *     since the [ECMAScript epoch].
+ * -   Dates are ordered from least to greatest according to their
+ *     representation in millseconds since the [ECMAScript epoch].
  *
- * [epoch]:
+ * [ECMAScript epoch]:
  *     https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#the_ecmascript_epoch_and_timestamps
  *
  * @module

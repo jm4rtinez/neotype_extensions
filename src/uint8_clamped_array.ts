@@ -15,7 +15,7 @@
  */
 
 /**
- * Augmentations for the `Uint8ClampedArray` type.
+ * Augmentations for `Uint8ClampedArray`.
  *
  * @remarks
  *
@@ -31,15 +31,15 @@
  *
  * `Uint8ClampedArray` implements `Eq` and `Ord`.
  *
- * -   Two `Uint8ClampedArray` values are equal when they are the same length
- *     and their respective elements are strictly equal.
- * -   `Uint8ClampedArray` values are compared lexicographically from left to
- *     right, and their elements are ordered from least to greatest.
+ * -   Two `Uint8ClampedArray`  are equal when they are the same length and
+ *     their respective elements are strictly equal.
+ * -   `Uint8ClampedArray`  are compared lexicographically from left to right,
+ *     and their elements are ordered from least to greatest.
  *
- * ## `Uint8ClampedArray` as a semigroup
+ * ## Combining `Uint8ClampedArray` as a semigroup
  *
  * `Uint8ClampedArray` implements `Semigroup`. When combined, `Int8ClampedArray`
- * values are are concatenated from left to right.
+ * are are concatenated from left to right.
  *
  * @module
  */

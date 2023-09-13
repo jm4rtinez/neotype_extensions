@@ -15,7 +15,7 @@
  */
 
 /**
- * Augmentations for the `Boolean` type.
+ * Augmentations for booleans.
  *
  * @remarks
  *
@@ -27,11 +27,11 @@
  * import "@neotype/extensions/boolean.js";
  * ```
  *
- * ## Comparing `Boolean`
+ * ## Comparing booleans
  *
- * `Boolean` implements `Eq` and `Ord`.
+ * Booleans implement `Eq` and `Ord`.
  *
- * -   Two `Boolean` values are equal if they are both `false` or both `true`.
+ * -   Two booleans are equal if they are both `false` or both `true`.
  * -   When ordered, `false` always compares as less than `true`.
  *
  * @module

@@ -15,8 +15,7 @@
  */
 
 /**
- * Augmentations for the `Array`, `ReadonlyArray`, tuple literal, and `readonly`
- * tuple literal types.
+ * Augmentations for arrays and tuple literals.
  *
  * @remarks
  *
@@ -28,39 +27,39 @@
  * import "@neotype/extensions/array.js";
  * ```
  *
- * ## Comparing `Array`, `ReadonlyArray`, tuple literals, and `readonly` tuple
- * literals
+ * ## Comparing arrays and tuple literals
  *
- * `Array`, `ReadonlyArray`, tuple literals, and `readonly` tuple literals have
- * the following behavior as an equivalence relation:
+ * Arrays and tuple literals have the following behavior as an equivalence
+ * relation:
  *
  * -   An `Array<T>` or a `ReadonlyArray<T>` implements `Eq` when `T` implements
  *     `Eq`.
- * -   A tuple or a `readonly` tuple implements `Eq` when each of its elements
+ * -   A tuple or a read-only tuple implements `Eq` when each of its elements
  *     implements `Eq`.
  * -   Two arrays or two tuples are equal if they are the same length and their
  *     respective elements are equal.
  * -   Read-only and non-read-only arrays can be compared to each other.
  * -   Read-only and non-read-only tuples can be compared to each other.
  *
- * `Array`, `ReadonlyArray`, tuple literals, and `readonly` tuple literals have
- * the following behavior as a total order:
+ * Arrays and tuple literals have the following behavior as a total order:
  *
  * -   An `Array<T>` or a `ReadonlyArray<T>` implements `Ord` when `T`
  *     implements `Ord`.
- * -   A tuple or `readonly` tuple implements `Eq` when each of its elements
+ * -   A tuple or read-only tuple implements `Eq` when each of its elements
  *     implements `Eq`.
  * -   Arrays and tuples are compared lexicographically from left to right.
  * -   Read-only and non-read-only arrays can be compared to each other.
  * -   Read-only and non-read-only tuples can be compared to each other.
  *
- * ## `Array` and `ReadonlyArray` as semigroups
+ * ## Combining arrays as a semigroup
  *
- * `Array` and `ReadonlyArray` have the following behavior as a semigroup:
+ * Arrays have the following behavior as a semigroup:
  *
  * -   When combined, arrays are concatenated from left to right.
  * -   Read-only and non-read-only arrays can be combined with each other.
  * -   If either array is read-only, the returned array will also be read-only.
+ *
+ * Tuple literals are not a semigroup.
  *
  * @module
  */

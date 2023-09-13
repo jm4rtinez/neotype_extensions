@@ -15,7 +15,7 @@
  */
 
 /**
- * Augmentations for the `Float64Array` type.
+ * Augmentations for `Float64Array`.
  *
  * @remarks
  *
@@ -31,15 +31,15 @@
  *
  * `Float64Array` implements `Eq` and `Ord`.
  *
- * -   Two `Float64Array` values are equal when they are the same length and
- *     their respective elements are strictly equal.
- * -   `Float64Array` values are compared lexicographically from left to right,
- *     and their elements are ordered from least to greatest.
+ * -   Two `Float64Array` are equal when they are the same length and their
+ *     respective elements are strictly equal.
+ * -   `Float64Array` are compared lexicographically from left to right, and
+ *     their elements are ordered from least to greatest.
  *
- * ## `Float64Array` as a semigroup
+ * ## Combining `Float64Array` as a semigroup
  *
- * `Float64Array` implements `Semigroup`. When combined, `Float64Array` values
- * are concatenated from left to right.
+ * `Float64Array` implements `Semigroup`. When combined, `Float64Array` are
+ * concatenated from left to right.
  *
  * @module
  */

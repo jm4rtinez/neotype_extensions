@@ -15,7 +15,7 @@
  */
 
 /**
- * Augmentations for the `Symbol` type.
+ * Augmentations for symbols.
  *
  * @remarks
  *
@@ -27,10 +27,9 @@
  * import "@neotype/extensions/symbol.js";
  * ```
  *
- * ## Comparing `Symbol`
+ * ## Comparing symbols.
  *
- * `Symbol` implements `Eq`. Two `Symbol` values are equal if they are strictly
- * equal.
+ * Symbols implement `Eq`. Two symbols are equal if they are strictly equal.
  *
  * @module
  */

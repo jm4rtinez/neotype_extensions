@@ -15,7 +15,7 @@
  */
 
 /**
- * Augmentations for the `Set` and `ReadonlySet` types.
+ * Augmentations for sets.
  *
  * @remarks
  *
@@ -27,17 +27,17 @@
  * import "@neotype/extensions/set.js";
  * ```
  *
- * ## Comparing `Set` and `ReadonlySet`
+ * ## Comparing sets
  *
- * `Set` and `ReadonlySet` implement `Eq`.
+ * Sets implement `Eq`.
  *
  * -   Two sets are equal if they are the same size and contain the same
  *     elements. Elements are compared strictly.
  * -   Read-only and non-read-only sets can be compared to each other.
  *
- * ## `Set` and `ReadonlySet` as semigroups
+ * ## Combining sets as a semigroup
  *
- * `Set` and `ReadonlySet` implement `Semigroup`.
+ * Sets implement `Semigroup`.
  *
  * -   Sets are combined by taking their union.
  * -   Read-only and non-read-only sets can be combined with each other.

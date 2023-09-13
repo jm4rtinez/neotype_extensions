@@ -31,15 +31,15 @@
  *
  * `Uint32Array` implements `Eq` and `Ord`.
  *
- * -   Two `Uint32Array` values are equal when they are the same length and
- *     their respective elements are strictly equal.
- * -   `Uint32Array` values are compared lexicographically from left to right,
- *     and their elements are ordered from least to greatest.
+ * -   Two `Uint32Array` are equal when they are the same length and their
+ *     respective elements are strictly equal.
+ * -   `Uint32Array` are compared lexicographically from left to right, and
+ *     their elements are ordered from least to greatest.
  *
- * ## `Uint32Array` as a semigroup
+ * ## Combining `Uint32Array` as a semigroup
  *
- * `Uint32Array` implements `Semigroup`. When combined, `Uint32Array` values are
- * are concatenated from left to right.
+ * `Uint32Array` implements `Semigroup`. When combined, `Uint32Array` are
+ * concatenated from left to right.
  *
  * @module
  */

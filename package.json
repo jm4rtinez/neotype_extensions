@@ -68,6 +68,7 @@
 		"test": "vitest run --coverage",
 		"test:watch": "vitest",
 		"typecheck": "tsc --skipLibCheck --noEmit",
+		"docs": "typedoc",
 		"prebuild": "npm run clean",
 		"build": "tsc --project ./tsconfig.build.json",
 		"prepublishOnly": "npm run build",
@@ -89,6 +90,7 @@
 		"prettier": "3.0.2",
 		"rimraf": "^3.0.2",
 		"ts-node": "^10.9.1",
+		"typedoc": "^0.25.1",
 		"typescript": "~5.2",
 		"vitest": "^0.34.1"
 	},
