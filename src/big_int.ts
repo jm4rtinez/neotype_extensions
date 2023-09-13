@@ -15,7 +15,7 @@
  */
 
 /**
- * Augmentations for the `BigInt` type.
+ * Augmentations for bigints (big integers).
  *
  * @remarks
  *
@@ -27,12 +27,12 @@
  * import "@neotype/extensions/big_int.js";
  * ```
  *
- * ## Comparing `BigInt`
+ * ## Comparing bigints
  *
- * `BigInt` implements `Eq` and `Ord`.
+ * Bigints implement `Eq` and `Ord`.
  *
- * -   Two `BigInt` values are equal if they are strictly equal.
- * -   `BigInt` values are ordered from least to greatest.
+ * -   Two bigints are equal if they are strictly equal.
+ * -   Bigints are ordered from least to greatest.
  *
  * @module
  */

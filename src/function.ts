@@ -15,7 +15,7 @@
  */
 
 /**
- * Augmentations for the `Function` type.
+ * Augmentations for functions.
  *
  * @remarks
  *
@@ -27,9 +27,9 @@
  * import "@neotype/extensions/function.js";
  * ```
  *
- * ## `Function` as a semigroup
+ * ## Combining functions as a semigroup
  *
- * `Function` has the following behavior as a semigroup:
+ * Functions have the following behavior as a semigroup:
  *
  * -   A function `<TArgs extends unknown[], T>(...args: TArgs) => T` implements
  *     `Semigroup` when `T` implements `Semigroup`.

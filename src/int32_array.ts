@@ -15,7 +15,7 @@
  */
 
 /**
- * Augmentations for the `Int32Array` type.
+ * Augmentations for `Int32Array`.
  *
  * @remarks
  *
@@ -31,15 +31,15 @@
  *
  * `Int32Array` implements `Eq` and `Ord`.
  *
- * -   Two `Int32Array` values are equal when they are the same length and their
+ * -   Two `Int32Array` are equal when they are the same length and their
  *     respective elements are strictly equal.
- * -   `Int32Array` values are compared lexicographically from left to right,
- *     and their elements are ordered from least to greatest.
+ * -   `Int32Array` are compared lexicographically from left to right, and their
+ *     elements are ordered from least to greatest.
  *
- * ## `Int32Array` as a semigroup
+ * ## Combining `Int32Array` as a semigroup
  *
- * `Int32Array` implements `Semigroup`. When combined, `Int32Array` values are
- * are concatenated from left to right.
+ * `Int32Array` implements `Semigroup`. When combined, `Int32Array` are
+ * concatenated from left to right.
  *
  * @module
  */

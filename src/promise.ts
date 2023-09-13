@@ -15,7 +15,7 @@
  */
 
 /**
- * Augmentations for the `Promise` type.
+ * Augmentations for promises.
  *
  * @remarks
  *
@@ -27,13 +27,13 @@
  * import "@neotype/extensions/promise.js";
  * ```
  *
- * ## `Promise` as a semigroup
+ * ## Combining promises as a semigroup
  *
- * `Promise` has the following behavior as a semigroup:
+ * Promises have the following behavior as a semigroup:
  *
  * -   A `Promise<T>` implements `Semigroup` when `T` implements `Semigroup`.
- * -   When combined, `Promise` values are awaited concurrently and their
- *     results are combined and fulfilled in a new `Promise`.
+ * -   When combined, promises are awaited concurrently and their results are
+ *     combined and fulfilled in a new promise.
  *
  * @module
  */

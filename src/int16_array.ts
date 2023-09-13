@@ -15,7 +15,7 @@
  */
 
 /**
- * Augmentations for the `Int16Array` type.
+ * Augmentations for `Int16Array`.
  *
  * @remarks
  *
@@ -31,15 +31,15 @@
  *
  * `Int16Array` implements `Eq` and `Ord`.
  *
- * -   Two `Int16Array` values are equal when they are the same length and their
+ * -   Two `Int16Array` are equal when they are the same length and their
  *     respective elements are strictly equal.
- * -   `Int16Array` values are compared lexicographically from left to right,
- *     and their elements are ordered from least to greatest.
+ * -   `Int16Array` are compared lexicographically from left to right, and their
+ *     elements are ordered from least to greatest.
  *
- * ## `Int16Array` as a semigroup
+ * ## Combining `Int16Array` as a semigroup
  *
- * `Int16Array` implements `Semigroup`. When combined, `Int16Array` values are
- * are concatenated from left to right.
+ * `Int16Array` implements `Semigroup`. When combined, `Int16Array` are
+ * concatenated from left to right.
  *
  * @module
  */

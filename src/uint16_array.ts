@@ -15,7 +15,7 @@
  */
 
 /**
- * Augmentations for the `Uint16Array` type.
+ * Augmentations for `Uint16Array`.
  *
  * @remarks
  *
@@ -31,15 +31,15 @@
  *
  * `Uint16Array` implements `Eq` and `Ord`.
  *
- * -   Two `Uint16Array` values are equal when they are the same length and
- *     their respective elements are strictly equal.
- * -   `Uint16Array` values are compared lexicographically from left to right,
- *     and their elements are ordered from least to greatest.
+ * -   Two `Uint16Array` are equal when they are the same length and their
+ *     respective elements are strictly equal.
+ * -   `Uint16Array` are compared lexicographically from left to right, and
+ *     their elements are ordered from least to greatest.
  *
- * ## `Uint16Array` as a semigroup
+ * ## Combining `Uint16Array` as a semigroup
  *
- * `Uint16Array` implements `Semigroup`. When combined, `Uint16Array` values are
- * are concatenated from left to right.
+ * `Uint16Array` implements `Semigroup`. When combined, `Uint16Array` are
+ * concatenated from left to right.
  *
  * @module
  */

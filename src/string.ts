@@ -15,7 +15,7 @@
  */
 
 /**
- * Augmentations for the `String` type.
+ * Augmentations for strings.
  *
  * @remarks
  *
@@ -27,17 +27,17 @@
  * import "@neotype/extensions/string.js";
  * ```
  *
- * ## Comparing `String`
+ * ## Comparing strings
  *
- * `String` implements `Eq` and `Ord`.
+ * Strings implement `Eq` and `Ord`.
  *
- * -   Two `String` values are equal if they are strictly equal.
- * -   `String` values are compared lexicographically from left to right
- *     according to their 16-bit code unit representation.
+ * -   Two strings are equal if they are strictly equal.
+ * -   Strings are compared lexicographically from left to right according to
+ *     their 16-bit code unit representation.
  *
- * ## `String` as a semigroup
+ * ## Combining strings as a semigroup
  *
- * `String` implements `Semigroup`. Strings are combined using concatenation.
+ * Strings implement `Semigroup`. They are combined using concatenation.
  *
  * @module
  */

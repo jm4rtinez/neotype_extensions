@@ -15,7 +15,7 @@
  */
 
 /**
- * Augmentations for the `Float32Array` type.
+ * Augmentations for `Float32Array`.
  *
  * @remarks
  *
@@ -31,15 +31,15 @@
  *
  * `Float32Array` implements `Eq` and `Ord`.
  *
- * -   Two `Float32Array` values are equal when they are the same length and
- *     their respective elements are strictly equal.
- * -   `Float32Array` values are compared lexicographically from left to right,
- *     and their elements are ordered from least to greatest.
+ * -   Two `Float32Array` are equal when they are the same length and their
+ *     respective elements are strictly equal.
+ * -   `Float32Array` are compared lexicographically from left to right, and
+ *     their elements are ordered from least to greatest.
  *
- * ## `Float32Array` as a semigroup
+ * ## Combining `Float32Array` as a semigroup
  *
- * `Float32Array` implements `Semigroup`. When combined, `Float32Array` values
- * are concatenated from left to right.
+ * `Float32Array` implements `Semigroup`. When combined, `Float32Array` are
+ * concatenated from left to right.
  *
  * @module
  */

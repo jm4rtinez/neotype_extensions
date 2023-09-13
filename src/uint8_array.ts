@@ -15,7 +15,7 @@
  */
 
 /**
- * Augmentations for the `Uint8Array` type.
+ * Augmentations for `Uint8Array`.
  *
  * @remarks
  *
@@ -31,15 +31,15 @@
  *
  * `Uint8Array` implements `Eq` and `Ord`.
  *
- * -   Two `Uint8Array` values are equal when they are the same length and their
+ * -   Two `Uint8Array` are equal when they are the same length and their
  *     respective elements are strictly equal.
- * -   `Uint8Array` values are compared lexicographically from left to right,
- *     and their elements are ordered from least to greatest.
+ * -   `Uint8Array` are compared lexicographically from left to right, and thier
+ *     elements are ordered from least to greatest.
  *
- * ## `Uint8Array` as a semigroup
+ * ## Combining `Uint8Array` as a semigroup
  *
- * `Uint8Array` implements `Semigroup`. When combined, `Uint8Array` values are
- * are concatenated from left to right.
+ * `Uint8Array` implements `Semigroup`. When combined, `Uint8Array` are
+ * concatenated from left to right.
  *
  * @module
  */
