@@ -4,7 +4,7 @@ Default implementations for [neotype_prelude] equivalence relations, total
 orders, and semigroups for built-in JavaScript objects
 
 [![Build and Test](https://github.com/jmartinezmaes/neotype_extensions/actions/workflows/build_and_test.yml/badge.svg)](https://github.com/jmartinezmaes/neotype_prelude/actions/workflows/build_and_test.yml)
-[![NPM Version](https://img.shields.io/npm/v/@neotype/extensions?color=33cd56&logo=npm)](https://www.npmjs.com/package/@neotype/prelude)
+[![NPM Version](https://img.shields.io/npm/v/@neotype/extensions?color=33cd56&logo=npm&label=NPM)](https://www.npmjs.com/package/@neotype/prelude)
 
 ## Features
 
